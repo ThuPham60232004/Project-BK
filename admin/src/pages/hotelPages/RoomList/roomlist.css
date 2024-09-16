@@ -1,0 +1,58 @@
+/* roomlist.css */
+.roomlist-container {
+    display: flex;
+  }
+  
+  .roomlist-content {
+    flex: 6; /* Main content takes 8 parts of the available space */
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: 20px; /* Space between sidebar and content */
+    height: 100vh; /* Full height */
+    overflow: auto; /* Scroll if content overflows */
+  }
+  
+  .roomlist-content h1 {
+    font-size: 28px;
+    color: gray;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .cellAction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .viewButton {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #b300a764;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  .viewButton:hover {
+    background-color: #b300a7ab;
+  }
+  
+  .deleteButton {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(220, 20, 180, 0.635);
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .deleteButton:hover {
+    background-color: rgba(220, 20, 180, 0.129);
+  }
+  

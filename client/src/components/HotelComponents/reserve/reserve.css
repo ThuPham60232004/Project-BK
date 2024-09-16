@@ -1,0 +1,207 @@
+/* Container cho modal đặt phòng */
+.reserve {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  font-family: 'Roboto', sans-serif; /* Sử dụng phông chữ hiện đại */
+  transition: background 0.3s ease;
+}
+
+/* Container nội dung modal */
+.reserve-container {
+  background-color: #fff;
+  padding: 30px;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: fadeIn 0.3s ease-out;
+  transition: box-shadow 0.3s ease;
+}
+
+/* Styling cho nút đóng */
+.reserve-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  cursor: pointer;
+  font-size: 24px;
+  color: #666;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.reserve-close:hover {
+  color: #e92bc9;
+  transform: rotate(90deg);
+}
+
+/* Styling tiêu đề */
+.reserve-title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+/* Styling cho chọn ngày */
+.reserve-dates {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.reserve-dates label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #333;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.react-datepicker__input-container input:focus {
+  border-color: #e92bc9;
+  box-shadow: 0 0 0 2px rgba(233, 43, 201, 0.3);
+  outline: none;
+}
+
+/* Phần tóm tắt đơn hàng */
+.reserve-summary {
+  margin-bottom: 30px;
+}
+
+.reserve-room-info {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-summary h2, .reserve-summary p {
+  margin: 10px 0;
+}
+
+/* Phần mã giảm giá */
+.reserve-discount {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-discount input {
+  width: calc(100% - 130px);
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-right: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-discount input::placeholder {
+  color: #aaa;
+}
+
+.reserve-discount button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #e92bc9;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-discount button:hover {
+  background-color: #c51aa6;
+  transform: scale(1.02);
+}
+
+/* Phần thanh toán */
+.reserve-payment {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #dee2e6;
+  display: flex;
+  flex-direction: column;
+}
+
+.reserve-payment label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #495057;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+
+.reserve-payment input {
+  margin-right: 10px;
+  accent-color: #e92bc9;
+}
+
+.reserve-payment label:hover {
+  color: #e92bc9;
+}
+
+/* Nút đặt phòng */
+.reserve-submit {
+  padding: 12px 350px;
+  margin-top: 12px;
+  margin-left: 10px;
+  border: none;
+  background-color: #e92bc9;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-submit:hover {
+  background-color: #c51aa6;
+  transform: scale(1.02);
+}
+
+/* Styling cho thông tin người dùng */
+.user-info {
+  margin-bottom: 30px;
+}
+
+.user-info h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.user-info p {
+  margin: 5px 0;
+}

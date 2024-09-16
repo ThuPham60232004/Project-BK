@@ -1,0 +1,83 @@
+.notifications-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #d6d6d6;
+  border-radius: 12px;
+  background-color: #fafafa;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.notifications-container:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.notifications-container h2 {
+  font-size: 26px;
+  color: rgba(10, 148, 148, 0.788);
+  text-align: center;
+  margin-bottom: 25px;
+  font-family: 'Arial', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.notifications-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.notifications-container li {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.notifications-container li:hover {
+  transform: translateY(-3px);
+  background-color: #f9f9f9;
+}
+
+.notifications-container li p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.notifications-container li p.message {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.notifications-container li p.sent-at {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.notifications-container li button {
+  margin-right: 10px;
+  padding: 7px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: rgba(0, 255, 255, 0.788);
+  color: #fff;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.notifications-container li button:hover {
+  background-color: rgba(0, 255, 255, 0.788);
+}
+
+.notifications-container li.read {
+  background-color: #f4f4f4;
+}
+

@@ -1,0 +1,103 @@
+.room-detail {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f0f0f0;
+    justify-content: center; /* Center items within the container */
+  }
+  
+  .room {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    flex: 1 1 calc(50% - 40px); /* Adjusted for two items per row with gap */
+    max-width: calc(50% - 40px); /* Adjusted for two items per row with gap */
+  }
+  
+  .room:hover {
+    transform: translateY(-5px);
+  }
+  
+  .room-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .room-image {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #eee;
+  }
+  
+  .room-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .room-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .room-desc {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+  }
+  
+  .room-price,
+  .room-discount,
+  .room-tax,
+  .room-max {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  .room-price {
+    color: #e74c3c;
+    font-weight: 600;
+  }
+  
+  .room-discount {
+    color: #27ae60;
+  }
+  
+  .room-tax {
+    color: #8e44ad;
+  }
+  
+  .room-max {
+    color: #E27AD0;
+  }
+  
+  .reserve-button {
+    align-self: flex-start;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #E27AD0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .reserve-button:hover {
+    background-color: #d345bc;
+  }
+  

@@ -1,0 +1,46 @@
+/* selecthotel.css */
+.selecthotel-container {
+    display: flex;
+  }
+  
+  .selecthotel-content {
+    flex: 1;
+    flex: 6; 
+    padding: 20px;
+    margin-left: 20px; /* Updated based on Sidebar width */
+  }
+  
+  .selecthotel-content h1 {
+    font-size: 28px;
+    color: gray;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .cellAction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  /* sidebar.css */
+.sidebar {
+    width: 150px; /* New smaller width */
+    height: 100vh;
+
+  }
+  
+  .selectButton {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+  }
+  
+  .selectButton:hover {
+    background-color: #0056b3;
+  }
+  

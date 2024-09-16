@@ -1,0 +1,147 @@
+.newHotel {
+    width: 100%;
+    display: flex;
+    background-color: #f0f2f5;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .newHotel .newContainer {
+    flex: 6;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .newHotel .newContainer .top,
+  .newHotel .newContainer .bottom {
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  
+  .newHotel .newContainer .top {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  .newHotel .newContainer .top h1 {
+    color: #fff;
+    font-size: 26px;
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+  }
+  
+  .newHotel .newContainer .bottom {
+    flex-direction: row;
+    background-color: #fff;
+  }
+  
+  .newHotel .newContainer .bottom .left {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .newHotel .newContainer .bottom .left img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+  
+  .newHotel .newContainer .bottom .right {
+    flex: 2;
+    padding: 20px;
+  }
+  
+  .newHotel .newContainer .bottom .right form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  .newHotel .newContainer .bottom .right form .formInput {
+    width: 48%;
+  }
+  
+  .newHotel .newContainer .bottom .right form .formInput label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #343a40;
+  }
+  
+  .newHotel .newContainer .bottom .right form .formInput input,
+  .newHotel .newContainer .bottom .right form .formInput textarea,
+  .newHotel .newContainer .bottom .right form .formInput select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  .newHotel .newContainer .bottom .right form .formInput input:focus,
+  .newHotel .newContainer .bottom .right form .formInput textarea:focus,
+  .newHotel .newContainer .bottom .right form .formInput select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+  }
+  
+  .newHotel .newContainer .bottom .right form .formInput textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  
+  .newHotel .newContainer .bottom .right form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-top: 20px;
+  }
+  
+  .newHotel .newContainer .bottom .right form button:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  .newHotel .newContainer .bottom .right form .selectRooms {
+    width: 100%;
+  }
+  
+  .newHotel .newContainer .bottom .right form .selectRooms label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #343a40;
+  }
+  
+  .newHotel .newContainer .bottom .right form .selectRooms select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s, background-color 0.3s;
+  }
+  
+  .newHotel .newContainer .bottom .right form .selectRooms select:focus {
+    border-color: #007bff;
+    background-color: #fff;
+  }
+  

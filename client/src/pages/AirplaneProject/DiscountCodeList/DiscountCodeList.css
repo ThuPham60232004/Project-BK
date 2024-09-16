@@ -1,0 +1,119 @@
+.discount-container {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.m22 {
+  color: #4b063f;
+  font-size: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.discount-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+}
+
+.discount-item {
+  background-color: rgba(10, 148, 148, 0.788);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.discount-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.discount-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.discount-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.discount-icon img {
+  width: 50px;
+  height: 50px;
+}
+
+.discount-info {
+  margin-left: 15px;
+}
+
+.discount-type {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.discount-value {
+  font-size: 2em;
+  color: #fd390d;
+  font-weight: 800;
+}
+
+.discount-details {
+  margin-bottom: 15px;
+  font-size: 1em;
+  color: #fff;
+}
+
+.discount-details span {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.discount-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.discount-expiry {
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #fff;
+}
+
+.discount-button {
+  background-color: #ffffff;
+  color: #f01ccdab;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.discount-button:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .discount-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .discount-list {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,62 @@
+.partners-section {
+    padding: 40px;
+    background-color: #f9f9f9; /* Light background to highlight content */
+    border-top: 1px solid #ddd; /* Subtle top border for separation */
+}
+
+.partner-group {
+    margin-bottom: 40px;
+}
+
+.partner-info {
+    max-width: 550px;
+    margin-bottom: 20px;
+}
+
+.partner-info h2 {
+    font-size: 2rem; /* Slightly larger font size */
+    font-weight: bold;
+    color: #222; /* Slightly darker color for better readability */
+    margin-bottom: 10px; /* Add space below the heading */
+}
+
+.partner-info p {
+    font-size: 1.1rem; /* Slightly larger font size */
+    color: #555; /* Darker text color for better contrast */
+    line-height: 1.6; /* Improve readability */
+}
+
+.logo-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; /* Space out logos more evenly */
+}
+
+.logo-grid img {
+    max-width: 120px; /* Slightly larger logos */
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add transition for box-shadow */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    border: 1px solid #ddd; /* Light border around logos */
+    padding: 10px; /* Padding around logos */
+}
+
+.logo-grid img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+}
+
+@media (max-width: 768px) {
+    .partner-info {
+        max-width: 100%;
+    }
+
+    .logo-grid {
+        justify-content: center;
+    }
+
+    .logo-grid img {
+        max-width: 100px; /* Adjust size for smaller screens */
+    }
+}

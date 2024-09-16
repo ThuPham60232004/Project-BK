@@ -1,0 +1,35 @@
+
+.register {
+  align-items: center;
+  }
+
+  .register form {
+    width: 400px;
+    margin-left: 440px;
+  }
+  
+  .register h2 {
+    color:  #e92bc94d;
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .register input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+  }
+  
+  .register button {
+    width: 400px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #e92bc94d;
+    color: #fff;
+    cursor: pointer;
+  }

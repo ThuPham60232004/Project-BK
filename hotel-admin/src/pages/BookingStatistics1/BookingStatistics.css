@@ -1,0 +1,95 @@
+.bookingStatistics {
+  padding: 20px;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+}
+
+.hehhe {
+  color: rgb(238, 51, 216);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5em;
+}
+
+.stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.statItem {
+  flex: 1 1 calc(33% - 20px);
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.statItem:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.statItem h2 {
+  margin-bottom: 15px;
+  font-size: 1.6em;
+  color: #444;
+}
+
+.statItem p {
+  font-size: 1.4em;
+  color: #333;
+}
+
+.statItem ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  font-size: 1.4em;
+  color: #333;
+}
+
+.statItem ul li {
+  margin-bottom: 10px;
+}
+
+.chartContainer {
+  max-width: 100%;
+  height: 300px;
+  padding: 0 10px;
+}
+
+/* Styles for the date picker container */
+.datePickerContainer {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.datePickerContainer label {
+  font-size: 1.2em;
+  color: #555;
+}
+
+.datePickerContainer .react-datepicker-wrapper {
+  flex: 1;
+}
+
+.datePickerContainer .react-datepicker__input-container input {
+  width: 100%;
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.datePickerContainer .react-datepicker__input-container input:focus {
+  border-color: rgb(238, 51, 216);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(238, 51, 216, 0.2);
+}

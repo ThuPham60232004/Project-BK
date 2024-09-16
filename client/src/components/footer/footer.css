@@ -1,0 +1,158 @@
+.footer {
+  color: #000;
+}
+
+.footer__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer__left {
+  width: 45%;
+}
+
+.footer__right {
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__logo img {
+  width: 120px;
+  transition: transform 0.3s ease;
+}
+
+.footer__logo img:hover {
+  transform: scale(1.05);
+}
+
+.footer__certifications {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.footer__certifications img {
+  width: 50px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.footer__certifications img:hover {
+  opacity: 1;
+}
+
+.footer__partners {
+  margin: 20px 0;
+}
+
+.footer__partners button {
+  background-color: #000;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.footer__partners button:hover {
+  background-color: #333;
+}
+
+.footer__payment-partners {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.footer__payment-partners img {
+  width: 60px;
+  height: auto;
+  opacity: 0.8;
+  border-radius: 10px;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer__payment-partners img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer__links {
+  display: flex;
+  gap: 40px;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  width: 100px;
+  margin-top:50px;
+}
+
+.footer__list li {
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.footer__list li:hover {
+  color: #555;
+  text-decoration: underline;
+}
+
+.footer__social {
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+.footer__social span {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  
+}
+
+.footer__social-icons {
+  display: flex;
+  gap: 15px;
+}
+
+.footer__social-icons img {
+  width: 40px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.footer__social-icons img:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.footer__apps {
+  margin-top: 20px;
+}
+
+.footer__apps img {
+  width: 140px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
+}
+
+.footer__apps img:hover {
+  transform: scale(1.05);
+}
+
+.footer__copyright {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 14px;
+  color: #aaa;
+}

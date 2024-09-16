@@ -1,0 +1,189 @@
+/* Overall container */
+.login {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background: url('https://geos-nature.org/wp-content/uploads/2019/10/danh-lam-thang-canh-mien-bac-11.jpg') no-repeat center center/cover;
+  font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Login form container */
+.lContainer {
+  width: 400px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.95); /* Slightly more opacity */
+  border-radius: 20px; /* Softer rounded corners */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Stronger shadow for depth */
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lContainer:hover {
+  transform: translateY(-5px); /* Subtle lift on hover */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+/* Logo container */
+.logoContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 100px;
+}
+
+
+/* Input fields */
+.lInput {
+  width: 100%;
+  height: 45px;
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px; /* Softer corners */
+  font-size: 1em;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lInput:focus {
+  border: 1px solid #ffcc00;
+  box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Soft glow on focus */
+}
+
+/* Button styles */
+.lButton {
+  width: 100%;
+  height: 50px;
+  background-color: #ffcc00;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.lButton:hover {
+  background-color: #e6b800;
+  transform: scale(1.08); /* Slight increase on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Forget password */
+.forget {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.forget a {
+  text-decoration: none;
+  color: #ffcc00;
+  font-size: 0.9em;
+}
+
+.forget a:hover {
+  color: #e6b800;
+  text-decoration: underline; /* Subtle underline on hover */
+}
+
+/* Checkbox styling */
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.checkboxContainer input {
+  margin-right: 10px;
+}
+
+.forgetPassword{
+  margin-top: 20px;
+}
+.footerText {
+  text-align: center;
+  font-size: 0.85em;
+  color: #888;
+  margin-top: 20px;
+}
+.forgotPasswordLink{
+  color: black;
+}
+.footerText a {
+  color: #ffcc00;
+  text-decoration: none;
+}
+
+.footerText a:hover {
+  color: #e6b800;
+  text-decoration: underline;
+}
+
+.loginText {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  color: white;
+  max-width: 600px;
+  text-align: left;
+  background: rgba(0, 0, 0, 0.5); 
+  margin-top: 150px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.loginText h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  line-height: 1.2;
+  margin-left: 20px;
+}
+
+.loginText p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: white; /* Improve text visibility */
+}
+
+
+@media (max-width: 768px) {
+  .login {
+    justify-content: center;
+  }
+
+  .lContainer {
+    width: 90%;
+    margin-right: 0;
+  }
+
+  .loginText {
+    top: 10%;
+    left: 5%;
+    max-width: 100%;
+  }
+
+  .loginText h1 {
+    font-size: 2rem;
+  }
+
+  .loginText p {
+    font-size: 1rem;
+  }
+}

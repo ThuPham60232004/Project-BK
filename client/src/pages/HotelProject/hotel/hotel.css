@@ -1,0 +1,227 @@
+/* Container cho trang khách sạn */
+.hotelContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+/* Wrapper cho thông tin khách sạn */
+.hotelWrapper {
+  width: 100%;
+  max-width: 1200px; /* Tăng kích thước tối đa để bố cục tốt hơn trên màn hình lớn */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  padding: 0 20px; /* Thêm padding để tạo khoảng cách tốt hơn */
+}
+.hotelTitle{
+  color:#000000
+}
+.hotelDetailsPrice p{
+  font-size: 30px;
+}
+.bookNow {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Điều chỉnh vị trí cho căn chỉnh tốt hơn */
+  border: none;
+  padding: 12px 24px; /* Tăng padding để nút nổi bật hơn */
+  background-color: #0071c2;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Chuyển màu nền mượt mà khi hover */
+}
+
+.bookNow:hover {
+  background-color: #005bb5; /* Màu nền tối hơn khi hover */
+}
+
+/* Tiêu đề khách sạn */
+.hotelTitle {
+  font-size: 26px; /* Tăng kích thước chữ cho dễ đọc */
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Địa chỉ khách sạn */
+.hotelAddress {
+  font-size: 14px; /* Kích thước chữ lớn hơn một chút */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Khoảng cách và điểm nổi bật của giá */
+.hotelDistance {
+  color: #e92bc94d; /* Màu nổi bật cho khoảng cách */
+  font-weight: 600; /* Đậm hơn một chút */
+  margin: 10px 0;
+}
+
+.hotelPriceHighlight {
+  color: #006400; /* Màu nổi bật cho giá */
+  font-weight: 600; /* Đậm hơn một chút */
+  margin-bottom: 20px;
+}
+
+/* Styling cho hình ảnh khách sạn */
+.hotelImages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px; /* Khoảng cách giữa các hình ảnh */
+}
+
+/* Wrapper cho từng hình ảnh khách sạn */
+.hotelImgWrapper {
+  flex: 1 1 calc(33.333% - 15px); /* Tạo ba cột với khoảng cách giữa các cột */
+  box-sizing: border-box; /* Đảm bảo padding và border không ảnh hưởng đến kích thước */
+  margin-bottom: 15px; /* Khoảng cách dưới mỗi hình ảnh */
+}
+
+/* Styling cho hình ảnh khách sạn */
+.hotelImg {
+  width: 100%;
+  height: 400px; /* Chiều cao cố định cho đồng nhất */
+  object-fit: cover; /* Cắt hình ảnh để giữ tỷ lệ khung hình */
+  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+}
+
+/* Hiệu ứng hover cho hình ảnh */
+.hotelImg:hover {
+  transform: scale(1.05); /* Tăng kích thước khi di chuột qua */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng để tạo hiệu ứng nổi bật */
+}
+
+/* Phần chi tiết của khách sạn */
+.hotelDetails {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px; /* Khoảng cách lớn hơn giữa các phần */
+  margin-top: 20px;
+}
+
+/* Texts trong phần chi tiết khách sạn */
+.hotelDetailsTexts {
+  flex: 3;
+}
+
+.hotelDesc {
+  font-size: 16px; /* Kích thước chữ lớn hơn cho dễ đọc */
+  line-height: 1.6; /* Tăng khoảng cách giữa các dòng cho dễ đọc */
+  margin-top: 20px;
+}
+
+/* Phần giá cả */
+.hotelDetailsPrice {
+  flex: 1;
+  background-color: #f0faff; /* Màu nền nhẹ hơn để nổi bật */
+  padding: 25px; /* Thêm padding cho cảm giác rộng rãi */
+  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ để tạo chiều sâu */
+}
+
+.hotelDetailsPrice > h1 {
+  font-size: 20px; /* Kích thước chữ lớn hơn để nhấn mạnh */
+  color: #333; /* Màu tối hơn để nổi bật */
+}
+
+.hotelDetailsPrice > span {
+  font-size: 16px; /* Kích thước chữ lớn hơn cho dễ đọc */
+  color: #666; /* Màu nhẹ hơn cho văn bản phụ */
+}
+
+.hotelDetailsPrice > h2 {
+  font-weight: 400; /* Đặt độ đậm cho phù hợp */
+}
+
+.hotelDetailsPrice > button {
+  border: none;
+  padding: 12px 24px; /* Tăng padding để nút nổi bật hơn */
+  background-color: #e92bc991; /* Màu nền nhất quán */
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  transition: background-color 0.3s ease; /* Chuyển màu nền mượt mà khi hover */
+}
+
+.hotelDetailsPrice > button:hover {
+  background-color: #e92bc9; /* Màu nền tối hơn khi hover */
+}
+
+/* Styling cho slider */
+.slider {
+  position: fixed; /* Vị trí cố định để giữ cho slider luôn hiển thị */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8); /* Màu nền tối hơn để tạo sự tập trung */
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Căn giữa nội dung */
+}
+
+.sliderWrapper {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderImg {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Giữ tỷ lệ khung hình */
+  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 32px; /* Kích thước lớn hơn để dễ thấy */
+  color: #000000; /* Màu trắng để nổi bật trên nền tối */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Chuyển màu mượt mà khi hover */
+}
+
+.close:hover {
+  color: #f0f0f0; /* Màu sáng hơn khi hover */
+}
+
+.arrow {
+  position: absolute;
+  font-size: 60px; /* Kích thước lớn hơn để dễ thấy */
+  color: #000000; /* Màu trắng để nổi bật trên nền tối */
+  cursor: pointer;
+  transition: color 0.3s ease; /* Chuyển màu mượt mà khi hover */
+}
+
+.arrow:hover {
+  color: #f0f0f0; /* Màu sáng hơn khi hover */
+}
+
+.arrow.left {
+  left: 20px; /* Vị trí bên trái */
+}
+
+.arrow.right {
+  right: 20px; /* Vị trí bên phải */
+}
+
+/* Khoảng cách cho footer và MailList */
+footer, .mailList {
+  margin-top: 20px;
+}
