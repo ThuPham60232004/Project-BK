@@ -25,11 +25,7 @@ const ForgotPassword = () => {
   return (
     <div className="forgotPassword">
       <div className="navbar">
-        <div className="navContainer">
-          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-            <span className="logo">BOOKING</span>
-          </Link>
-        </div>
+       
       </div>
       <div className="fpContainer">
         <h1>Quên Mật Khẩu</h1>

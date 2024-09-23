@@ -1,9 +1,7 @@
 import React, { createContext, useEffect, useReducer } from "react";
 
-// Tạo context để chia sẻ trạng thái xác thực
 export const AuthContext = createContext();
 
-// Định nghĩa reducer để xử lý các hành động thay đổi trạng thái
 const AuthReducer = (state, action) => {
   switch (action.type) {
     case "LOGIN_START":
@@ -39,7 +37,6 @@ const AuthReducer = (state, action) => {
   }
 };
 
-// Tạo provider để bao bọc các component con và cung cấp context
 export const AuthContextProvider = ({ children }) => {
   const INITIAL_STATE = {
     user: JSON.parse(localStorage.getItem("user")) || null,
@@ -50,7 +47,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const [state, dispatch] = useReducer(AuthReducer, INITIAL_STATE);
 
-  // Sử dụng useEffect để lưu trữ thông tin người dùng và token vào localStorage khi state.user hoặc state.token thay đổi
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
     if (state.token) {

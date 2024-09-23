@@ -21,6 +21,10 @@ const RoomSchema = new mongoose.Schema({
     type: Number,
     required: false,
   },
+  stateRoom:{
+    type:Boolean,
+    required:true,
+  },
   maxPeople: {
     type: Number,
     required: true,

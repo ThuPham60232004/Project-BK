@@ -21,7 +21,7 @@ import Notifications from './pages/HotelProject/Notifications/Notifications';
 import ReviewManager from './pages/HotelProject/ReviewManager/ReviewManager';
 import DiscountCodeList from "./pages/HotelProject/DiscountCodeList/DiscountCodeList";
 import Room from "./pages/HotelProject/room/room";
-
+import HotelTypeList from './components/HotelComponents/HotelTypeList/HotelTypeList';
 import TicketDetail from './pages/AirplaneProject/TicketDetailAirplane/TicketDetail';
 import List11 from "./pages/AirplaneProject/listAirplane/List"
 import HomeAirplane from "./pages/AirplaneProject/homeAirplane/Home"
@@ -55,6 +55,7 @@ function App() {
           <Route path="/verifycode" element={<VerifyCode />} />
           <Route path="/discountcodelist" element={<DiscountCodeList/>} />
           <Route path="/rooms/:id" element={<Room/>} />
+          <Route path="/typehotels/:type" element={<HotelTypeList />} />
         {/*Routes airplane*/}
           <Route path="/airplanesearch" element={<List11/>}/>
           <Route path="/Tickets/getTicket/:id" element={<TicketDetail />} />

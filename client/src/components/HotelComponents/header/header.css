@@ -11,6 +11,55 @@ body {
   padding: 20px;
   color: rgb(0, 0, 0);
 }
+.suggestions {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  overflow-y: auto; 
+  max-height: 200px;
+  animation: fadeIn 0.3s ease-in-out;
+  top: 100%;
+  left: 0;
+  width: 60%; 
+  max-width: 200px;
+}
+
+
+.suggestions li {
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.suggestions li:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-3px);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.headerSearchInput {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  width: 100%;
+}
 
 .headerList {
   display: flex;

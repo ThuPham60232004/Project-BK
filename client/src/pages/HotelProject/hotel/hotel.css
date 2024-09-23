@@ -25,24 +25,24 @@
 .bookNow {
   position: absolute;
   top: 10px;
-  right: 10px; /* Điều chỉnh vị trí cho căn chỉnh tốt hơn */
+  right: 10px;
   border: none;
-  padding: 12px 24px; /* Tăng padding để nút nổi bật hơn */
+  padding: 12px 24px;
   background-color: #0071c2;
   color: rgb(0, 0, 0);
   font-weight: bold;
-  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  border-radius: 8px; 
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Chuyển màu nền mượt mà khi hover */
+  transition: background-color 0.3s ease; 
 }
 
 .bookNow:hover {
-  background-color: #005bb5; /* Màu nền tối hơn khi hover */
+  background-color: #005bb5; 
 }
 
 /* Tiêu đề khách sạn */
 .hotelTitle {
-  font-size: 26px; /* Tăng kích thước chữ cho dễ đọc */
+  font-size: 26px; 
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -57,7 +57,7 @@
 
 /* Khoảng cách và điểm nổi bật của giá */
 .hotelDistance {
-  color: #e92bc94d; /* Màu nổi bật cho khoảng cách */
+  color: rgba(10, 148, 148, 0.788); /* Màu nổi bật cho khoảng cách */
   font-weight: 600; /* Đậm hơn một chút */
   margin: 10px 0;
 }
@@ -146,7 +146,7 @@
 .hotelDetailsPrice > button {
   border: none;
   padding: 12px 24px; /* Tăng padding để nút nổi bật hơn */
-  background-color: #e92bc991; /* Màu nền nhất quán */
+  background-color: rgba(10, 148, 148, 0.788)1; /* Màu nền nhất quán */
   color: rgb(0, 0, 0);
   font-weight: bold;
   cursor: pointer;
@@ -155,7 +155,7 @@
 }
 
 .hotelDetailsPrice > button:hover {
-  background-color: #e92bc9; /* Màu nền tối hơn khi hover */
+  background-color: rgba(10, 148, 148, 0.788); /* Màu nền tối hơn khi hover */
 }
 
 /* Styling cho slider */

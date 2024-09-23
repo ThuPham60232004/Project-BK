@@ -22,9 +22,9 @@ const useFetch = (url) => {
       setLoading(false); 
     };
     fetchData();
-  }, [url]); // useEffect sẽ chạy lại khi url thay đổi
+  }, [url]); 
 
-  // Hàm reFetch để làm mới dữ liệu
+
   const reFetch = async () => {
     setLoading(true); // Bắt đầu quá trình loading
     try {

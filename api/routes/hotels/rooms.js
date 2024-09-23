@@ -5,7 +5,6 @@ import {
   getRoom,
   getRooms,
   updateRoom,
-  updateRoomAvailability,
   updateRoomStatus,
   searchRooms,
   getRoomsByHotelId,
@@ -19,7 +18,6 @@ const router = express.Router();
 router.post("/:hotelid", createRoom);
 
 // UPDATE
-router.put("/availability", updateRoomAvailability);
 router.put("/:id", verifyAdmin, updateRoom);
 router.put("/status", updateRoomStatus);
 

@@ -9,7 +9,20 @@ import { format } from "date-fns";
 import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../../context/SearchContext";
 import { AuthContext } from "../../../context/AuthContext";
-
+const cities = [
+  { name: "Miami"},
+  { name: "New York"},
+  { name: "TPHCM"},
+  { name: "London"},
+  { name: "Berlin"},
+  { name: "Aspen"},
+  { name: "Paris"},
+  { name: "Los Angeles"},
+  { name: "Bangkok"},
+  { name: "Sydnay"},
+  { name: "Zurich"},
+  
+];
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
   const [openDate, setOpenDate] = useState(false);
@@ -17,7 +30,8 @@ const Header = ({ type }) => {
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({ adult: 1, children: 0, room: 1 });
   const [currentBannerIndex, setCurrentBannerIndex] = useState(0);
-
+  const [filteredCities, setFilteredCities] = useState(cities);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
@@ -39,11 +53,23 @@ const Header = ({ type }) => {
     const bannerCount = banners.length;
     const interval = setInterval(() => {
       setCurrentBannerIndex((prevIndex) => (prevIndex + 1) % bannerCount);
-    }, 3000); 
+    }, 3000);
 
-    return () => clearInterval(interval); 
+    return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    setFilteredCities(
+      cities.filter(city =>
+        city.name.toLowerCase().includes(destination.toLowerCase())
+      )
+    );
+  }, [destination]);
+
+  const handleSuggestionClick = (cityName) => {
+    setDestination(cityName);
+    setShowSuggestions(false);
+  };
   const banners = [
     "https://toquoc.mediacdn.vn/2019/2/12/logo-524159843481660624526793169598440388689920n-15499690804651619107597.jpg",
     "https://images2.thanhnien.vn/528068263637045248/2023/9/11/biden-1-16944073932181767618117.jpg",
@@ -57,7 +83,6 @@ const Header = ({ type }) => {
     "https://cdn-i.vtcnews.vn/files/nguyenyen/2019/02/23/2-1525415.jpg",
     "https://phunuvietnam.mediacdn.vn/179072216278405120/2023/9/9/5-kham-pha-ben-trong-nhung-khach-san-dang-cap-tiep-don-nhung-nguyen-thu-the-gioi-khi-den-viet-nam-16942599023011962211779.jpg",
   ];
-
   return (
     <div className="header">
       <div className={type === "list" ? "headerContainer listMode" : "headerContainer"}>
@@ -78,14 +103,28 @@ const Header = ({ type }) => {
               </div>
             </div>
             <div className="headerSearch">
-              <div className="headerSearchItem">
+            <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faHotel} className="headerIcon" />
                 <input
-                  type="text"
-                  placeholder="Bạn muốn đi đâu?"
-                  className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
-                />
+              type="text"
+              placeholder="Bạn muốn đi đâu?"
+              className="headerSearchInput"
+              value={destination}
+              onChange={(e) => {
+                setDestination(e.target.value);
+                setShowSuggestions(true);
+              }}
+            />
+            {showSuggestions && (
+              <ul className="suggestions">
+                {filteredCities.map((city, index) => (
+                  <li key={index} onClick={() => handleSuggestionClick(city.name)}>
+                    {city.name} 
+                  </li>
+                ))}
+              </ul>
+            )}
+
               </div>
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />

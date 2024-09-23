@@ -10,7 +10,7 @@
   align-items: center;
   justify-content: center;
   z-index: 1000;
-  font-family: 'Roboto', sans-serif; /* Sử dụng phông chữ hiện đại */
+  font-family: 'Roboto', sans-serif; 
   transition: background 0.3s ease;
 }
 
@@ -29,7 +29,6 @@
   transition: box-shadow 0.3s ease;
 }
 
-/* Styling cho nút đóng */
 .reserve-close {
   position: absolute;
   top: 20px;
@@ -41,7 +40,7 @@
 }
 
 .reserve-close:hover {
-  color: #e92bc9;
+  color: rgba(10, 148, 148, 0.788);
   transform: rotate(90deg);
 }
 
@@ -79,7 +78,7 @@
 }
 
 .react-datepicker__input-container input:focus {
-  border-color: #e92bc9;
+  border-color: rgba(10, 148, 148, 0.788);
   box-shadow: 0 0 0 2px rgba(233, 43, 201, 0.3);
   outline: none;
 }
@@ -126,7 +125,7 @@
 .reserve-discount button {
   padding: 10px 20px;
   border: none;
-  background-color: #e92bc9;
+  background-color: rgba(10, 148, 148, 0.788);
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -136,7 +135,7 @@
 }
 
 .reserve-discount button:hover {
-  background-color: #c51aa6;
+  background-color: rgba(10, 148, 148, 0.788);
   transform: scale(1.02);
 }
 
@@ -165,11 +164,11 @@
 
 .reserve-payment input {
   margin-right: 10px;
-  accent-color: #e92bc9;
+  accent-color: rgba(10, 148, 148, 0.788);
 }
 
 .reserve-payment label:hover {
-  color: #e92bc9;
+  color: rgba(10, 148, 148, 0.788);
 }
 
 /* Nút đặt phòng */
@@ -178,7 +177,7 @@
   margin-top: 12px;
   margin-left: 10px;
   border: none;
-  background-color: #e92bc9;
+  background-color: rgba(10, 148, 148, 0.788);
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -188,7 +187,7 @@
 }
 
 .reserve-submit:hover {
-  background-color: #c51aa6;
+  background-color: rgba(10, 148, 148, 0.788);
   transform: scale(1.02);
 }
 

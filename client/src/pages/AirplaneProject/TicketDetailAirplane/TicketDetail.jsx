@@ -25,7 +25,7 @@ const TicketDetail = () => {
   if (!ticket) {
     return <div>Loading...</div>;
   }
-
+  
   const handleBookingClick = () => {
     navigate(`/booking/${ticket._id}`);
   };

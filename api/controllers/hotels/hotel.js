@@ -66,6 +66,20 @@ export const getHotels = async (req, res, next) => {
     next(err);
   }
 };
+export const getHotelsByType = async (req, res, next) => {
+  const { type } = req.query;
+
+  if (!type) {
+    return res.status(400).json({ error: "Type query parameter is required" });
+  }
+
+  try {
+    const hotels = await Hotel.find({ type });
+    res.status(200).json(hotels);
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const countByCity = async (req, res, next) => {
   if (!req.query.cities) {
@@ -123,30 +137,6 @@ export const getHotelRooms = async (req, res, next) => {
 export const getAllHotels = async (req, res, next) => {
   try {
     const hotels = await Hotel.find(); 
-    res.status(200).json(hotels);
-  } catch (err) {
-    next(err);
-  }
-};
-// Tìm kiếm khách sạn theo nhiều tiêu chí
-export const searchHotels = async (req, res, next) => {
-  const { name, type, city, minPrice, maxPrice, rating } = req.query;
-
-  try {
-    const query = {};
-
-    if (name) query.name = { $regex: new RegExp(name, 'i') }; // Tìm kiếm theo phần của tên khách sạn
-    if (type) query.type = type;
-    if (city) query.city = city;
-    if (rating) query.rating = { $gte: Number(rating) };
-    if (minPrice || maxPrice) {
-      query.cheapestPrice = {
-        $gte: minPrice ? Number(minPrice) : 0,
-        $lte: maxPrice ? Number(maxPrice) : Number.MAX_SAFE_INTEGER
-      };
-    }
-
-    const hotels = await Hotel.find(query).limit(Number(req.query.limit) || 10);
     res.status(200).json(hotels);
   } catch (err) {
     next(err);

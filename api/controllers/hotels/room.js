@@ -32,46 +32,7 @@ export const updateRoom = async (req, res, next) => {
   }
 };
 
-export const updateRoomAvailability = async (req, res, next) => {
-  const { roomId, date, isBooked } = req.body;
 
-  try {
-    // Cập nhật trạng thái phòng
-    const room = await Room.findOneAndUpdate(
-      { _id: roomId, "availability.date": date },
-      {
-        $set: {
-          "availability.$.isBooked": isBooked,
-        },
-      },
-      { new: true }
-    );
-
-    // Nếu không tìm thấy phòng, trả về lỗi
-    if (!room) {
-      return res.status(404).json({ message: "Room not found" });
-    }
-
-    // Cập nhật trạng thái phòng sau khi hết ngày
-    const today = new Date();
-    await Room.updateMany(
-      {
-        _id: roomId,
-        "availability.date": { $lt: today },
-        "availability.isBooked": true
-      },
-      {
-        $set: {
-          "availability.$.isBooked": false
-        }
-      }
-    );
-
-    res.status(200).json(room);
-  } catch (err) {
-    next(err);
-  }
-};
 
 
 export const deleteRoom = async (req, res, next) => {

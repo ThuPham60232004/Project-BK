@@ -1,7 +1,6 @@
-// Import các thư viện cần thiết
+
 import { createContext, useReducer } from "react";
 
-// Định nghĩa trạng thái ban đầu
 const INITIAL_STATE = {
   city: undefined,
   dates: [],
@@ -12,10 +11,8 @@ const INITIAL_STATE = {
   },
 };
 
-// Tạo context để chia sẻ trạng thái tìm kiếm
 export const SearchContext = createContext(INITIAL_STATE);
 
-// Định nghĩa reducer để xử lý các hành động thay đổi trạng thái
 const SearchReducer = (state, action) => {
   switch (action.type) {
     case "NEW_SEARCH":
@@ -27,7 +24,6 @@ const SearchReducer = (state, action) => {
   }
 };
 
-// Tạo provider để bao bọc các component con và cung cấp context
 export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
 

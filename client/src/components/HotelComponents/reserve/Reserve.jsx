@@ -7,14 +7,14 @@ import { SearchContext } from "../../../context/SearchContext";
 import "./reserve.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons";
-import { faPaypal, faCcVisa, faCcMastercard, faCcApplePay } from '@fortawesome/free-brands-svg-icons';
+import { faPaypal, faCcVisa, faCcMastercard } from '@fortawesome/free-brands-svg-icons';
 
 const getDatesInRange = (startDate, endDate) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
   const date = new Date(start.getTime());
   const dates = [];
-  
+
   while (date <= end) {
     dates.push(new Date(date).getTime());
     date.setDate(date.getDate() + 1);
@@ -40,9 +40,9 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
 
   const navigate = useNavigate();
   const calculateDepositAmount = (totalPrice) => {
-    return totalPrice * 0.2; // Giá cọc bằng 20% tổng giá tiền
+    return totalPrice * 0.2;
   };
-  
+
   useEffect(() => {
     const fetchRoom = async () => {
       try {
@@ -82,10 +82,6 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
     };
     fetchUserInfo();
   }, []);
-
-  const handlePaymentMethodChange = (e) => {
-    setPaymentMethod(e.target.value);
-  };
 
   const handleDiscountCodeChange = (e) => {
     setDiscountCode(e.target.value);
@@ -133,15 +129,12 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
       }
     });
   
-    // Áp dụng mã giảm giá trước khi tính thuế
-    const totalPriceAfterDiscount = totalPriceBeforeTax - discountAmountState;
-  
-    // Tính thuế sau khi áp dụng giảm giá
-    const taxRate = room.taxPrice || 0.1; // Thuế 10%
-    totalTax = taxRate
-  
-    const finalTotalPrice = totalPriceAfterDiscount + totalTax;
-    const depositAmount = calculateDepositAmount(finalTotalPrice); // Tính giá cọc
+    const totalPriceAfterDiscount = totalPriceBeforeTax ;
+    const taxRate = room.taxPrice || 100000;
+    totalTax = totalPriceAfterDiscount + taxRate;
+
+    const finalTotalPrice = totalPriceAfterDiscount + totalTax- discountAmountState;
+    const depositAmount = calculateDepositAmount(finalTotalPrice);
   
     return {
       totalPriceBeforeTax,
@@ -151,63 +144,44 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
       finalTotalPrice
     };
   };
-  
+
   const updateRoomAvailability = async () => {
     try {
-      await axios.post("http://localhost:9000/api/rooms/update-availability", {
-        hotelId,
-        roomId,
-        dates: alldates
-      });
     } catch (err) {
       console.error("Cập nhật tình trạng phòng thất bại", err);
     }
   };
 
-  const mockPayment = () => {
-    // Mô phỏng thanh toán thành công
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve({ success: true });
-      }, 1000); // Mô phỏng thời gian thanh toán
-    });
-  };
-
   const handleClick = async () => {
     try {
-      const paymentResult = await mockPayment();
-      if (paymentResult.success) {
-        await updateRoomAvailability();
+      await updateRoomAvailability();
 
-        const userId = localStorage.getItem("userId");
-        const token = localStorage.getItem("authToken");
+      const userId = localStorage.getItem("userId");
+      const token = localStorage.getItem("authToken");
 
-        if (!userId || !token) {
-          console.error("Thiếu thông tin ID người dùng hoặc token trong localStorage.");
-          return;
-        }
-
-        const bookingData = {
-          user: userId,
-          hotel: hotelId,
-          room: selectedRooms,
-          startDate: startDate.toISOString(),
-          endDate: endDate.toISOString(),
-          paymentMethod: paymentMethod,
-          totalPrice: calculateTotalPriceDetails().finalTotalPrice,
-          status: "pending"
-        };
-
-        await axios.post("http://localhost:9000/api/bookings", bookingData, {
-          headers: { Authorization: `Bearer ${token}` }
-        });
-
-        alert("Đặt phòng thành công!");
-        navigate("/");
-        setOpen(false);
-      } else {
-        alert("Thanh toán không thành công.");
+      if (!userId || !token) {
+        console.error("Thiếu thông tin ID người dùng hoặc token trong localStorage.");
+        return;
       }
+
+      const bookingData = {
+        user: userId,
+        hotel: hotelId,
+        room: selectedRooms,
+        startDate: startDate.toISOString(),
+        endDate: endDate.toISOString(),
+        paymentMethod: paymentMethod,
+        totalPrice: calculateTotalPriceDetails().finalTotalPrice,
+        status: "pending"
+      };
+
+      await axios.post("http://localhost:9000/api/bookings", bookingData, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+
+      alert("Đặt phòng thành công!");
+      navigate("/");
+      setOpen(false);
     } catch (err) {
       console.error("Tạo đặt phòng thất bại", err);
     }
@@ -253,96 +227,66 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
           </div>
         </div>
         <div className="reserve-summary">
-        <h2>Tóm tắt đơn hàng</h2>
-        {room && (
-          <div className="reserve-room-info">
-            <h3>Phòng: {room.name}</h3>
-            <p>Số ngày đặt: {numberOfBookingDays}</p>
-            <p>Giá phòng: {room.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-            <p>Tổng giá trước thuế: {calculateTotalPriceDetails().totalPriceBeforeTax.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-            <p>Thuế: {calculateTotalPriceDetails().totalTax.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-            <p>Giảm giá: {calculateTotalPriceDetails().discountAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-            <p>Giá cọc (20%): {calculateTotalPriceDetails().depositAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-            <h4>Tổng cộng: {calculateTotalPriceDetails().finalTotalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</h4>
-
-          </div>
-        )}
-       </div>
-
-        <div className="reserve-discount">
-          <h2>Mã giảm giá</h2>
-          <input 
-            type="text" 
-            value={discountCode} 
-            onChange={handleDiscountCodeChange} 
-            placeholder="Nhập mã giảm giá" 
-          />
-          <button onClick={handleApplyDiscount}>Áp dụng</button>
+          <h2>Tóm tắt đơn hàng</h2>
+          {room && (
+            <div className="reserve-room-info">
+              <h3>Phòng: {room.name}</h3>
+              <p>Số ngày đặt: {numberOfBookingDays}</p>
+              <p>Giá phòng: {room.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Giá phòng giảm: {room.discountPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Thuế: {calculateTotalPriceDetails().totalTax.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Tổng giá: {calculateTotalPriceDetails().finalTotalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Đặt cọc: {calculateTotalPriceDetails().depositAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+            </div>
+          )}
         </div>
         <div className="reserve-payment">
           <h2>Phương thức thanh toán</h2>
-          <div>
-            <input
-              type="radio"
-              id="paypal"
-              value="paypal"
-              checked={paymentMethod === "paypal"}
-              onChange={handlePaymentMethodChange}
-            />
-              <FontAwesomeIcon icon={faPaypal} /> Paypal
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="visa"
-              value="visa"
-              checked={paymentMethod === "visa"}
-              onChange={handlePaymentMethodChange}
-            />
-              <FontAwesomeIcon icon={faCcVisa} /> Visa
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="mastercard"
-              value="mastercard"
-              checked={paymentMethod === "mastercard"}
-              onChange={handlePaymentMethodChange}
-            />
-              <FontAwesomeIcon icon={faCcMastercard} /> Mastercard
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="vnpay"
-              value="vnpay"
-              checked={paymentMethod === "vnpay"}
-              onChange={handlePaymentMethodChange}
-            />
-              <FontAwesomeIcon icon={faCcApplePay} /> VNPay
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="moca"
-              value="moca"
-              checked={paymentMethod === "moca"}
-              onChange={handlePaymentMethodChange}
-            />
-              <FontAwesomeIcon icon={faCcApplePay} /> Moca
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="webmoney"
-              value="webmoney"
-              checked={paymentMethod === "webmoney"}
-              onChange={handlePaymentMethodChange}
-            />
-              <FontAwesomeIcon icon={faCcApplePay} /> Webmoney
+          <div className="payment-options">
+            <label>
+              <input
+                type="radio"
+                value="vnpay"
+                checked={paymentMethod === "vnpay"}
+                onChange={() => setPaymentMethod("vnpay")}
+              />
+              <FontAwesomeIcon icon={faCcVisa} />VN Pay
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="paypal"
+                checked={paymentMethod === "paypal"}
+                onChange={() => setPaymentMethod("paypal")}
+              />
+              <FontAwesomeIcon icon={faPaypal} /> PayPal
+            </label>
+            <label>
+              <input
+                type="radio"
+                value="Mastercard"
+                checked={paymentMethod === "Mastercard"}
+                onChange={() => setPaymentMethod("Mastercard")}
+              />
+              <FontAwesomeIcon icon={faCcMastercard} /> Thẻ Mastercard
+            </label>
           </div>
         </div>
-        <button onClick={handleClick} className="reserve-submit">Đặt phòng</button>
+        <div className="reserve-discount">
+          <h2>Nhập mã giảm giá</h2>
+          <div className="discount-input">
+            <input
+              type="text"
+              value={discountCode}
+              onChange={handleDiscountCodeChange}
+              placeholder="Mã giảm giá"
+            />
+            <button onClick={handleApplyDiscount}>Áp dụng</button>
+          </div>
+        </div>
+        <button onClick={handleClick} className="reserve-button">
+          Đặt Ngay!
+        </button>
       </div>
     </div>
   );
