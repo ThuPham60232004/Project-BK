@@ -31,11 +31,6 @@ import BookingModal from './components/AirplaneComponent/BookingModal/BookingMod
 function App() {
   const userId = localStorage.getItem("userId");
 
-  // Chức năng thông báo 
-  const handleError = (errorMessage) => {
-    toast.error(errorMessage);
-  };
-
   return (
     <BrowserRouter>
       <Routes>
