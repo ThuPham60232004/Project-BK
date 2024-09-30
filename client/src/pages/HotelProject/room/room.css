@@ -17,8 +17,8 @@
     align-items: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s;
-    flex: 1 1 calc(50% - 40px); /* Adjusted for two items per row with gap */
-    max-width: calc(50% - 40px); /* Adjusted for two items per row with gap */
+    flex: 1 1 calc(50% - 40px); 
+    max-width: calc(50% - 40px);
   }
   
   .room:hover {

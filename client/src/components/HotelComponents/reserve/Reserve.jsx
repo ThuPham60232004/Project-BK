@@ -99,21 +99,6 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
   const alldates = getDatesInRange(startDate, endDate);
   const numberOfBookingDays = alldates.length;
 
-  const isAvailable = (room) => {
-    if (!room) return false;
-    
-    const isUnavailable = room.availability.some((entry) =>
-      alldates.includes(new Date(entry.date).getTime()) && entry.isBooked
-    );
-  
-    const isPending = bookings.some((booking) =>
-      booking.room.includes(room._id) &&
-      booking.status === "pending" &&
-      alldates.some(date => new Date(booking.startDate).getTime() <= date && date <= new Date(booking.endDate).getTime())
-    );
-  
-    return !isUnavailable && !isPending;
-  };
 
   const calculateTotalPriceDetails = () => {
     if (!room) return { totalPriceBeforeTax: 0, totalTax: 0, discountAmount: 0, finalTotalPrice: 0, depositAmount: 0 };
@@ -145,25 +130,18 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
     };
   };
 
-  const updateRoomAvailability = async () => {
-    try {
-    } catch (err) {
-      console.error("Cập nhật tình trạng phòng thất bại", err);
-    }
-  };
 
   const handleClick = async () => {
     try {
-      await updateRoomAvailability();
-
       const userId = localStorage.getItem("userId");
       const token = localStorage.getItem("authToken");
-
+  
       if (!userId || !token) {
         console.error("Thiếu thông tin ID người dùng hoặc token trong localStorage.");
         return;
       }
-
+  
+      // Tạo đặt phòng
       const bookingData = {
         user: userId,
         hotel: hotelId,
@@ -172,20 +150,31 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         endDate: endDate.toISOString(),
         paymentMethod: paymentMethod,
         totalPrice: calculateTotalPriceDetails().finalTotalPrice,
-        status: "pending"
+        status: "pending",
       };
-
+  
       await axios.post("http://localhost:9000/api/bookings", bookingData, {
-        headers: { Authorization: `Bearer ${token}` }
+        headers: { Authorization: `Bearer ${token}` },
       });
-
-      alert("Đặt phòng thành công!");
+  
+      const response = await axios.put(
+        `http://localhost:9000/api/rooms/${selectedRooms[0]}`,
+        { availability: true },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+  
+      console.log("Phản hồi cập nhật trạng thái phòng:", response.data); 
+      alert("Đặt phòng thành công và trạng thái phòng đã được cập nhật!");
       navigate("/");
       setOpen(false);
     } catch (err) {
-      console.error("Tạo đặt phòng thất bại", err);
+      console.error("Đặt phòng hoặc cập nhật trạng thái phòng thất bại", err);
     }
   };
+  
+  
 
   return (
     <div className="reserve">

@@ -21,10 +21,7 @@ const RoomSchema = new mongoose.Schema({
     type: Number,
     required: false,
   },
-  stateRoom:{
-    type:Boolean,
-    required:true,
-  },
+
   maxPeople: {
     type: Number,
     required: true,
@@ -48,10 +45,8 @@ const RoomSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
-  availability: [{
-    date: Date,
-    isBooked: Boolean, 
-  }],
+  availability: Boolean, 
+ 
   idAdmin: {
     type: String,
     required: false,

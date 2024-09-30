@@ -63,4 +63,12 @@ body, html {
     background-color: #ddd;
     cursor: not-allowed;
   }
-  
+  .reviewButton{
+    padding: 0.5rem 1rem;
+    background-color: rgba(141, 199, 199, 0.788);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }

@@ -34,7 +34,6 @@ export const updateRoom = async (req, res, next) => {
 
 
 
-
 export const deleteRoom = async (req, res, next) => {
   const hotelId = req.params.hotelid;
   try {
@@ -70,55 +69,8 @@ export const getRooms = async (req, res, next) => {
   }
 };
 
-export const updateRoomStatus = async (req, res, next) => {
-  const { roomId, date, isBooked } = req.body;
 
-  try {
-    const room = await Room.findOneAndUpdate(
-      { _id: roomId, "availability.date": date },
-      {
-        $set: {
-          "availability.$.isBooked": isBooked,
-        },
-      },
-      { new: true }
-    );
 
-    res.status(200).json(room);
-  } catch (err) {
-    next(err);
-  }
-};
-
-// Tìm kiếm phòng theo nhiều tiêu chí
-export const searchRooms = async (req, res, next) => {
-  const { hotelId, category, priceMin, priceMax, date, isBooked } = req.query;
-
-  try {
-    const query = {};
-
-    if (hotelId) query.hotelId = hotelId;
-    if (category) query.category = category; // Loại phòng
-    if (priceMin || priceMax) {
-      query.price = {};
-      if (priceMin) query.price.$gte = priceMin;
-      if (priceMax) query.price.$lte = priceMax;
-    }
-    if (date) {
-      // Tìm kiếm phòng không có ngày đặt chồng chéo
-      const unavailableDate = new Date(date);
-      query["availability.date"] = { $ne: unavailableDate };
-    }
-    if (isBooked !== undefined) {
-      query["availability.isBooked"] = isBooked === "true";
-    }
-
-    const rooms = await Room.find(query).populate('hotelId');
-    res.status(200).json(rooms);
-  } catch (err) {
-    next(err);
-  }
-};
 
 export const getRoomsByHotelId = async (req, res, next) => {
   const hotelId = req.params.hotelId;
@@ -130,7 +82,7 @@ export const getRoomsByHotelId = async (req, res, next) => {
   }
 };
 
-// Phương thức lấy phòng theo ID của khách sạn
+
 export const getHotelRooms = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);

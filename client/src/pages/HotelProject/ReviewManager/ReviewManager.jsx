@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { createReview, updateReview, deleteReview, getReviews } from '../../../services/reviewService';
-import ReviewForm from '../../../components/HotelComponents/ReviewForm/ReviewForm';
+import {updateReview, deleteReview, getReviews } from '../../../services/reviewService';
 import ReviewList from '../../../components/HotelComponents/ReviewList/ReviewList';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -28,16 +27,6 @@ const ReviewManager = () => {
     }
   };
 
-  const handleCreateReview = async (reviewData) => {
-    try {
-      await createReview({ ...reviewData, userId });
-      fetchReviews();
-      toast.success('Tạo bài đánh giá thành công');
-    } catch (error) {
-      console.error('Không tạo được bài đánh giá:', error);
-      toast.error('Không tạo được bài đánh giá');
-    }
-  };
 
   const handleUpdateReview = async (reviewData) => {
     try {
@@ -76,11 +65,7 @@ const ReviewManager = () => {
       <br /> <br /> <br /> <br /> <br />
       <h1>Đánh giá</h1>
       <ToastContainer />
-      <ReviewForm
-        onSubmit={currentReview ? handleUpdateReview : handleCreateReview}
-        initialData={currentReview}
-        onCancel={handleCancelEdit}
-      />
+      
       {currentReview && <button onClick={handleCancelEdit}>Xoá</button>}
       <ReviewList
         reviews={reviews}

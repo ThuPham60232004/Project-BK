@@ -21,7 +21,7 @@ export const createBooking = async (req, res) => {
     });
     await newBooking.save();
 
-    // Gửi thông báo
+
     const message = `Booking mới đã được tạo cho khách sạn ${hotel}.`;
     const newNotification = new Notification({ user, message });
     await newNotification.save();

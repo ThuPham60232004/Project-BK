@@ -5,8 +5,6 @@ import {
   getRoom,
   getRooms,
   updateRoom,
-  updateRoomStatus,
-  searchRooms,
   getRoomsByHotelId,
   getRoomsByAdminId
 } from "../../controllers/hotels/room.js";
@@ -18,8 +16,7 @@ const router = express.Router();
 router.post("/:hotelid", createRoom);
 
 // UPDATE
-router.put("/:id", verifyAdmin, updateRoom);
-router.put("/status", updateRoomStatus);
+router.put("/:id",updateRoom);
 
 // DELETE
 router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
@@ -30,8 +27,7 @@ router.get("/:id", getRoom);
 // GET ALL
 router.get("/", getRooms);
 
-// Tìm kiếm phòng theo nhiều tiêu chí
-router.get("/search", searchRooms);  
+
 
 // GET ROOMS BY HOTEL ID
 router.get("/hotel/:hotelId", getRoomsByHotelId);

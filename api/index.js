@@ -34,9 +34,9 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import paypalRoutes from "./routes/paypalRoutes.js"
 import authRoute from "./routes/auth.js";
 import notifications from "./routes/notification.js";
+
 //--------------------------------------------------------------------------------------
 //import hotel
 import hotelsRoute from "./routes/hotels/hotels.js";
@@ -74,7 +74,6 @@ app.use("/api/bookings", bookingRoute);
 app.use("/api/notifications", notifications);
 app.use("/api/reviews", reviews);
 app.use("/api/discounts", discount);
-app.use("/paypalRoutes",paypalRoutes); 
 //Routes flight
 app.use("/api/Airline", Airline);
 app.use("/api/Airplanes", Airplanes);
@@ -87,6 +86,8 @@ app.use("/api/Meals",Meals);
 app.use("/api/Seats",Seats);
 app.use("/api/Tickets",Tickets);
 //----------
+
+
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;
   const errorMessage = err.message || "Đã xảy ra lỗi!";

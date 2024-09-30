@@ -2,7 +2,6 @@ import Review from "../../models/hotels/Review.js";
 import Hotel from "../../models/hotels/Hotel.js";
 import Room from "../../models/hotels/Room.js";
 
-// Function to update the average rating and number of reviews
 const updateRatingAndReviews = async (model, id, newRating, operation) => {
   const doc = await model.findById(id);
   if (operation === 'add') {
@@ -17,7 +16,7 @@ const updateRatingAndReviews = async (model, id, newRating, operation) => {
   await doc.save();
 };
 
-// Create a review
+
 const createReview = async (req, res) => {
   try {
     const { userId, hotelId, roomId, rating, comment, idAdmin } = req.body;
@@ -66,7 +65,7 @@ const updateReview = async (req, res) => {
   }
 };
 
-// Delete a review
+
 const deleteReview = async (req, res) => {
   const { id } = req.params;
 
@@ -88,20 +87,20 @@ const deleteReview = async (req, res) => {
   }
 };
 
-// Get all reviews
+
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find()
-      .populate('userId', '_id') 
-      .populate('hotelId', 'name') 
-      .populate('roomId', 'title'); 
+      .populate('userId', 'username') 
+      .populate('hotelId', 'name photos') 
+      .populate('roomId', 'title images'); 
     res.status(200).json({ reviews });
   } catch (error) {
     res.status(500).json({ message: "Không thể nhận được đánh giá", error: error.message });
   }
 };
 
-// Get a single review
+
 const getReview = async (req, res) => {
   const { id } = req.params;
 
