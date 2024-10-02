@@ -17,7 +17,7 @@ const NewHotel = () => {
 
   const { data, loading, error } = useFetch("/rooms");
   
-  const userId = localStorage.getItem('userId'); // Fetch userId from localStorage
+  const userId = localStorage.getItem('userId'); 
 
   useEffect(() => {
     if (imageUrl) {
@@ -45,7 +45,6 @@ const NewHotel = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      // Prepare images for upload
       const imageUploadPromises = files.map(async (file) => {
         if (file.url) {
           return file.url;
@@ -69,7 +68,7 @@ const NewHotel = () => {
         ...info,
         rooms,
         photos: list,
-        idAdmin: userId,  // Include userId as idAdmin
+        idAdmin: userId,  
       };
 
       await axios.post("/hotels", newHotel);
