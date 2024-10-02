@@ -1,5 +1,5 @@
-import { FaFacebookF } from "react-icons/fa"; // Ensure these icons are imported
-import { SiZalo } from "react-icons/si"; // Ensure these icons are imported
+import { FaFacebookF } from "react-icons/fa";
+import { SiZalo } from "react-icons/si";
 import Featured from "../../../components/HotelComponents/featured/Featured";
 import FeaturedProperties from "../../../components/HotelComponents/featuredProperties/FeaturedProperties";
 import Footer from "../../../components/footer/Footer";
