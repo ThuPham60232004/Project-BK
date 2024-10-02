@@ -30,7 +30,7 @@ import DiscountCodeAirplanes from './pages/AirplaneProject/DiscountCodeList/Disc
 import BookingModal from './components/AirplaneComponent/BookingModal/BookingModal';
 function App() {
   const userId = localStorage.getItem("userId");
-
+  //routee
   return (
     <BrowserRouter>
       <Routes>
