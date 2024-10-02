@@ -1,6 +1,6 @@
 import express from "express";
 import { createReview,getReviewByAdminId, getReview, getAllReviews, updateReview, 
-    deleteReview, getReviewById, searchReviews } from "../../controllers/hotels/reviews.js";
+    deleteReview, getReviewById} from "../../controllers/hotels/reviews.js";
 
 const router = express.Router();
 
@@ -22,8 +22,7 @@ router.delete("/:id", deleteReview);
 // Get a review by ID
 router.get("/:id", getReviewById);
 
-// Tìm kiếm đánh giá theo nhiều tiêu chí
-router.get("/search", searchReviews);  // Route cho chức năng tìm kiếm
+
 
 router.get("/hotelAdmin/:idAdmin", getReviewByAdminId);
 export default router;

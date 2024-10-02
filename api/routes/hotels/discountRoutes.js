@@ -6,7 +6,6 @@ import {
   updateDiscountCode,
   deleteDiscountCode,
   getDiscountCodeById,
-  searchDiscountCodes ,
   getDiscountCodeByAdminId
 } from "../../controllers/hotels/discountController.js";
 
@@ -30,7 +29,5 @@ router.put('/:id', updateDiscountCode);
 // Delete discount code
 router.delete('/:id', deleteDiscountCode);
 
-// Tìm kiếm mã giảm giá theo nhiều tiêu chí
-router.get('/search', searchDiscountCodes);
 router.get("/hotelAdmin/:idAdmin", getDiscountCodeByAdminId);
 export default router;
