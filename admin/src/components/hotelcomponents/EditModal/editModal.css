@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Cho phép modal cuộn khi nội dung vượt quá chiều cao */
+    overflow: auto; 
   }
   
   .modalContent {
@@ -17,8 +17,8 @@
     border-radius: 8px;
     width: 500px;
     max-width: 90%;
-    max-height: 90%; /* Đặt chiều cao tối đa cho modal */
-    overflow-y: auto; /* Cho phép nội dung bên trong modal cuộn theo chiều dọc */
+    max-height: 90%; 
+    overflow-y: auto; 
   }
   
   .modalContent h2 {

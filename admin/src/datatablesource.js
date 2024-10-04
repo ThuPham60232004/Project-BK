@@ -285,24 +285,24 @@ export const bookingColumns = [
 ];
 // reviewColumns.js
 export const reviewwwwColumns = [
-  { field: "_id", headerName: "ID", width: 70 },
+  { field: "_id", headerName: "ID Đánh giá", width: 70 },
   {
     field: "userId",
     headerName: "Người dùng",
     width: 200,
-    renderCell: (params) => <div>{params.row.userId ? params.row.userId._id : "Không có dữ liệu"}</div>,
+    renderCell: (params) => <div>{params.row.userId || "Không có dữ liệu"}</div>,
   },
   {
-    field: "hotelName",
+    field: "hotelId",
     headerName: "Khách sạn",
     width: 200,
-    renderCell: (params) => <div>{params.row.hotel ? params.row.hotel.name : "Không có dữ liệu"}</div>,
+    renderCell: (params) => <div>{params.row.hotelId?.name || "Không có dữ liệu"}</div>,
   },
   {
-    field: "roomTitle",
+    field: "roomId",
     headerName: "Phòng",
     width: 200,
-    renderCell: (params) => <div>{params.row.room ? params.row.room.title : "Không có dữ liệu"}</div>,
+    renderCell: (params) => <div>{params.row.roomId?.title || "Không có dữ liệu"}</div>,
   },
   {
     field: "rating",
@@ -341,6 +341,7 @@ export const reviewwwwColumns = [
     renderCell: (params) => <div>{params.row.idAdmin || "Không có dữ liệu"}</div>,
   },
 ];
+
 
 
 

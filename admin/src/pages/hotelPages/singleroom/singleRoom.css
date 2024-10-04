@@ -11,7 +11,7 @@
   padding: 8px 15px;
   font-size: 14px;
   color: #fff;
-  background-color: #dc2be9;
+  background-color: #51AEAA;
   cursor: pointer;
   border-radius: 4px;
   border: none;
@@ -21,11 +21,11 @@
 }
 
 .single .singleContainer .top .left .editButton:last-of-type {
-  margin-bottom: 0; /* Đảm bảo không có khoảng cách dưới cùng cho nút cuối cùng */
+  margin-bottom: 0; 
 }
 
 .single .singleContainer .top .left .editButton:hover {
-  background-color: #b61ab3; /* Màu sắc khi di chuột qua nút */
+  background-color: #51AEAA; 
 }
 
 .single .singleContainer .top .left .item {
@@ -39,7 +39,7 @@
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #dc2be9;
+  border: 2px solid #51AEAA;
 }
 
 .single .singleContainer .top .left .item .details {

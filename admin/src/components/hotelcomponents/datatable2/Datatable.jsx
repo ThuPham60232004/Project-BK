@@ -53,7 +53,7 @@ const Datatable = ({ columns }) => {
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {path}
+        
         <Link to={`/${path}/new`} className="link">Thêm mới</Link>
       </div>
       <DataGrid

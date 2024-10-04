@@ -1,4 +1,3 @@
-/* selecthotel.css */
 .selecthotel-container {
     display: flex;
   }
@@ -7,7 +6,7 @@
     flex: 1;
     flex: 6; 
     padding: 20px;
-    margin-left: 20px; /* Updated based on Sidebar width */
+    margin-left: 20px; 
   }
   
   .selecthotel-content h1 {
@@ -22,9 +21,9 @@
     align-items: center;
     justify-content: center;
   }
-  /* sidebar.css */
+
 .sidebar {
-    width: 150px; /* New smaller width */
+    width: 150px; 
     height: 100vh;
 
   }

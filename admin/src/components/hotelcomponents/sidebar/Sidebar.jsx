@@ -16,10 +16,12 @@ import { DarkModeContext } from "../../../context/darkModeContext";
 import { AuthContext } from "../../../context/AuthContext"; // Import AuthContext
 import { useContext } from "react";
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import { TbBrowserCheck } from "react-icons/tb";
+import { TbBrowserPlus } from "react-icons/tb";
 const Sidebar = () => {
   const { dispatch: darkModeDispatch } = useContext(DarkModeContext);
   const { dispatch: authDispatch } = useContext(AuthContext);
-  const navigate = useNavigate(); // Add useNavigate hook
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     authDispatch({ type: "LOGOUT" });
@@ -37,18 +39,17 @@ const Sidebar = () => {
       <hr />
       <div className="center">
         <ul>
-          <p className="title">Mục Chính</p>
-          <Link to="/" style={{ textDecoration: "none" }}>
-          <li>
-            <DashboardIcon className="icon" />
-            <span>Bảng điều khiển</span>
-          </li>
-          </Link>
           <p className="title">Danh sách</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
             <li>
               <PersonOutlineIcon className="icon" />
               <span>Người Dùng</span>
+            </li>
+          </Link>
+          <Link to="/select-hotel" style={{ textDecoration: "none" }}>
+            <li>
+              <HotelIcon className="icon" />
+              <span>Khách sạn-Phòng</span>
             </li>
           </Link>
           <Link to="/hotels" style={{ textDecoration: "none" }}>
@@ -61,6 +62,18 @@ const Sidebar = () => {
             <li>
               <CreditCardIcon className="icon" />
               <span>Phòng</span>
+            </li>
+          </Link>
+          <Link to="/browseAdminHotel" style={{ textDecoration: "none" }}>
+            <li>
+              <TbBrowserPlus className="icon" />
+              <span>Duyệt admin khách sạn</span>
+            </li>
+          </Link>
+          <Link to="/browseTheRooms" style={{ textDecoration: "none" }}>
+            <li>
+              <TbBrowserCheck  className="icon" />
+              <span>Duyệt các đơn đặt phòng</span>
             </li>
           </Link>
           <Link to="/bookings" style={{ textDecoration: "none" }}>
@@ -89,7 +102,7 @@ const Sidebar = () => {
             </li>
           </Link>
           <p className="title">Dịch vụ</p>
-          <Link to="/review" style={{ textDecoration: "none" }}>
+          <Link to="/reviews" style={{ textDecoration: "none" }}>
             <li>
               <SettingsSystemDaydreamOutlinedIcon className="icon" />
               <span>Đánh giá</span>
@@ -101,12 +114,8 @@ const Sidebar = () => {
               <span>Mã giảm giá</span>
             </li>
           </Link>
-          <Link to="/select-hotel" style={{ textDecoration: "none" }}>
-            <li>
-              <HotelIcon className="icon" />
-              <span>Khách sạn-Phòng</span>
-            </li>
-          </Link>
+
+          
           <p className="title">Người Dùng</p>
           <Link to="/profile" style={{ textDecoration: "none" }}>
             <li>
@@ -119,6 +128,7 @@ const Sidebar = () => {
             <ExitToAppIcon className="icon" />
             <span>Đăng Xuất</span>
           </li>
+
         </ul>
       </div>
       <div className="bottom">

@@ -46,14 +46,13 @@ const Datatable = ({ columns }) => {
       ),
     },
   ];
-
+  
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error loading data</div>;
 
   return (
     <div className="datatable">
       <div className="datatableTitle">
-        {path}
         <Link to={`/${path}/new`} className="link">Thêm mới</Link>
       </div>
       <DataGrid

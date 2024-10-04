@@ -8,9 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./register.css";
 
-// Định nghĩa component Register
 const Register = () => {
-  // Quản lý trạng thái của form đăng ký
+
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -20,34 +19,27 @@ const Register = () => {
     country: "",
   });
 
-  // Lấy thông tin loading và error từ AuthContext
   const { loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Hàm xử lý thay đổi input
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // Hàm xử lý khi nhấn nút đăng ký
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch({ type: "REGISTER_START" });
 
     try {
-      // Gửi yêu cầu đăng ký tới API
       const res = await axios.post("/auth/registerAdmin", formData);
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
 
-      // Hiển thị thông báo thành công
       toast.success("Đăng ký thành công!");
 
-      // Chuyển hướng tới trang đăng nhập sau khi đăng ký thành công
       navigate("/login");
     } catch (err) {
       dispatch({ type: "REGISTER_FAILURE", payload: err.response.data });
 
-      // Hiển thị thông báo lỗi
       toast.error(err.response.data.message || "Đăng ký thất bại!");
     }
   };

@@ -1,12 +1,12 @@
 .single {
   display: flex;
   width: 100%;
-  font-family: 'Arial', sans-serif; /* Use a clean, modern font */
+  font-family: 'Arial', sans-serif;
 }
 
 .single .singleContainer {
   flex: 6;
-  padding: 30px; /* Increased padding for a more spacious layout */
+  padding: 30px;
   background-color: #f4f4f9;
   min-height: 100vh;
 }
@@ -14,14 +14,14 @@
 .single .singleContainer .top {
   display: flex;
   gap: 20px;
-  margin-bottom: 30px; /* Increased margin for better spacing */
+  margin-bottom: 30px; 
 }
 
 .single .singleContainer .top .left {
   flex: 1;
   background-color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Softer shadow for depth */
-  border-radius: 10px; /* More rounded corners */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
   padding: 20px;
   position: relative;
 }
@@ -30,19 +30,19 @@
   position: absolute;
   top: 20px;
   right: 20px;
-  padding: 10px 16px; /* Larger padding for better click area */
-  font-size: 16px; /* Slightly larger text */
+  padding: 10px 16px; 
+  font-size: 16px;
   color: #ffffff;
-  background-color: #dc2be9;
+  background-color: #51AEAA;
   cursor: pointer;
-  border-radius: 6px; /* Rounded corners */
+  border-radius: 6px; 
   border: none;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+  transition: background-color 0.3s ease, transform 0.2s ease; 
 }
 
 .single .singleContainer .top .left .editButton:hover {
-  background-color: #c01cce;
-  transform: scale(1.05); /* Slight zoom effect on hover */
+  background-color: #51AEAA;
+  transform: scale(1.05);
 }
 
 .single .singleContainer .top .left .item {
@@ -52,11 +52,11 @@
 }
 
 .single .singleContainer .top .left .item .itemImg {
-  width: 120px; /* Slightly larger image */
+  width: 120px; 
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #dc2be9; /* Thicker border for emphasis */
+  border: 3px solid #51AEAA; 
 }
 
 .single .singleContainer .top .left .item .details {
@@ -65,22 +65,22 @@
 }
 
 .single .singleContainer .top .left .item .details .itemTitle {
-  font-size: 26px; /* Larger title for prominence */
-  font-weight: 600; /* Slightly bolder */
+  font-size: 26px;
+  font-weight: 600;
   margin-bottom: 15px;
   color: #333;
 }
 
 .single .singleContainer .top .left .item .details .detailItem {
-  font-size: 18px; /* Larger font size for readability */
+  font-size: 18px; 
   margin-bottom: 10px;
   color: #555;
 }
 
 .single .singleContainer .top .left .item .details .detailItem .itemKey {
-  font-weight: 600; /* Bolder key */
+  font-weight: 600;
   color: #333;
-  margin-right: 10px; /* Increased margin for spacing */
+  margin-right: 10px; 
 }
 
 .single .singleContainer .top .left .item .details .detailItem .itemValue {
@@ -89,11 +89,11 @@
 }
 
 .single .singleContainer .title {
-  font-size: 24px; /* Larger title for emphasis */
+  font-size: 24px; 
   color: #555;
-  margin-bottom: 25px; /* Increased margin for spacing */
-  border-bottom: 3px solid #dc2be9; /* Thicker border for prominence */
-  padding-bottom: 15px; /* Increased padding for better spacing */
+  margin-bottom: 25px; 
+  border-bottom: 3px solid #51AEAA;
+  padding-bottom: 15px; 
   display: inline-block;
 }
 

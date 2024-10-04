@@ -57,23 +57,6 @@ const Login = () => {
 
   return (
     <div className="login">
-      <div className="navbar11">
-        <div className="navContainer">
-          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
-            <span className="logo">BOOKING</span>
-          </Link>
-          {!user && (
-            <div className="navItems">
-              <Link to="/hotel-admin/register" style={{ textDecoration: "none" }}>
-                <button className="navButton">Đăng ký</button>
-              </Link>
-              <Link to="/login" style={{ textDecoration: "none" }}>
-                <button className="navButton">Đăng nhập</button>
-              </Link>
-            </div>
-          )}
-        </div>
-      </div>
       <div className="lContainer">
         <h1>Đăng Nhập</h1>
         <input

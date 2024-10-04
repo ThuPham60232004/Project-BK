@@ -9,7 +9,7 @@
   }
   
   .register h2 {
-    color:  #e92bc94d;
+    color:  #51AEAA;
     margin-top: 100px;
     text-align: center;
     margin-bottom: 20px;
@@ -29,7 +29,7 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #e92bc94d;
+    background-color: #51AEAA;
     color: #fff;
     cursor: pointer;
   }

@@ -7,7 +7,7 @@ const EditModal = ({ data, type, url, onClose, onSave, onError }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
-    setFormData(data);  // Cập nhật formData khi data thay đổi
+    setFormData(data);  
   }, [data]);
 
   const handleChange = (e) => {
@@ -19,11 +19,11 @@ const EditModal = ({ data, type, url, onClose, onSave, onError }) => {
     e.preventDefault();
     try {
       await axios.put(url, formData);
-      onSave(formData);  // Gọi hàm onSave với dữ liệu đã cập nhật
-      onClose();  // Đóng modal sau khi lưu dữ liệu thành công
+      onSave(formData); 
+      onClose(); 
     } catch (err) {
       setErrorMessage("Chỉnh sửa thất bại. Vui lòng thử lại.");
-      onError(err);  // Gọi hàm onError với lỗi xảy ra
+      onError(err); 
     }
   };
 
