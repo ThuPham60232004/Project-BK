@@ -1,0 +1,25 @@
+.HomePage{
+    color: black;
+    
+}
+.HomePageContainer {
+    width: 100%;
+    display: flex;
+}
+.HomePageSideBar{
+    width: 15%;
+    
+}
+.HomePageComponent{
+    width: 85%;
+    background-color: white;
+}
+.HomePageSideBarItem{
+    display: flex;
+    padding: 20px;
+    gap: 7px;
+    background-color: aliceblue;
+}
+.HomePageSideBarItemText{
+    font-weight: bold;
+}

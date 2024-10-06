@@ -1,0 +1,19 @@
+.ListHotelCointainer h1{
+     margin: 15px;
+     color: gray;
+}
+.ListHotelCointainer{
+     display: flex;
+     gap: 660px;
+     align-items: center;
+}
+.ListHotelCointainerBtn{
+     border-radius: 7px;
+     border: 1px solid black;
+     padding: 10px;
+     color: gray;
+}
+.ListHotelCointainerBtn:hover{
+     background-color: rgba(128, 128, 128, 0.503);
+     color: white;
+}
