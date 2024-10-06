@@ -4,19 +4,15 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../../context/AuthContext";      
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const handleLogout = () => {
     logout();
   };
-
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
-
   return (
     <div className="navbar">
       <div className="navbarproject">
@@ -24,7 +20,6 @@ const Navbar = () => {
           <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
             <span className="logo">BOOKING</span>
           </Link>
-
           {user ? (
             <div className="navItems">
               <div className="userInfo">

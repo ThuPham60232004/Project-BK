@@ -1,11 +1,10 @@
-/* Admin Navbar Styles */
 .navbar {
   height: 50px;
-  background-color: white; /* Same as client navbar background */
+  background-color: white; 
   display: flex;
   align-items: center;
-  justify-content: center; /* Centered content */
-  border-bottom: 0.5px solid rgb(231, 228, 228); /* Matching border */
+  justify-content: center;
+  border-bottom: 0.5px solid rgb(231, 228, 228); 
   font-size: 14px;
   color: #555;
 }
@@ -41,7 +40,7 @@
 }
 
 .navButton:hover {
-  background-color: #d1219e;
+  background-color: #51AEAA;
 }
 
 .userInfo {
@@ -54,7 +53,7 @@
   height: 40px;
   border-radius: 50%;
   margin-right: 10px;
-  border: 2px solid #e92bc9; 
+  border: 2px solid #51AEAA; 
 }
 
 .username {
@@ -105,9 +104,9 @@
 }
 
 .navbar .wrapper .auth-buttons button:hover {
-  background-color: #d1219e; 
+  background-color: #51AEAA; 
 }
 .logoutButton
 {
-  background-color: #d1219f9e; 
+  background-color: #51AEAA; 
 }

@@ -46,7 +46,6 @@ const RoomSchema = new mongoose.Schema({
     default: 0,
   },
   availability: Boolean, 
- 
   idAdmin: {
     type: String,
     required: false,

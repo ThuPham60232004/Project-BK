@@ -14,7 +14,7 @@
   .review-form label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #de19bdd6;
+    color: #51AEAA;
   }
   
   .review-form input,
@@ -38,7 +38,7 @@
   
   .btn-primary {
     padding: 0.5rem 1rem;
-    background-color: #e92bc94d;
+    background-color: #51AEAA;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -46,7 +46,7 @@
   }
   
   .btn-primary:hover {
-    background-color: #e120c1b7;
+    background-color: #326967;
   }
   
   .btn-secondary {

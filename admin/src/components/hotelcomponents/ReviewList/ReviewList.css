@@ -10,7 +10,7 @@
   .review-list h3 {
     text-align: center;
     margin-bottom: 1rem;
-    color: #de19bdd6;
+    color:#51AEAA;
   }
   
   .review-item {
@@ -43,12 +43,12 @@
   }
   
   .btn-primary:hover {
-    background-color: #e120c1b7;
+    background-color: #367572;
   }
   
   .btn-danger {
     padding: 0.5rem 1rem;
-    background-color: #de19bdd6;
+    background-color: #51AEAA;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -56,6 +56,6 @@
   }
   
   .btn-danger:hover {
-    background-color: #de19bdd6;
+    background-color: #51AEAA;
   }
   

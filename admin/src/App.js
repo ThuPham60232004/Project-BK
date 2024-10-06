@@ -27,7 +27,8 @@ import { hotelColumns, roomColumns, userColumns, bookingColumns, reviewwwwColumn
 import SelectHotel from './pages/hotelPages/SelectHotel/SelectHotel';
 import RoomList from './pages/hotelPages/RoomList/RoomList';
 import List2 from './pages/hotelPages/list2/List';
-
+import BrowseTheRooms from './pages/hotelPages/BrowseTheRooms/BrowseTheRooms';
+import BrowseBooking from './pages/hotelPages/BrowseBooking/BrowseBooking'
 function App() {
   const { darkMode } = useContext(DarkModeContext);
 
@@ -47,7 +48,6 @@ function App() {
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
         <Routes>
-          {/* Route cho admin */}
           <Route path="/">
             <Route path="login" element={<Login />} />
             <Route index element={<ProtectedRoute><Home /></ProtectedRoute>} />
@@ -92,6 +92,11 @@ function App() {
             <Route path="/roo/:hotelId" element={<RoomList />} />     
            </Route>
           <Route path="/profile" element={<UserProfile userId={userId} />} />
+
+
+          <Route path='/BrowseTheRooms' element={<BrowseTheRooms/>}/>
+
+          <Route path='/BrowseBooking' element={<BrowseBooking/>}/>
         </Routes>
       </BrowserRouter>
     </div>
