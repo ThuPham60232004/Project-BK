@@ -22,6 +22,7 @@ import SingleReview from "./components/HotelComponent/Single/SingleReview/Single
 import NewUser from "./components/HotelComponent/New/NewUser/NewUser";
 import SingleUser from "./components/HotelComponent/Single/SingleUser/SingleUser";
 import NewRooms from "./components/HotelComponent/New/NewRooms/NewRooms";
+
 function App() {
   return (
     <BrowserRouter>
@@ -46,7 +47,12 @@ function App() {
           <Route path="SingleDiscountCode" element={<SingleDiscountCode />} />
           <Route path="SingleReview" element={<SingleReview />} />
           <Route path="SingleUser" element={<SingleUser />} />
+         {/* CHART----------------------------------------- */}
+
+
+         
         </Route>
+
         <Route path="/Register" element={<Register />}/>
         <Route path="/Login" element={<Login />}/>
       </Routes>
