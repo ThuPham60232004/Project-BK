@@ -1,0 +1,19 @@
+.ListNotification h1{
+    margin: 15px;
+    color: gray;
+}
+.ListNotificationCointainer{
+    display: flex;
+    gap: 660px;
+    align-items: center;
+}
+.ListNotificationCointainerBtn{
+    border-radius: 7px;
+    border: 1px solid black;
+    padding: 10px;
+    color: gray;
+}
+.ListNotificationCointainerBtn:hover{
+    background-color: rgba(128, 128, 128, 0.503);
+    color: white;
+}

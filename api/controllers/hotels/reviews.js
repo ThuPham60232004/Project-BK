@@ -39,7 +39,6 @@ const createReview = async (req, res) => {
   }
 };
 
-// Update a review
 const updateReview = async (req, res) => {
   const { id } = req.params;
   const { rating, comment } = req.body;
@@ -91,12 +90,9 @@ const deleteReview = async (req, res) => {
 const getAllReviews = async (req, res) => {
   try {
     const reviews = await Review.find()
-      .populate('userId', 'username') 
-      .populate('hotelId', 'name photos') 
-      .populate('roomId', 'title images'); 
-    res.status(200).json({ reviews });
+    res.status(200).json(reviews);
   } catch (error) {
-    res.status(500).json({ message: "Không thể nhận được đánh giá", error: error.message });
+    next(err);
   }
 };
 

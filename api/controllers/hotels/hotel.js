@@ -133,7 +133,7 @@ export const getHotelRooms = async (req, res, next) => {
   }
 };
 
-// Thêm phương thức getAllHotels để lấy tất cả khách sạn
+
 export const getAllHotels = async (req, res, next) => {
   try {
     const hotels = await Hotel.find(); 

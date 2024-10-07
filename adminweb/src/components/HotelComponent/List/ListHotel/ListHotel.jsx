@@ -23,7 +23,7 @@ const ListHotel = () => {
   },[]);
 
   const handleRoom=(hotelId)=>{
-    navigate(`/roo${hotelId}`)
+    navigate(`/SingleHotelRoom${hotelId}`)
   }
   const handleClickAdd=()=>{
     navigate('/NewHotels')
