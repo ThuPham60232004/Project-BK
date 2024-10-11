@@ -1,0 +1,70 @@
+.NavBarDashboardHotel {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+}
+
+.NavBarDashboardHotelContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.NavBarDashboardHotelContainerLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.NavBarDashboardHotelLogo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.NavBarDashboardHotelInputSearch {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.NavBarDashboardHotelRight {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.NavBarDashboardHotelNotification {
+    position: relative;
+    cursor: pointer;
+}
+
+.NavBarDashboardHotelProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.NavBarDashboardHotelUserImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.NavBarDashboardHotelSearchInput {
+    
+}
+.NavBarDashboardHotelbutton {
+    color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.NavBarDashboardHotelbutton:hover {
+    border: 2px solid #121212;
+}

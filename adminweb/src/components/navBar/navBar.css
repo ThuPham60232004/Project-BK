@@ -1,14 +1,70 @@
-.navBarLogo{
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
+.NavBar {
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
 }
-.navBarCointainerLeft{
+
+.NavBarContainer {
     display: flex;
-    padding: 20px;
-    gap: 10px;
+    justify-content: space-between;
     align-items: center;
 }
-.navBar{
-    background-color: aliceblue;
+
+.NavBarContainerLeft {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.NavBarLogo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.NavBarInputSearch {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.NavBarRight {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.NavBarNotification {
+    position: relative;
+    cursor: pointer;
+}
+
+.NavBarProfile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.NavBarUserImage {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.NavBarSearchInput {
+    
+}
+.navbarbutton {
+    color: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.navbarbutton:hover {
+    border: 2px solid #121212;
 }

@@ -24,6 +24,7 @@ router.delete("/:id", deleteBooking);
 // Lấy tất cả các bookings của một người dùng
 router.get("/user/:userId", getUserBookings);
 router.get("/", getAllBookings);
+
 // Lấy lịch sử đặt phòng của người dùng
 router.get("/user/:userId/history", getBookingHistory);
 

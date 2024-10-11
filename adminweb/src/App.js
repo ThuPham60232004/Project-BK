@@ -22,7 +22,26 @@ import SingleReview from "./components/HotelComponent/Single/SingleReview/Single
 import NewUser from "./components/HotelComponent/New/NewUser/NewUser";
 import SingleUser from "./components/HotelComponent/Single/SingleUser/SingleUser";
 import NewRooms from "./components/HotelComponent/New/NewRooms/NewRooms";
-
+import RevenueChart from "./components/HotelComponent/Chart/revenueChart/revenueChart";
+import UserProfile from "./components/userProfile/UserProfile";
+import DashboardHotel from "./pages/DashboardHotel/DashboardHotel";
+import ListUserDashboard from "./components/DashboardHotelComponent/ListDashboard/ListUserDashboard/ListUserDashboard";
+import ListNotificationDashboard from "./components/DashboardHotelComponent/ListDashboard/ListNotificationDashboardDashboard/ListNotificationDashboard";
+import ListDiscountCodeDashboard from "./components/DashboardHotelComponent/ListDashboard/ListDiscountCodeDashboard/ListDiscountCodeDashboard";
+import ListReviewDashboard from "./components/DashboardHotelComponent/ListDashboard/ListReviewDashboard/ListReviewDashboard";
+import ListHotelDashboard from "./components/DashboardHotelComponent/ListDashboard/ListHotelDashboard/ListHotelDashboard";
+import NewHotelsDashboard from "./components/DashboardHotelComponent/NewDashboard/NewHotelsDashboard/NewHotelsDashboard";
+import NewNotificationDashboard from "./components/DashboardHotelComponent/NewDashboard/NewNotificationDashboard/NewNotificationDashboard";
+import NewDiscountCodeDashboard from "./components/DashboardHotelComponent/NewDashboard/NewDiscountCodeDashboard/NewDiscountCode";
+import NewReviewDashboard from "./components/DashboardHotelComponent/NewDashboard/NewReviewDashboard/NewReviewDashboard";
+import NewUserDashboard from "./components/DashboardHotelComponent/NewDashboard/NewUserDashboard/NewUserDashboard";
+import NewRoomsDashboard from "./components/DashboardHotelComponent/NewDashboard/NewRoomsDashboard/NewRoomsDashboard";
+import SingleHotelRoomDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleHotelRoomDashboard/SingleHotelRoomDashboard";
+import SingleNotificationDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleNotificationDashboard/SingleNotificationDashboard";
+import SingleDiscountCodeDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleDiscountCodeDashboard/SingleDiscountCodeDashboard";
+import SingleReviewDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleReviewDashboard/SingleReviewDashboard";
+import SingleUserDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleUserDashboard/SingleUserDashboard";
+import RevenueChartDashboard from "./components/DashboardHotelComponent/ChartDashboard/revenueChartDashboard/revenueChartDashboard"
 function App() {
   return (
     <BrowserRouter>
@@ -48,11 +67,33 @@ function App() {
           <Route path="SingleReview" element={<SingleReview />} />
           <Route path="SingleUser" element={<SingleUser />} />
          {/* CHART----------------------------------------- */}
-
-
-         
+         <Route path="RevenueChart" element={<RevenueChart />} />
+          {/* USER PROFILE----------------------------------------- */}
+         <Route path="UserProfile" element={<UserProfile />} />
         </Route>
-
+        <Route path="/DashboardHotel" element={<DashboardHotel />}>
+        {/* LIST----------------------------------------- */}
+        <Route path="ListUserDashboard" element={<ListUserDashboard />} />
+          <Route path="ListNotificationDashboard" element={<ListNotificationDashboard />} />
+          <Route path="ListDiscountCodeDashboard" element={<ListDiscountCodeDashboard />} />
+          <Route path="ListReviewDashboard" element={<ListReviewDashboard />} />
+          <Route path="ListHotelDashboard" element={<ListHotelDashboard />} />
+        {/* NEW----------------------------------------- */}
+          <Route path="NewHotelsDashboard" element={<NewHotelsDashboard />} />
+          <Route path="NewNotificationDashboard" element={<NewNotificationDashboard />} />
+          <Route path="NewDiscountCodeDashboard" element={<NewDiscountCodeDashboard />} />
+          <Route path="NewReviewDashboard" element={<NewReviewDashboard />} />
+          <Route path="NewUseDashboardr" element={<NewUserDashboard />} />
+          <Route path="NewRoomsDashboard" element={<NewRoomsDashboard />} />
+        {/* SINGLE----------------------------------------- */}
+          <Route path="SingleHotelRoomDashboard" element={<SingleHotelRoomDashboard />} />
+          <Route path="SingleNotificationDashboard" element={<SingleNotificationDashboard />} />
+          <Route path="SingleDiscountCodeDashboard" element={<SingleDiscountCodeDashboard />} />
+          <Route path="SingleReviewDashboard" element={<SingleReviewDashboard />} />
+          <Route path="SingleUserDashboard" element={<SingleUserDashboard />} />
+          {/* CHART----------------------------------------- */}
+         <Route path="RevenueChartDashboard" element={<RevenueChartDashboard />} />
+        </Route>
         <Route path="/Register" element={<Register />}/>
         <Route path="/Login" element={<Login />}/>
       </Routes>

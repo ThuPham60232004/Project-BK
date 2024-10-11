@@ -19,7 +19,7 @@ const ListUser = () => {
   useEffect(()=>{
     const fetchUser= async()=>{
     try{
-        const res= await axios.get('http:/localhost:9000/api/user/');
+        const res= await axios.get('http://localhost:9000/api/users/');
         setUser(res.data);
       
     }catch(err){
@@ -28,19 +28,16 @@ const ListUser = () => {
   };fetchUser();
   },[])
   const columns=[
-    {field:'username',headerName:'',width:120},
+    {field:'username',headerName:'Tên người dùng',width:120},
     {field:'email',headerName:'email',width:120},
-    {field:'country',headerName:'',width:120},
-    {field:'img',headerName:'',width:120},
-    {field:'city',headerName:'',width:120},
-    {field:'phone',headerName:'',width:120},
-    {field:'password',headerName:'',width:120},
-    {field:'CCCD',headerName:'',width:120},
-    {field:'isAdmin',headerName:'',width:120},
-    {field:'role',headerName:'',width:120},
-    {field:'passportNumber',headerName:'',width:120},
-    {field:'passengerName',headerName:'',width:120},
-    {field:'passwordResetExpires',headerName:'',width:120}
+    {field:'country',headerName:'Đất nước',width:120},
+    {field:'img',headerName:'Hình ảnh',width:120},
+    {field:'city',headerName:'Thành phố',width:120},
+    {field:'phone',headerName:'Số điện thoại',width:120},
+    {field:'password',headerName:'Mật khẩu',width:120},
+    {field:'CCCD',headerName:'Căn cước công dân',width:120},
+    {field:'isAdmin',headerName:'Id quản lý',width:120},
+    {field:'role',headerName:'Phân quyền',width:120},
   ]
   return (
     <div className='ListUser'>

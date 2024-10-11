@@ -1,0 +1,19 @@
+.ListReviewCointainerDashboard h2{
+    margin: 15px;
+    color: gray;
+}
+.ListReviewCointainerDashboard{
+    display: flex;
+    gap: 660px;
+    align-items: center;
+}
+.ListReviewCointainerBtnDashboard{
+    border-radius: 7px;
+    border: 1px solid black;
+    padding: 10px;
+    color: gray;
+}
+.ListReviewCointainerBtnDashboard:hover{
+    background-color: rgba(128, 128, 128, 0.503);
+    color: white;
+}

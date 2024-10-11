@@ -27,8 +27,6 @@ router.get("/:id", getRoom);
 // GET ALL
 router.get("/", getRooms);
 
-
-
 // GET ROOMS BY HOTEL ID
 router.get("/hotel/:hotelId", getRoomsByHotelId);
 

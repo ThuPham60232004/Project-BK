@@ -1,4 +1,3 @@
-// Import necessary libraries and files
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,46 +6,39 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./register.css";
 
-// Define Register component
 const Register = () => {
-  // Manage form data state
   const [formData, setFormData] = useState({
-    emailOrPhone: "",
-    lastName: "",
-    middleAndFirstName: "",
+    username: "",
+    email: "",
     password: "",
-    confirmPassword: "",
-    referralCode: "",
+    phone: "",
+    city: "",
+    country: "",
   });
 
+  // Lấy thông tin loading và error từ AuthContext
   const { loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Handle input changes
+  // Hàm xử lý thay đổi input
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  // Handle form submission
+  // Hàm xử lý khi nhấn nút đăng ký
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      toast.error("Passwords do not match!");
-      return;
-    }
-
     dispatch({ type: "REGISTER_START" });
 
     try {
-      const res = await axios.post("/auth/register", formData);
+      const res = await axios.post("http://localhost:9000/api/auth/register", formData);
       dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
-      toast.success("Registration successful!");
-
-      // Navigate to login after registration
+      toast.success("Đăng ký thành công!");
       navigate("/login");
     } catch (err) {
       dispatch({ type: "REGISTER_FAILURE", payload: err.response.data });
-      toast.error(err.response.data.message || "Registration failed!");
+
+      toast.error(err.response.data.message || "Đăng ký thất bại!");
     }
   };
 
@@ -58,52 +50,53 @@ const Register = () => {
         <h2>Đăng ký</h2>
         <form onSubmit={handleSubmit}>
           <div className="register_haa">
-            <input
+          <input
             type="text"
-            id="emailOrPhone"
-            placeholder="Email/Số điện thoại"
-            value={formData.emailOrPhone}
+            id="username"
+            placeholder="Username"
+            value={formData.username}
             onChange={handleChange}
             required
           />
           <input
-            type="text"
-            id="lastName"
-            placeholder="Họ"
-            value={formData.lastName}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            id="middleAndFirstName"
-            placeholder="Tên đệm và tên"
-            value={formData.middleAndFirstName}
+            type="email"
+            id="email"
+            placeholder="Email"
+            value={formData.email}
             onChange={handleChange}
             required
           />
           <input
             type="password"
             id="password"
-            placeholder="Mật khẩu"
+            placeholder="Password"
             value={formData.password}
             onChange={handleChange}
             required
           />
           <input
-            type="password"
-            id="confirmPassword"
-            placeholder="Nhập lại mật khẩu"
-            value={formData.confirmPassword}
+            type="text"
+            id="phone"
+            placeholder="Phone"
+            value={formData.phone}
             onChange={handleChange}
             required
           />
           <input
-type="text"
-            id="referralCode"
-            placeholder="Mã giới thiệu (nếu có)"
-            value={formData.referralCode}
+            type="text"
+            id="city"
+            placeholder="City"
+            value={formData.city}
             onChange={handleChange}
+            required
+          />
+          <input
+            type="text"
+            id="country"
+            placeholder="Country"
+            value={formData.country}
+            onChange={handleChange}
+            required
           />
           </div>
           <button type="submit" disabled={loading}>

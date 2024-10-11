@@ -1,39 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaFacebookF, FaGoogle } from "react-icons/fa";
 import { FaArrowRightLong } from "react-icons/fa6";
 import './login.css';
-
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
 const Login = () => {
-  const [credential,setCredential]=useState({
-    username:"",
-    password:"",
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
   });
- 
+
+  const { user, loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [password, setPassword]   
- = useState('');
-  const [error, setError] = useState(null);   
 
-  const fakeLoginData = {
-    username: 'abc',
-    password: '123',
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    if (username !== fakeLoginData.username || password !== fakeLoginData.password) {
-      console.log('Tên đăng nhập hoặc mật khẩu không chính xác. Vui lòng thử lại.');
-      return;
+  useEffect(() => {
+    if (localStorage.getItem("userId")) {
+      navigate("/");
     }
+  }, [navigate]);
 
-    setError(null);
-    console.log('Đăng nhập thành công!');
-    navigate('/Dashboard'); 
+  const handleChange = (e) => {
+    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
+  const handleClick = async (e) => {
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const res = await axios.post("/auth/login", credentials);
+      if (res.data.details.role === "hotel_admin"&&res.data.isAdmin) {
+        localStorage.setItem("userId", res.data.details._id);
+        localStorage.setItem("role", res.data.details.role);
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+        console.log("Đăng nhập vào admin-hotel");
+        navigate("/DashboardHotel");
+      }
+      else if (res.data.isAdmin) {
+        localStorage.setItem("userId", res.data.details._id);
+        localStorage.setItem("role", res.data.details.role);
+        dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
+        console.log("Đăng nhập vào admin");
+        navigate("/");
+      }
+       else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "Bạn không được quyền đăng nhập vào trang này" },
+        });
+      }
+    } catch (err) {
+      dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
+    }
+  };
   const registerLink = () => {
     navigate('/register');
   };
@@ -41,7 +60,7 @@ const Login = () => {
   return (
     <div className="login_page">
       <div className="login_container">
-        <div className="left_container_login" onSubmit={handleSubmit}>
+        <div className="left_container_login">
           <div className="logo_login_con">
               <img src="./nft-image-1.png" alt="" className='logo_login'/>
              <h2 className='title_login'>ĐĂNG NHẬP</h2>
@@ -51,17 +70,15 @@ const Login = () => {
               <div className="input_group_login">
                 <input type="text" className="input_info_login"  
                 id='username'
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required />
+                placeholder="Tài khoản"
+                onChange={handleChange}/>
                 <label className="name_label" htmlFor="email">Email</label>
               </div>
               <div className="input_group_login">
                 <input type="password" className="input_info_login" 
-                id='password'
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required />
+                  placeholder="Mật khẩu"
+                  id="password"
+                  onChange={handleChange}/>
                 <label className="name_label" htmlFor="password">Mật khẩu</label>
               </div>
             </div>
@@ -73,7 +90,7 @@ const Login = () => {
             <a href="/forgotpassword">Quên mật khẩu?</a>
           </div>
 
-              <button className='loginbtn'>Đăng nhập</button>
+            <button disabled={loading} onClick={handleClick} className='loginbtn'>Đăng nhập</button>
           
             <div className="social_login">
               <p>Hoặc sử dụng tài khoản mạng xã hội</p>

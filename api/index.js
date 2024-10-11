@@ -57,6 +57,7 @@ import LuggageFee from "./routes/airlines/LuggageFee.js"
 import Meals from "./routes/airlines/Meals.js";
 import Seats from "./routes/airlines/Seats.js";
 import Tickets from "./routes/airlines/Tickets.js";
+import userActivityRoute from "./routes/UserActivity.js"; 
 const app = express();
 dotenv.config();
 //----------------------------------------------------------------------------------------
@@ -85,8 +86,8 @@ app.use("/api/LuggageFee",LuggageFee);
 app.use("/api/Meals",Meals);
 app.use("/api/Seats",Seats);
 app.use("/api/Tickets",Tickets);
-//----------
-
+//----------Routes hoat dong
+app.use("/api/userActivity", userActivityRoute); 
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

@@ -1,0 +1,25 @@
+.DashboardHotel{
+    color: black;
+    
+}
+.DashboardHotelContainer {
+    width: 100%;
+    display: flex;
+}
+.DashboardHotelSideBar{
+    width: 15%;
+    
+}
+.DashboardHotelComponent{
+    width: 85%;
+    background-color: white;
+}
+.DashboardHotelSideBarItem{
+    display: flex;
+    padding: 20px;
+    gap: 7px;
+    background-color: aliceblue;
+}
+.DashboardHotelSideBarItemText{
+    font-weight: bold;
+}

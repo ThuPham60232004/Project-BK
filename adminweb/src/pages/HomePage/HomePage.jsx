@@ -20,10 +20,10 @@ const HomePage = () => {
         { icon: <RiDiscountPercentLine style={{ width: '25px', height: '25px' }} />, text: "Danh sách mã giảm giá", path: "/ListDiscountCode" },
         { icon: <IoMdNotificationsOutline style={{ width: '25px', height: '25px' }} />, text: "Danh sách thông báo", path: "/ListNotification" },
         { icon: <GoCodeReview style={{ width: '25px', height: '25px' }} />, text: "Danh sách đánh giá", path: "/ListReview" },
-        { icon: <TbReportAnalytics style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê doanh thu", path: "/" },
+        { icon: <TbReportAnalytics style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê doanh thu", path: "/RevenueChart" },
         { icon: <FaChartLine style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê hoạt động", path: "/" },
         { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Danh sách công việc", path: "/" },
-        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/" }
+        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/UserProfile" }
     ];
 
     return (
@@ -33,7 +33,6 @@ const HomePage = () => {
             <div className='HomePageContainer'>
                 <div className='HomePageSideBar'>
                     {items.map((item, index) => (
-                      
                         <NavLink to={item.path} key={index}  style={{ textDecoration: "none", color:"black" }}
                         className={({ isActive }) => isActive ? "active" : ""} >
                             <div className='HomePageSideBarItem'>

@@ -50,7 +50,7 @@ const UserSchema = new mongoose.Schema(
     },
     passengerName: {
       type: String,
-      required: true,
+      required: false,
     },
     passwordResetToken: 
     { 

@@ -17,7 +17,7 @@ const Navbar = () => {
       <div className="navContainer">
         <div className="logo"></div>
         <div className="userInfo">
-          {user.img && <img src={user.img} alt="User" className="userImg" />}
+          {user.img && <img src={user.img} alt="User" className="NavBarUserImage" />}
           <span className="username">{user.username}</span>
           <button onClick={handleLogout} className="logoutButton">
             Đăng Xuất
