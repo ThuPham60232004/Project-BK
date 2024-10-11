@@ -93,32 +93,6 @@ export const deleteDiscountCode = async (req, res) => {
   }
 };
 
-export const searchDiscountCodes = async (req, res) => {
-  const { code, discountType, startDate, expirationDate } = req.query;
-
-  try {
-    const query = {};
-
-    if (code) query.code = { $regex: new RegExp(code, 'i') }; // Tìm kiếm theo phần của mã giảm giá
-    if (discountType) query.discountType = discountType;
-
-    if (startDate && expirationDate) {
-      query.startDate = { $gte: new Date(startDate) };
-      query.expirationDate = { $lte: new Date(expirationDate) };
-    } else if (startDate) {
-      query.startDate = { $gte: new Date(startDate) };
-    } else if (expirationDate) {
-      query.expirationDate = { $lte: new Date(expirationDate) };
-    }
-
-    const now = new Date();
-    const discountCodes = await DiscountCode.find({ ...query, expirationDate: { $gte: now } });
-
-    res.status(200).json(discountCodes);
-  } catch (err) {
-    res.status(500).json({ message: err.message });
-  }
-};
 export const getDiscountCodeByAdminId = async (req, res, next) => {
   const idAdmin= req.params.idAdmin;
   try {

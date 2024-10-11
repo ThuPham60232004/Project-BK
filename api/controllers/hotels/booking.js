@@ -5,7 +5,7 @@ import Hotel from "../../models/hotels/Hotel.js";
 
 // Tạo một booking mới
 export const createBooking = async (req, res) => {
-  const { user, hotel, room, startDate, endDate, totalPrice, checkintime,paymentMethod,hotel_deposit} = req.body;
+  const { user, hotel, room, startDate, endDate, totalPrice, checkintime,paymentMethod,hotel_deposit,idAdmin} = req.body;
 
   try {
     const newBooking = new Booking({
@@ -17,7 +17,8 @@ export const createBooking = async (req, res) => {
       checkintime,
       totalPrice,
       hotel_deposit,
-      paymentMethod
+      paymentMethod,
+      idAdmin
     });
     await newBooking.save();
 
@@ -31,7 +32,15 @@ export const createBooking = async (req, res) => {
     res.status(500).json(err);
   }
 };
-
+export const getBookingByAdminId = async (req, res, next) => {
+  const idAdmin= req.params.idAdmin;
+  try {
+    const booking = await Booking.find({ idAdmin });
+    res.status(200).json(booking);
+  } catch (err) {
+    next(err);
+  }
+};
 // Lấy một booking theo ID
 export const getBooking = async (req, res) => {
   try {
@@ -289,32 +298,6 @@ export const getAllBookings = async (req, res) => {
 };
 
 
-// Tìm kiếm booking theo nhiều tiêu chí
-export const searchBookings = async (req, res) => {
-  const { user, hotel, room, startDate, endDate, status } = req.query;
-
-  const query = {};
-
-  if (user) query.user = user;
-  if (hotel) query.hotel = hotel;
-  if (room) query.room = room;
-  if (status) query.status = status;
-
-  if (startDate && endDate) {
-    query.startDate = { $gte: new Date(startDate) };
-    query.endDate = { $lte: new Date(endDate) };
-  }
-
-  try {
-    const bookings = await Booking.find(query)
-      .populate("hotel", "name address")
-      .populate("room", "title price");
-    res.status(200).json(bookings);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
-
 // Tổng số lượng booking
 export const getTotalBookings = async (req, res) => {
   try {
@@ -492,13 +475,36 @@ export const getBookingsWithinDateRange = async (req, res) => {
     res.status(500).json(err);
   }
 };
-export const getBookingByAdminId = async (req, res, next) => {
+
+
+// Thống kê doanh thu của khách sạn (theo idAdmin)
+export const getRevenueByAdmin = async (req, res) => {
   const idAdmin = req.params.idAdmin;
+  const { startDate, endDate } = req.query;
+
   try {
-    const bookings = await Booking.find({ idAdmin });
-    res.status(200).json(bookings);
+    const selectedStartDate = moment(startDate).startOf('day').toDate();
+    const selectedEndDate = moment(endDate).endOf('day').toDate();
+
+    const totalRevenue = await Booking.aggregate([
+      {
+        $match: {
+          idAdmin,
+          createdAt: { $gte: selectedStartDate, $lte: selectedEndDate },
+          status: "confirmed",
+        },
+      },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: "$totalPrice" },
+        },
+      },
+    ]);
+
+    res.status(200).json({ totalRevenue: totalRevenue[0]?.totalRevenue || 0 });
   } catch (err) {
-    console.error('Error fetching bookings:', err); // Log error for debugging
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: "Server error", error: err.message });
   }
 };
+

@@ -1,12 +1,12 @@
 import express from "express";
 import { getBookingDays,getBookingByAdminId,
-    getMostBookedDay,createBooking,searchBookings, getBooking, updateBooking, 
+    getMostBookedDay,createBooking,getBooking, updateBooking, 
     deleteBooking,getBookingsWithinDateRange, getUserBookings, getBookingHistory, 
     cancelBooking, getBookingCount, getTotalRevenue, getBookingCountByUser, 
     getBookingCountByHotel,getAllBookings,getRevenueByHotel, 
     getHotelsWithNoBookings ,getHotelsWithNoBookingsAllTime,getRevenueByHotelAllTime,
     getBookingCountByHotelAllTime,getTotalRevenueAllTime,getBookingCountByUserAllTime,
-    getTotalBookings } from "../../controllers/hotels/booking.js";
+    getTotalBookings,getRevenueByAdmin} from "../../controllers/hotels/booking.js";
 
 const router = express.Router();
 
@@ -48,8 +48,6 @@ router.get("/statistics/booking-revenue-hotel",getRevenueByHotel );
 
 //Thống kê những khách sạn chưa từng có số lượng đặt phòng nào
 router.get("/statistics/hotel-no-booking", getHotelsWithNoBookings);
-// Tìm kiếm booking theo nhiều tiêu chí
-router.get("/search", searchBookings);
 router.get("/statistics/getTotalBookings", getTotalBookings );
 router.get("/statistics/getBookingDays", getBookingDays );
 router.get("/statistics/getMostBookedDay",getMostBookedDay);
@@ -60,4 +58,7 @@ router.get("/statistics/getTotalRevenueAllTime", getTotalRevenueAllTime);
 router.get("/statistics/getBookingCountByUserAllTime", getBookingCountByUserAllTime );
 router.get("/statistics/getBookingsWithinDateRange", getBookingsWithinDateRange );
 router.get("/hotelAdmin/:idAdmin", getBookingByAdminId);
+
+//Thống kê doanh thu của khách sạn (theoAdmin)
+router.get("/getRevenueByAdmin/:idAdmin", getRevenueByAdmin);
 export default router;

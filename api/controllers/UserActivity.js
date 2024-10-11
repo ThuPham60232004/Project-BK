@@ -1,7 +1,7 @@
 import UserActivity from "../models/UserActivity.js";
 
 export const logUserActivity = async (req, res, next) => {
-    const userId = req.body.userId; // Nhận userId từ body thay vì req.userId
+    const userId = req.body.userId; 
     const pageUrl = req.originalUrl; 
     const duration = req.body.duration || 0; 
 
@@ -47,4 +47,23 @@ export const getUserActivityStats = async (req, res, next) => {
       next(err);
     }
   };
+// Thống kê tất cả lượt view và thời gian trung bình
+export const getAllUserActivityStats = async (req, res, next) => {
+  try {
+    const totalViews = await UserActivity.countDocuments();
+
+    const avgDuration = await UserActivity.aggregate([
+      { $group: { _id: null, averageDuration: { $avg: "$duration" } } },
+    ]);
+
+    res.status(200).json({
+      totalViews,
+      averageDuration: avgDuration.length ? avgDuration[0].averageDuration : 0,
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
+
   

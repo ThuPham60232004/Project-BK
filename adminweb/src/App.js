@@ -42,6 +42,9 @@ import SingleDiscountCodeDashboard from "./components/DashboardHotelComponent/Si
 import SingleReviewDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleReviewDashboard/SingleReviewDashboard";
 import SingleUserDashboard from "./components/DashboardHotelComponent/SingleDashboard/SingleUserDashboard/SingleUserDashboard";
 import RevenueChartDashboard from "./components/DashboardHotelComponent/ChartDashboard/revenueChartDashboard/revenueChartDashboard"
+import ListBookingDashboard from "./components/DashboardHotelComponent/ListDashboard/ListBookingDashboard/ListBookingDashboard";
+import UserActivityStats from "./components/HotelComponent/Chart/UserActivityStats/UserActivityStats";
+import ListBooking from "./components/HotelComponent/List/ListBooking/ListBooking";
 function App() {
   return (
     <BrowserRouter>
@@ -53,6 +56,7 @@ function App() {
           <Route path="ListDiscountCode" element={<ListDiscountCode />} />
           <Route path="ListReview" element={<ListReview />} />
           <Route path="ListHotel" element={<ListHotel />} />
+          <Route path="ListBooking" element={<ListBooking />} />
         {/* NEW----------------------------------------- */}
           <Route path="NewHotels" element={<NewHotels />} />
           <Route path="NewNotification" element={<NewNotification />} />
@@ -68,6 +72,7 @@ function App() {
           <Route path="SingleUser" element={<SingleUser />} />
          {/* CHART----------------------------------------- */}
          <Route path="RevenueChart" element={<RevenueChart />} />
+         <Route path="UserActivityStats" element={<UserActivityStats />} />
           {/* USER PROFILE----------------------------------------- */}
          <Route path="UserProfile" element={<UserProfile />} />
         </Route>
@@ -78,6 +83,7 @@ function App() {
           <Route path="ListDiscountCodeDashboard" element={<ListDiscountCodeDashboard />} />
           <Route path="ListReviewDashboard" element={<ListReviewDashboard />} />
           <Route path="ListHotelDashboard" element={<ListHotelDashboard />} />
+          <Route path="ListBookingDashboard" element={<ListBookingDashboard/>} />
         {/* NEW----------------------------------------- */}
           <Route path="NewHotelsDashboard" element={<NewHotelsDashboard />} />
           <Route path="NewNotificationDashboard" element={<NewNotificationDashboard />} />
@@ -93,6 +99,7 @@ function App() {
           <Route path="SingleUserDashboard" element={<SingleUserDashboard />} />
           {/* CHART----------------------------------------- */}
          <Route path="RevenueChartDashboard" element={<RevenueChartDashboard />} />
+         <Route path="UserProfile" element={<UserProfile />} />
         </Route>
         <Route path="/Register" element={<Register />}/>
         <Route path="/Login" element={<Login />}/>

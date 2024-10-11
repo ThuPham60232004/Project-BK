@@ -141,7 +141,11 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         return;
       }
   
-      // Tạo đặt phòng
+      // Lấy thông tin khách sạn để có idAdmin
+      const hotelResponse = await axios.get(`http://localhost:9000/api/hotels/find/${hotelId}`);
+      const idAdmin = hotelResponse.data.idAdmin;
+  
+      // Tạo dữ liệu đặt phòng
       const bookingData = {
         user: userId,
         hotel: hotelId,
@@ -151,12 +155,15 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         paymentMethod: paymentMethod,
         totalPrice: calculateTotalPriceDetails().finalTotalPrice,
         status: "pending",
+        idAdmin: idAdmin, 
       };
   
+      // Gửi yêu cầu đặt phòng
       await axios.post("http://localhost:9000/api/bookings", bookingData, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
+      // Cập nhật trạng thái phòng
       const response = await axios.put(
         `http://localhost:9000/api/rooms/${selectedRooms[0]}`,
         { availability: true },
@@ -165,16 +172,15 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         }
       );
   
-      console.log("Phản hồi cập nhật trạng thái phòng:", response.data); 
+      console.log("Phản hồi cập nhật trạng thái phòng:", response.data);
       alert("Đặt phòng thành công và trạng thái phòng đã được cập nhật!");
       navigate("/");
       setOpen(false);
     } catch (err) {
-      console.error("Đặt phòng hoặc cập nhật trạng thái phòng thất bại", err);
+      console.error("Đặt phòng hoặc cập nhật trạng thái phòng thất bại", err.response.data);
+      
     }
-  };
-  
-  
+  };  
 
   return (
     <div className="reserve">

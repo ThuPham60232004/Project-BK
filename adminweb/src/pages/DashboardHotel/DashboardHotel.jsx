@@ -20,10 +20,9 @@ const DashboardHotel = () => {
         { icon: <RiDiscountPercentLine style={{ width: '25px', height: '25px' }} />, text: "Danh sách mã giảm giá", path: "/DashboardHotel/ListDiscountCodeDashboard" },
         { icon: <IoMdNotificationsOutline style={{ width: '25px', height: '25px' }} />, text: "Danh sách thông báo", path: "/DashboardHotel/ListNotificationDashboard" },
         { icon: <GoCodeReview style={{ width: '25px', height: '25px' }} />, text: "Danh sách đánh giá", path: "/DashboardHotel/ListReviewDashboard" },
+        { icon: <GoCodeReview style={{ width: '25px', height: '25px' }} />, text: "Danh sách đặt phòng", path: "/DashboardHotel/ListBookingDashboard" },
         { icon: <TbReportAnalytics style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê doanh thu", path: "/DashboardHotel/RevenueChartDashboard" },
-        { icon: <FaChartLine style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê hoạt động", path: "/DashboardHotel" },
-        { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Danh sách công việc", path: "/DashboardHotel" },
-        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/DashboardHotel" }
+        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/DashboardHotel/UserProfile" }
     ];
 
     return (

@@ -20,9 +20,12 @@ const HomePage = () => {
         { icon: <RiDiscountPercentLine style={{ width: '25px', height: '25px' }} />, text: "Danh sách mã giảm giá", path: "/ListDiscountCode" },
         { icon: <IoMdNotificationsOutline style={{ width: '25px', height: '25px' }} />, text: "Danh sách thông báo", path: "/ListNotification" },
         { icon: <GoCodeReview style={{ width: '25px', height: '25px' }} />, text: "Danh sách đánh giá", path: "/ListReview" },
+        { icon: <GoCodeReview style={{ width: '25px', height: '25px' }} />, text: "Danh sách đơn đặt phòng", path: "/ListBooking" },
         { icon: <TbReportAnalytics style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê doanh thu", path: "/RevenueChart" },
-        { icon: <FaChartLine style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê hoạt động", path: "/" },
+        { icon: <FaChartLine style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê hoạt động", path: "/UserActivityStats" },
         { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Danh sách công việc", path: "/" },
+        { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Quản lý trang thái đơn đặt phòng", path: "/" },
+        { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Quản lý trang thái phòng", path: "/" },
         { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/UserProfile" }
     ];
 
