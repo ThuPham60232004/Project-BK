@@ -72,7 +72,7 @@ const RoomList = () => {
           rowsPerPageOptions={[9]}
           checkboxSelection
           getRowId={(row) => row._id}
-          onRowClick={(params) => navigate(`/rooms/${params.row._id}`)} 
+          onRowClick={(params) => navigate(`/rooms/${params.row._id}`)}
         />
       </div>
     </div>

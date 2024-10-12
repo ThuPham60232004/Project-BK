@@ -27,7 +27,7 @@ const ListBooking = () => {
     navigate(`/SingleBooking${BookingId}`)
   }
   const handleClickAdd=()=>{
-    navigate('/Newbookings')
+    navigate('/NewBookings')
   }
   const columns = [
     { field: 'user', headerName: 'Id người dùng', width: 90 },

@@ -22,9 +22,11 @@ const ListHotel = () => {
     fetchHotels();
   },[]);
 
-  const handleRoom=(hotelId)=>{
-    navigate(`/SingleHotelRoom${hotelId}`)
-  }
+  const handleRoom = (hotelId) => {
+    navigate(`/ListRoom/${hotelId}`);
+  };
+  
+  
   const handleClickAdd=()=>{
     navigate('/NewHotels')
   }
@@ -52,8 +54,15 @@ const ListHotel = () => {
     },
     {
       field: 'photos',
-      headerName: 'Hình ảnh',
-      width: 100,
+      headerName: 'Ảnh',
+      width: 150,
+      renderCell: (params) => (
+        <img
+          src={params.value[0] || 'https://via.placeholder.com/100'}
+          alt="Hotel"
+          style={{ width: '100px', height: 'auto', objectFit: 'cover' }}
+        />
+      ),
     },
     {
       field: 'title',
@@ -96,7 +105,7 @@ const ListHotel = () => {
   return (
     <div className='ListHotel'>
       <div className='ListHotelCointainer'> 
-        <h1>Danh sách khách sạn</h1>
+        <h3>Danh sách khách sạn</h3>
         <div className='ListHotelCointainerBtn' onClick={handleClickAdd}>
           <h3>Thêm khách sạn</h3>
         </div>

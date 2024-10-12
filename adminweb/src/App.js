@@ -45,6 +45,10 @@ import RevenueChartDashboard from "./components/DashboardHotelComponent/ChartDas
 import ListBookingDashboard from "./components/DashboardHotelComponent/ListDashboard/ListBookingDashboard/ListBookingDashboard";
 import UserActivityStats from "./components/HotelComponent/Chart/UserActivityStats/UserActivityStats";
 import ListBooking from "./components/HotelComponent/List/ListBooking/ListBooking";
+import StatusRoom from "./components/HotelComponent/Status/StatusRoom/StatusRoom";
+import StatusBooking from "./components/HotelComponent/Status/StatusBooking/StatusBooking";
+import ListRoom from "./components/HotelComponent/List/ListRoom/ListRoom";
+import NewBooking from "./components/HotelComponent/New/NewBooking/NewBooking";
 function App() {
   return (
     <BrowserRouter>
@@ -57,6 +61,7 @@ function App() {
           <Route path="ListReview" element={<ListReview />} />
           <Route path="ListHotel" element={<ListHotel />} />
           <Route path="ListBooking" element={<ListBooking />} />
+          <Route path="ListRoom/:hotelId" element={<ListRoom />} /> 
         {/* NEW----------------------------------------- */}
           <Route path="NewHotels" element={<NewHotels />} />
           <Route path="NewNotification" element={<NewNotification />} />
@@ -64,6 +69,7 @@ function App() {
           <Route path="NewReview" element={<NewReview />} />
           <Route path="NewUser" element={<NewUser />} />
           <Route path="NewRooms" element={<NewRooms />} />
+          <Route path="NewBookings" element={<NewBooking />} />
         {/* SINGLE----------------------------------------- */}
           <Route path="SingleHotelRoom" element={<SingleHotelRoom />} />
           <Route path="SingleNotification" element={<SingleNotification />} />
@@ -75,6 +81,9 @@ function App() {
          <Route path="UserActivityStats" element={<UserActivityStats />} />
           {/* USER PROFILE----------------------------------------- */}
          <Route path="UserProfile" element={<UserProfile />} />
+         {/* STATUS----------------------------------------- */}
+         <Route path="StatusRoom" element={<StatusRoom />} />
+         <Route path="StatusBooking" element={<StatusBooking />} />
         </Route>
         <Route path="/DashboardHotel" element={<DashboardHotel />}>
         {/* LIST----------------------------------------- */}
