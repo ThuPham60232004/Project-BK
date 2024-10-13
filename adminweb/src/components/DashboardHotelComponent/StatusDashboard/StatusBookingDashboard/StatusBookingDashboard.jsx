@@ -5,25 +5,43 @@ import './StatusBookingDashboard.css';
 Modal.setAppElement('#root'); 
 
 const StatusBookingDashboard = () => {
+  const [hotels, setHotels] = useState([]);
   const [bookingData, setBookingData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [newStatus, setNewStatus] = useState('');
+  const [selectedHotelId, setSelectedHotelId] = useState('');
   const storedIdAdmin = localStorage.getItem("userId");
 
   useEffect(() => {
-    const fetchBookings = async () => {
+    const fetchHotels = async () => {
       try {
-        const response = await fetch(`http://localhost:9000/api/bookings/hotelAdmin/${storedIdAdmin}`);
+        const response = await fetch(`http://localhost:9000/api/hotels/hotelAdmin/${storedIdAdmin}`);
         const data = await response.json();
-        setBookingData(data);
+        setHotels(data);
       } catch (error) {
-        console.error("Error fetching booking data:", error);
+        console.error("Error fetching hotel data:", error);
+      }
+    };
+
+    fetchHotels();
+  }, [storedIdAdmin]);
+
+  useEffect(() => {
+    const fetchBookings = async () => {
+      if (selectedHotelId) {
+        try {
+          const response = await fetch(`http://localhost:9000/api/bookings/getbyhotel/${selectedHotelId}`);
+          const data = await response.json();
+          setBookingData(data);
+        } catch (error) {
+          console.error("Error fetching booking data:", error);
+        }
       }
     };
 
     fetchBookings();
-  }, []);
+  }, [selectedHotelId]);
 
   const openModal = (booking) => {
     setSelectedBooking(booking);
@@ -70,9 +88,9 @@ const StatusBookingDashboard = () => {
 
     return (
       <div className={className} key={booking._id} onClick={() => openModal(booking)}>
-        <div><strong>Tên khách sạn:</strong> {booking.hotel?.name || "Unknown Hotel"}</div>
-        <div><strong>Tên người dùng:</strong> {booking.user?.username || "Unknown User"}</div>
-        <div><strong>Tên phòng:</strong> {booking.room?.title || "Unknown Room"}</div>
+        <div><strong>Tên khách sạn:</strong> {booking.hotel}</div>
+        <div><strong>Tên người dùng:</strong> {booking.user}</div>
+        <div><strong>Tên phòng:</strong> {booking.room}</div>
         <div><strong>Trạng thái đơn đặt phòng:</strong> {booking.status}</div>
       </div>
     );
@@ -80,6 +98,14 @@ const StatusBookingDashboard = () => {
 
   return (
     <div className="seat-map">
+      <h2>Chọn khách sạn để xem trạng thái đặt phòng</h2>
+      <select onChange={(e) => setSelectedHotelId(e.target.value)} value={selectedHotelId}>
+        <option value="">Chọn khách sạn</option>
+        {hotels.map(hotel => (
+          <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
+        ))}
+      </select>
+
       {bookingData.map(booking => renderSeat(booking))}
 
       {selectedBooking && (
@@ -90,10 +116,10 @@ const StatusBookingDashboard = () => {
           className="booking-modal"
           overlayClassName="booking-modal-overlay"
         >
-          <h2>Cập nhâp trạng thái đơn đặt phòng</h2>
-          <div><strong>Tên khách sạn:</strong> {selectedBooking.hotel?.name || "Unknown Hotel"}</div>
-          <div><strong>Tên người dùng:</strong> {selectedBooking.user?.username || "Unknown User"}</div>
-          <div><strong>Tên phòng:</strong> {selectedBooking.room?.title || "Unknown Room"}</div>
+          <h2>Cập nhật trạng thái đơn đặt phòng</h2>
+          <div><strong>Tên khách sạn:</strong> {selectedBooking.hotel}</div>
+          <div><strong>Tên người dùng:</strong> {selectedBooking.user}</div>
+          <div><strong>Tên phòng:</strong> {selectedBooking.room}</div>
           <div>
             <label htmlFor="status"><strong>Trạng thái đơn đặt phòng:</strong></label>
             <select
@@ -106,8 +132,8 @@ const StatusBookingDashboard = () => {
               <option value="cancelled">Cancelled</option>
             </select>
           </div>
-          <button className='btnhh' onClick={handleStatusChange}>Update Status</button>
-          <button className='bthhh' onClick={closeModal}>Close</button>
+          <button className='btnhh' onClick={handleStatusChange}>Cập nhật trạng thái</button>
+          <button className='bthhh' onClick={closeModal}>Đóng</button>
         </Modal>
       )}
     </div>

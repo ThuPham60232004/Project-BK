@@ -1,25 +1,65 @@
-.DashboardHotel{
+.DashboardHotel {
     color: black;
-    
+    font-family: Arial, sans-serif;
 }
+
 .DashboardHotelContainer {
-    width: 100%;
     display: flex;
+    width: 100%;
 }
-.DashboardHotelSideBar{
+
+.DashboardHotelSideBar {
     width: 15%;
-    
+    background-color: #f0f4f8;
+    border-right: 1px solid #d1d1d1;
+    padding: 20px 0;
 }
-.DashboardHotelComponent{
+
+.DashboardHotelComponent {
     width: 85%;
     background-color: white;
-}
-.DashboardHotelSideBarItem{
-    display: flex;
     padding: 20px;
-    gap: 7px;
-    background-color: aliceblue;
 }
-.DashboardHotelSideBarItemText{
+
+.DashboardHotelSideBarItem {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.DashboardHotelSideBarItem:hover {
+    background-color: #d6eaf8;
+}
+
+.DashboardHotelSideBarItemText {
     font-weight: bold;
+    font-size: 16px;
+}
+
+.active {
+    background-color: #b3d4fc;
+    color: #1a73e8;
+}
+
+.DashboardHotelSideBarItemIcon {
+    font-size: 1.5rem;
+    color: #4b4b4b;
+}
+
+@media (max-width: 768px) {
+    .DashboardHotelContainer {
+        flex-direction: column;
+    }
+
+    .DashboardHotelSideBar {
+        width: 100%;
+        border-right: none;
+    }
+
+    .DashboardHotelComponent {
+        width: 100%;
+    }
 }

@@ -1,18 +1,38 @@
+/* StatusBookingDashboard.css */
 .seat-map {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 80px; 
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 20px; 
     margin: 30px auto;
     max-width: 1200px;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: #f0f0f0;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
 
+h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.hotel-select {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px;
+    border: 2px solid #4CAF50;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.booking-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 15px;
+}
+
 .seat {
-    width: 100%;
-    height: 150px;
     border: 2px solid #d2b48c;
     border-radius: 12px;
     display: flex;
@@ -20,9 +40,14 @@
     justify-content: center;
     background-color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     padding: 20px;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.seat:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .seat div {
@@ -60,7 +85,7 @@
     justify-content: center;
 }
 
-.bthhh {
+.btn-update {
     background-color: #4CAF50;
     color: white;
     border: none;
@@ -69,19 +94,25 @@
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease;
+    margin-right: 10px;
 }
 
-.bthhh:hover {
+.btn-update:hover {
     background-color: #45a049;
 }
 
-.bthhh:last-child {
-    background-color: #f44336;
+.btn-close {
+    background-color: transparent;
+    color: #f44336; 
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
 }
 
-.bthhh:last-child:hover {
-    background-color: #e53935;
+.btn-close:hover {
+    text-decoration: underline;
 }
+
 .seat.confirmed {
     background-color: #4CAF50; 
 }
@@ -92,4 +123,9 @@
 
 .seat.cancelled {
     background-color: #F44336; 
+}
+
+.error-message {
+    color: red;
+    font-weight: bold;
 }
