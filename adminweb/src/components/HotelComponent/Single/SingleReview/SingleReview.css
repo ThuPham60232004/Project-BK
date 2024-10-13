@@ -1,0 +1,68 @@
+.SingleReview {
+    font-family: 'Roboto', sans-serif;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.SingleReview h1 {
+    text-align: center;
+    color: #333;
+}
+
+.SingleReview p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+.SingleReview strong {
+    color: #000;
+}
+
+.SingleReview button {
+    margin-top: 20px;
+    background-color: #6200ea;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.SingleReview button:hover {
+    background-color: #3700b3;
+}
+
+.modalBox {
+    width: 400px;
+    margin: auto; /* Tự động căn giữa */
+    padding: 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative; /* Để sử dụng với flexbox */
+    top: 50%; /* Di chuyển xuống giữa */
+    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+}
+
+.modalTitle {
+    margin-bottom: 16px;
+    font-size: 20px;
+    color: #6200ea;
+}
+
+.modalTextField {
+    margin-bottom: 16px;
+}
+
+.modalButton {
+    background-color: #6200ea;
+    color: white;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.modalButton:hover {
+    background-color: #3700b3;
+}

@@ -12,7 +12,6 @@ const router = express.Router();
 
 // Tạo một booking mới
 router.post("/", createBooking);
-
 // Lấy một booking theo ID
 router.get("/:id", getBooking);
 // Cập nhật một booking

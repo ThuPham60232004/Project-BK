@@ -24,7 +24,7 @@ const HomePage = () => {
         { icon: <GoCodeReview style={{ width: '25px', height: '25px' }} />, text: "Danh sách đánh giá", path: "/ListReview" },
         { icon: <TbReportAnalytics style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê doanh thu", path: "/RevenueChart" },
         { icon: <FaChartLine style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê hoạt động", path: "/UserActivityStats" },
-        { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Danh sách công việc", path: "/" },
+        { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Phân quyền", path: "/" },
         { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Quản lý trang thái đơn đặt phòng", path: "/StatusBooking" },
         { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Quản lý trang thái phòng", path: "/StatusRoom" },
         { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/UserProfile" }

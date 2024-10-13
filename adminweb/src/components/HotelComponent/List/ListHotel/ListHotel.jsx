@@ -22,11 +22,21 @@ const ListHotel = () => {
   }, []);
 
   const handleRoom = (hotelId) => {
-    //navigate(`/ListRoom/${hotelId}`); // truyền đúng hotelId
+    navigate(`/SingleHotelRoom/${hotelId}`);
   };
+  
 
   const handleClickAdd = () => {
     navigate('/NewHotels');
+  };
+
+  const handleDeleteHotel = async (id) => {
+    try {
+      await axios.delete(`http://localhost:9000/api/hotels/${id}`);
+      setHotels(hotels.filter((hotel) => hotel._id !== id));
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const columns = [
@@ -54,6 +64,14 @@ const ListHotel = () => {
     { field: 'cheapestPrice', headerName: 'Giá nhỏ nhất', width: 160 },
     { field: 'featured', headerName: 'Loại đặc biệt', width: 160 },
     { field: 'idAdmin', headerName: 'Id quản lý khách sạn', width: 160 },
+    {
+      field: 'action',
+      headerName: 'Hành động',
+      width: 150,
+      renderCell: (params) => (
+        <button onClick={() => handleDeleteHotel(params.row._id)}>Xóa</button>
+      ),
+    },
   ];
 
   return (

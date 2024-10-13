@@ -75,7 +75,7 @@ const StatusRoom = () => {
 
       {isModalOpen && (
         <div className="modal" style={{ display: isModalOpen ? "flex" : "none" }}>
-          <div className="modal-content">
+          <div className="modal-content9">
             <span className="close" onClick={closeModal}>&times;</span>
             <h2>Phòng của khách sạn: {selectedHotel.name}</h2>
             <div className="status-map">

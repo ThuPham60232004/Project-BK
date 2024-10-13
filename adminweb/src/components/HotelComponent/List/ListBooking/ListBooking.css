@@ -1,19 +1,49 @@
-.ListBookingCointainerDashboard h2{
-    margin: 15px;
-    color: gray;
+.ListBooking {
+    padding: 20px;
+    background-color: #f9f9f9;
 }
-.ListBookingCointainerDashboard{
+
+.ListBookingContainerDashboard {
     display: flex;
-    gap: 660px;
+    justify-content: space-between;
     align-items: center;
+    margin-bottom: 20px;
 }
-.ListBookingCointainerBtnDashboard{
-    border-radius: 7px;
-    border: 1px solid black;
-    padding: 10px;
-    color: gray;
+
+.ListBookingContainerDashboard h2 {
+    margin: 0;
+    color: #333;
+    font-size: 24px;
 }
-.ListBookingCointainerBtnDashboard:hover{
-    background-color: rgba(128, 128, 128, 0.503);
+
+.ListBookingContainerBtnDashboard {
+    border-radius: 5px;
+    border: none;
+    padding: 10px 20px;
     color: white;
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.ListBookingContainerBtnDashboard:hover {
+    background-color: #0056b3;
+}
+
+.dataGrid {
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c82333;
 }

@@ -17,9 +17,9 @@ import { verifyAdmin } from "../../utils/verifyToken.js";
 
 const router = express.Router();
 
-router.post("/", verifyAdmin, createHotel);
+router.post("/", createHotel);
 router.put("/:id", updateHotel);
-router.delete("/:id", verifyAdmin, deleteHotel);
+router.delete("/:id",deleteHotel);
 router.get("/countByCity", countByCity); 
 router.get("/countByType", countByType); 
 router.get("/room/:id", getHotelRooms);

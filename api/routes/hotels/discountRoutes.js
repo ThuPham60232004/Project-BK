@@ -13,7 +13,6 @@ const router = express.Router();
 
 router.get('/', getAllDiscountCodes);
 
-// Get discount code by ID
 router.get('/:id', getDiscountCodeById);
 
 // Apply discount code

@@ -49,7 +49,8 @@ import StatusRoom from "./components/HotelComponent/Status/StatusRoom/StatusRoom
 import StatusBooking from "./components/HotelComponent/Status/StatusBooking/StatusBooking";
 import ListRoom from "./components/HotelComponent/List/ListRoom/ListRoom";
 import NewBooking from "./components/HotelComponent/New/NewBooking/NewBooking";
-
+import SingleBooking from "./components/HotelComponent/Single/SingleBooking/SingleBooking";
+import SingleRoom from "./components/HotelComponent/Single/SingleRoom/SingleRoom";
 function App() {
   const userId = localStorage.getItem("userId");
   return (
@@ -73,11 +74,13 @@ function App() {
           <Route path="NewRooms" element={<NewRooms />} />
           <Route path="NewBookings" element={<NewBooking />} />
         {/* SINGLE----------------------------------------- */}
-          <Route path="SingleHotelRoom" element={<SingleHotelRoom />} />
-          <Route path="SingleNotification" element={<SingleNotification />} />
-          <Route path="SingleDiscountCode" element={<SingleDiscountCode />} />
-          <Route path="SingleReview" element={<SingleReview />} />
-          <Route path="SingleUser" element={<SingleUser />} />
+          <Route path="SingleHotelRoom/:id" element={<SingleHotelRoom />} />
+          <Route path="SingleNotification/:id" element={<SingleNotification />} />
+          <Route path="SingleDiscountCode/:id" element={<SingleDiscountCode />} />
+          <Route path="SingleReview/:id" element={<SingleReview />} />
+          <Route path="SingleUser/:id" element={<SingleUser />} />
+          <Route path="SingleBooking/:id" element={<SingleBooking />} />
+          <Route path="SingleRoom/:roomId" element={<SingleRoom />} />
          {/* CHART----------------------------------------- */}
          <Route path="RevenueChart" element={<RevenueChart />} />
          <Route path="UserActivityStats" element={<UserActivityStats />} />

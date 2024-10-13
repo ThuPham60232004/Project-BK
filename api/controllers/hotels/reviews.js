@@ -113,31 +113,7 @@ const getReview = async (req, res) => {
   }
 };
 
-// Search reviews
-const searchReviews = async (req, res) => {
-  const { userId, hotelId, roomId, rating, comment, dateFrom, dateTo } = req.query;
 
-  try {
-    const query = {};
-
-    if (userId) query.userId = userId;
-    if (hotelId) query.hotelId = hotelId;
-    if (roomId) query.roomId = roomId;
-    if (rating) query.rating = rating; // Lọc theo rating
-    if (comment) query.comment = { $regex: new RegExp(comment, 'i') }; // Tìm kiếm theo phần của nội dung bình luận
-    if (dateFrom || dateTo) {
-      query.createdAt = {};
-      if (dateFrom) query.createdAt.$gte = new Date(dateFrom);
-      if (dateTo) query.createdAt.$lte = new Date(dateTo);
-    }
-
-    const reviews = await Review.find(query).sort({ createdAt: -1 }); // Sắp xếp theo ngày tạo, mới nhất trước
-    res.status(200).json(reviews);
-  } catch (error) {
-    res.status(500).json({ message: "Không thể tìm kiếm đánh giá", error: error.message });
-  }
-};
-// Get a review by ID
 const getReviewById = async (req, res) => {
   try {
     const review = await Review.findById(req.params.id)
@@ -163,4 +139,4 @@ export const getReviewByAdminId = async (req, res, next) => {
     next(err);
   }
 };
-export { createReview, getReview, getAllReviews, updateReview, deleteReview, searchReviews,getReviewById  };
+export { createReview, getReview, getAllReviews, updateReview, deleteReview, getReviewById  };

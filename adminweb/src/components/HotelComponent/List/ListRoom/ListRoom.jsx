@@ -9,11 +9,12 @@ const ListRoom = () => {
   const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
   const [rooms, setRooms] = useState([]);
-  const [selectedHotelId, setSelectedHotelId] = useState(null); // State để lưu ID khách sạn được chọn
+  const [selectedHotelId, setSelectedHotelId] = useState(null);
 
   const handleClickAdd = () => {
     navigate('/NewRooms');
   };
+
   useEffect(() => {
     const fetchHotels = async () => {
       try {
@@ -42,6 +43,15 @@ const ListRoom = () => {
     fetchRooms();
   }, [selectedHotelId]);
 
+  const handleDeleteRoom = async (roomId) => {
+    try {
+      await axios.delete(`http://localhost:9000/api/rooms/${roomId}/${selectedHotelId}`);
+      setRooms(rooms.filter((room) => room._id !== roomId)); 
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const columnsHotels = [
     { field: 'name', headerName: 'Tên khách sạn', width: 150 },
     { field: 'type', headerName: 'Loại khách sạn', width: 200 },
@@ -67,9 +77,23 @@ const ListRoom = () => {
     { field: 'title', headerName: 'Tên Phòng', width: 200 },
     { field: 'desc', headerName: 'Mô Tả', width: 250 },
     { field: 'price', headerName: 'Giá (VND)', width: 150 },
+    { field: 'discountPrice', headerName: 'Giá Giảm', width: 150 },
+    { field: 'taxPrice', headerName: 'Giá Thuế', width: 150 },
     { field: 'maxPeople', headerName: 'Số Người Tối Đa', width: 150 },
     { field: 'rating', headerName: 'Đánh giá sao', width: 150 },
+    { field: 'numberOfReviews', headerName: 'Số Đánh Giá', width: 150 },
+    { field: 'availability', headerName: 'Tình Trạng', width: 150, renderCell: (params) => (params.value ? 'Còn Trống' : 'Đã Đặt') },
+    { field: 'category', headerName: 'Danh Mục', width: 200 },
+    {
+      field: 'action',
+      headerName: 'Hành động',
+      width: 150,
+      renderCell: (params) => (
+        <button onClick={() => handleDeleteRoom(params.row._id)}>Xóa</button>
+      ),
+    },
   ];
+  
 
   if (!hotels.length) return <div>Loading hotels...</div>;
 
@@ -77,10 +101,10 @@ const ListRoom = () => {
     <div className="roomlist-container">
       <div className="roomlist-content">
         <div className='roomlist-content-header'>
-        <h2>Danh Sách Phòng</h2>
-        <div className='ListRoomCointainerBtn' onClick={handleClickAdd}>
-          <h3>Thêm Phòng</h3>
-        </div>
+          <h2>Danh Sách Phòng</h2>
+          <div className='ListRoomCointainerBtn' onClick={handleClickAdd}>
+            <h3>Thêm Phòng</h3>
+          </div>
         </div>
         <Box sx={{ height: '400px', width: '100%', marginBottom: '20px' }}>
           <DataGrid
@@ -100,13 +124,16 @@ const ListRoom = () => {
           <>
             <h3>Danh Sách Phòng</h3>
             <Box sx={{ height: '400px', width: '100%' }}>
-              <DataGrid
-                rows={rooms}
-                columns={columnsRooms}
-                pageSize={5}
-                checkboxSelection
-                getRowId={(row) => row._id}
-              />
+            <DataGrid
+              rows={rooms}
+              columns={columnsRooms}
+              pageSize={5}
+              checkboxSelection
+              getRowId={(row) => row._id}
+              onRowClick={(params) => {
+                navigate(`/SingleRoom/${params.row._id}`); 
+              }}
+            />
             </Box>
           </>
         )}
