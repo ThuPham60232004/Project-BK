@@ -11,7 +11,7 @@ import {
   getAllHotels,
   getHotelsByType,
   updateCityForAllHotels,
-  getHotelsByAdminId
+  getHotelsByAdminId,
 } from "../../controllers/hotels/hotel.js";
 import { verifyAdmin } from "../../utils/verifyToken.js";
 

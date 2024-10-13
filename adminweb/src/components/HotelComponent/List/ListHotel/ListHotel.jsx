@@ -69,7 +69,7 @@ const ListHotel = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => handleDeleteHotel(params.row._id)}>Xóa</button>
+        <button className='btnhotels' onClick={() => handleDeleteHotel(params.row._id)}>Xóa</button>
       ),
     },
   ];

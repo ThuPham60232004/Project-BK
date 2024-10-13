@@ -60,7 +60,7 @@
   color: #333;
 }
 
-button {
+.btnmmm {
   background-color: #ff4d4d;
   color: white;
   border: none;
@@ -70,7 +70,7 @@ button {
   font-size: 14px;
 }
 
-button:hover {
+.btnmmm:hover {
   background-color: #ff3333;
 }
 

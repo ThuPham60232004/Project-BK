@@ -51,7 +51,7 @@ const ListReview = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => handleDeleteReview(params.row._id)}>Xóa</button>
+        <button className='btnreview' onClick={() => handleDeleteReview(params.row._id)}>Xóa</button>
       ),
     },
   ];

@@ -45,14 +45,15 @@ export const applyDiscountCode = async (req, res) => {
 };
 
 export const createDiscountCode = async (req, res) => {
-  const { code, discountType, discountValue, expirationDate, amountDiscountCode, startDate } = req.body;
+  const { code, discountType, discountValue, expirationDate, amountDiscountCode,idAdmin, startDate } = req.body;
   const newDiscountCode = new DiscountCode({ 
     code,
     discountType,
     discountValue,
     expirationDate,
     amountDiscountCode,
-    startDate
+    startDate,
+    idAdmin
   });
   try {
     const savedDiscountCode = await newDiscountCode.save();

@@ -1,11 +1,10 @@
 import Notification from "../models/Notification.js";
 
-// Gửi một thông báo mới
 export const sendNotification = async (req, res) => {
-  const { user, message } = req.body;
+  const { user, message, idAdmin } = req.body; 
 
   try {
-    const newNotification = new Notification({ user, message });
+    const newNotification = new Notification({ user, message, idAdmin }); 
     await newNotification.save();
     res.status(201).json(newNotification);
   } catch (err) {

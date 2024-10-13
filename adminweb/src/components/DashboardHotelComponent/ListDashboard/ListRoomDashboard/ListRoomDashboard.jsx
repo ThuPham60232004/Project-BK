@@ -3,22 +3,22 @@ import { DataGrid } from '@mui/x-data-grid';
 import Box from '@mui/material/Box';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './ListRoom.css';
+import './ListRoomDashboard.css';
 
-const ListRoom = () => {
+const ListRoomDashboard = () => {
   const navigate = useNavigate();
   const [hotels, setHotels] = useState([]);
   const [rooms, setRooms] = useState([]);
   const [selectedHotelId, setSelectedHotelId] = useState(null);
-
+  const storedIdAdmin = localStorage.getItem("userId");
   const handleClickAdd = () => {
-    navigate('/NewRooms');
+    navigate('/DashboardHotel/NewRoomsDashboard');
   };
 
   useEffect(() => {
     const fetchHotels = async () => {
       try {
-        const res = await axios.get('http://localhost:9000/api/hotels/all');
+        const res = await axios.get(`http://localhost:9000/api/hotels/hotelAdmin/${storedIdAdmin}`);
         setHotels(res.data);
       } catch (err) {
         console.error(err);
@@ -131,7 +131,7 @@ const ListRoom = () => {
               checkboxSelection
               getRowId={(row) => row._id}
               onRowClick={(params) => {
-                navigate(`/SingleRoom/${params.row._id}`); 
+                navigate(`/DashboardHotel/SingleRoomDashboard/${params.row._id}`); 
               }}
             />
             </Box>
@@ -142,4 +142,4 @@ const ListRoom = () => {
   );
 };
 
-export default ListRoom;
+export default ListRoomDashboard;

@@ -48,7 +48,7 @@ const ListNotification = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => handleDeleteNotification(params.row._id)}>Xóa</button>
+        <button className='btnnoti' onClick={() => handleDeleteNotification(params.row._id)}>Xóa</button>
       ),
     },
   ];

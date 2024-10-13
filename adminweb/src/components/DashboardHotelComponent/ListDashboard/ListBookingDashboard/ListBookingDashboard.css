@@ -1,19 +1,42 @@
-.ListBookingCointainerDashboard h2{
+.listBookingWrapper {
+    padding: 20px;
+}
+
+.listBookingHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.listBookingTitle {
     margin: 15px;
     color: gray;
 }
-.ListBookingCointainerDashboard{
-    display: flex;
-    gap: 660px;
-    align-items: center;
-}
-.ListBookingCointainerBtnDashboard{
+
+.selectHotelButton {
     border-radius: 7px;
     border: 1px solid black;
     padding: 10px;
     color: gray;
 }
-.ListBookingCointainerBtnDashboard:hover{
+
+.selectHotelButton:hover {
     background-color: rgba(128, 128, 128, 0.503);
     color: white;
+}
+.textbooking{
+    margin: 15px;
+    color: gray;
+    size:15px
+}
+.deleteBookingButton {
+    border-radius: 7px;
+    border: 1px solid red;
+    padding: 10px;
+    color: white;
+    background-color: red;
+}
+
+.deleteBookingButton:hover {
+    background-color: darkred;
 }

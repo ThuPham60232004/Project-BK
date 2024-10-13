@@ -6,7 +6,7 @@ import { getBookingDays,getBookingByAdminId,
     getBookingCountByHotel,getAllBookings,getRevenueByHotel, 
     getHotelsWithNoBookings ,getHotelsWithNoBookingsAllTime,getRevenueByHotelAllTime,
     getBookingCountByHotelAllTime,getTotalRevenueAllTime,getBookingCountByUserAllTime,
-    getTotalBookings,getRevenueByAdmin} from "../../controllers/hotels/booking.js";
+    getTotalBookings,getRevenueByAdmin,getBookingByHotelId} from "../../controllers/hotels/booking.js";
 
 const router = express.Router();
 
@@ -60,4 +60,6 @@ router.get("/hotelAdmin/:idAdmin", getBookingByAdminId);
 
 //Thống kê doanh thu của khách sạn (theoAdmin)
 router.get("/getRevenueByAdmin/:idAdmin", getRevenueByAdmin);
+
+router.get("/getbyhotel/:idHotel", getBookingByHotelId); 
 export default router;

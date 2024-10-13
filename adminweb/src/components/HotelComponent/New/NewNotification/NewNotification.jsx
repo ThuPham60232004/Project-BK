@@ -17,7 +17,7 @@ const NewNotification = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:9000/api/notifications/', notificationData);
+      await axios.post('http://localhost:9000/api/notifications', notificationData);
       alert('Thông báo đã được gửi thành công!');
       setNotificationData({
         user: '',
@@ -25,10 +25,11 @@ const NewNotification = () => {
         idAdmin: '',
       });
     } catch (error) {
-      console.error(error);
+      console.error('Error details:', error);
       alert('Lỗi khi gửi thông báo.');
     }
   };
+  
 
   return (
     <div className="notification-container">

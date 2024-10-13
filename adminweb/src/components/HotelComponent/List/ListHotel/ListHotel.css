@@ -45,7 +45,7 @@
      color: #333;
    }
    
-   button {
+   .btnhotels{
      background-color: #ff4d4d;
      color: white;
      border: none;
@@ -54,7 +54,7 @@
      cursor: pointer;
    }
    
-   button:hover {
+   .btnhotels:hover {
      background-color: #ff3333;
    }
    

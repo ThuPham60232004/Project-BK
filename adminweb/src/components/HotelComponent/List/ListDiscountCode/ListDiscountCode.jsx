@@ -52,7 +52,7 @@ const ListDiscountCode = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => handleDeleteDiscountCode(params.row._id)}>Xóa</button>
+        <button className='btndiscountcode' onClick={() => handleDeleteDiscountCode(params.row._id)}>Xóa</button>
       ),
     },
   ];

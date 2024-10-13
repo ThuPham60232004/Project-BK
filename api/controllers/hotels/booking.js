@@ -508,3 +508,22 @@ export const getRevenueByAdmin = async (req, res) => {
   }
 };
 
+// Lấy tất cả đơn đặt phòng theo idAdmin
+export const getBookingByHotelId = async (req, res) => {
+  const idAdmin = req.params.idAdmin;
+
+  try {
+    const hotels = await Hotel.find({ idAdmin });
+
+    if (hotels.length === 0) {
+      return res.status(404).json({ message: "Không tìm thấy khách sạn cho admin này." });
+    }
+    const hotelIds = hotels.map(hotel => hotel._id);
+
+    const bookings = await Booking.find({ hotel: { $in: hotelIds } })
+    res.status(200).json(bookings);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Lỗi máy chủ", error: err.message });
+  }
+};
