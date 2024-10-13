@@ -42,9 +42,9 @@ const ListUser = () => {
   return (
     <div className='ListUser'>
       <div className='ListUserCointainer'> 
-        <h1>Danh sách khách sạn</h1>
+        <h1>Danh sách người dùng</h1>
         <div className='ListUserCointainerBtn' onClick={handleClickAdd}>
-          <h3>Thêm khách sạn</h3>
+          <h3>Thêm người dùng</h3>
         </div>
       </div>
       <Box sx={{ height: '800px', width: '97%',marginLeft:'20px'}}>

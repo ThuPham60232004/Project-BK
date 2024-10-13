@@ -67,28 +67,7 @@ export const getNotificationById = async (req, res) => {
     res.status(500).json(err);
   }
 };
-// Tìm kiếm thông báo theo nhiều tiêu chí
-export const searchNotifications = async (req, res) => {
-  const { user, isRead, message, dateFrom, dateTo } = req.query;
 
-  try {
-    const query = {};
-
-    if (user) query.user = user;
-    if (isRead) query.isRead = isRead === 'true'; // Chuyển đổi chuỗi thành boolean
-    if (message) query.message = { $regex: new RegExp(message, 'i') }; // Tìm kiếm theo phần của nội dung thông báo
-    if (dateFrom || dateTo) {
-      query.createdAt = {};
-      if (dateFrom) query.createdAt.$gte = new Date(dateFrom);
-      if (dateTo) query.createdAt.$lte = new Date(dateTo);
-    }
-
-    const notifications = await Notification.find(query).sort({ createdAt: -1 }); // Sắp xếp theo ngày tạo, mới nhất trước
-    res.status(200).json(notifications);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
 export const getNotificationByAdminId = async (req, res, next) => {
   const idAdmin = req.params.idAdmin;
   try {

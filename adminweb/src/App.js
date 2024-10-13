@@ -49,7 +49,9 @@ import StatusRoom from "./components/HotelComponent/Status/StatusRoom/StatusRoom
 import StatusBooking from "./components/HotelComponent/Status/StatusBooking/StatusBooking";
 import ListRoom from "./components/HotelComponent/List/ListRoom/ListRoom";
 import NewBooking from "./components/HotelComponent/New/NewBooking/NewBooking";
+
 function App() {
+  const userId = localStorage.getItem("userId");
   return (
     <BrowserRouter>
       <Routes>
@@ -61,7 +63,7 @@ function App() {
           <Route path="ListReview" element={<ListReview />} />
           <Route path="ListHotel" element={<ListHotel />} />
           <Route path="ListBooking" element={<ListBooking />} />
-          <Route path="ListRoom/:hotelId" element={<ListRoom />} /> 
+          <Route path="ListRoom" element={<ListRoom />} /> 
         {/* NEW----------------------------------------- */}
           <Route path="NewHotels" element={<NewHotels />} />
           <Route path="NewNotification" element={<NewNotification />} />

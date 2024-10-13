@@ -18,7 +18,9 @@ const RevenueChart = () => {
     const [hotelsWithNoBookings, setHotelsWithNoBookings] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
     const [endDate, setEndDate] = useState(new Date());
-  
+    const formatCurrency = (amount) => {
+      return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+    };
     useEffect(() => {
       const fetchData = async () => {
         try {
@@ -136,7 +138,7 @@ const RevenueChart = () => {
         </div>
         <div className="statItem">
           <h2>Tổng doanh thu</h2>
-          <p>${totalRevenue.toFixed(2)}</p>
+          <p>{formatCurrency(totalRevenue)}</p>
         </div>
         <div className="statItem">
           <h2>Đặt chỗ theo người dùng</h2>

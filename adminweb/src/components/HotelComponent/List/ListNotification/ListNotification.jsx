@@ -25,7 +25,7 @@ const [notification,setNotification]=useState([]);
     navigate(`/SingleNotification${notificationId}`)
   }
   const handleClickAdd=()=>{
-    navigate('/')
+    navigate('/NewNotification')
   }
   const columns=[
     { field: 'user', headerName: 'Id người dùng', width: 290 },

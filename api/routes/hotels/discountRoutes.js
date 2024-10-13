@@ -11,7 +11,6 @@ import {
 
 const router = express.Router();
 
-// Get all valid discount codes
 router.get('/', getAllDiscountCodes);
 
 // Get discount code by ID

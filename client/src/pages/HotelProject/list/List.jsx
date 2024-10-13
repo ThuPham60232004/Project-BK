@@ -21,12 +21,10 @@ const List = () => {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  // Fetch dữ liệu khách sạn dựa trên các tiêu chí tìm kiếm
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:9000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
-  // Hàm xử lý khi nhấn nút tìm kiếm
   const handleClick = () => {
     try {
       reFetch();
@@ -36,7 +34,6 @@ const List = () => {
     }
   };
 
-  // Hiển thị thông báo lỗi nếu có
   if (error) {
     toast.error("Lỗi khi lấy dữ liệu: " + error.message);
   }

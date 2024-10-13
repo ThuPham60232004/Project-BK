@@ -13,7 +13,23 @@
     height: 100vh;
     overflow: auto;
   }
-  
+  .ListRoomCointainerBtn{
+    border-radius: 7px;
+    border: 1px solid black;
+    padding: 10px;
+    color: gray; 
+    height: 30px;
+}
+.roomlist-content-header{
+  display: flex;
+  gap: 700px;
+  align-items: center;
+ margin-bottom: 20px;
+}
+.ListRoomCointainerBtn:hover{
+    background-color: rgba(128, 128, 128, 0.503);
+    color: white;
+}
   .roomlist-content h3 {
     color: gray;
     margin-bottom: 20px;

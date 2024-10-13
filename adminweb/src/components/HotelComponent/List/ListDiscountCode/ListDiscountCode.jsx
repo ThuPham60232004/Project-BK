@@ -12,7 +12,7 @@ const ListDiscountCode = () => {
     navigate(`/NewDiscountCode${Iddiscountcoder}`)
   }
   const handleAddDiscountCode=()=>{
-    navigate('/SingleDiscountCode')
+    navigate('/NewDiscountCode')
   }
   useEffect(()=>{
     const fetchDiscountCode= async()=>{
@@ -38,7 +38,7 @@ const ListDiscountCode = () => {
   return (
     <div className='ListDiscountCode'>
   <div className='ListDiscountCodeCointainer'> 
-        <h1>Danh sách khách sạn</h1>
+        <h1>Danh sách mã giảm giá</h1>
         <div className='ListDiscountCodeCointainerBtn' onClick={handleAddDiscountCode}>
           <h3>Thêm mã giảm giá</h3>
         </div>

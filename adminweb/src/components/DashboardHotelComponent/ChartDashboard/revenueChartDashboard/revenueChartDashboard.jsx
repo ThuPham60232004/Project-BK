@@ -33,7 +33,7 @@ const RevenueChartDashboard = () => {
       }
     }, [startDate, endDate]);
 
-    // Hàm định dạng số tiền Việt Nam Đồng
+    
     const formatCurrency = (amount) => {
       return amount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     };

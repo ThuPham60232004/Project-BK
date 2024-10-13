@@ -6,7 +6,6 @@ import {
   markAsRead,
   deleteNotification,
   getAllNotifications,
-  searchNotifications,
   getNotificationByAdminId
 } from "../controllers/notification.js";
 
@@ -30,8 +29,7 @@ router.get("/", getAllNotifications);
 // Lấy một thông báo theo ID
 router.get("/:id", getNotificationById);
 
-// Tìm kiếm thông báo theo nhiều tiêu chí
-router.get("/search", searchNotifications);  // Route cho chức năng tìm kiếm
+
 router.get("/hotelAdmin/:idAdmin", getNotificationByAdminId);
 
 export default router;
