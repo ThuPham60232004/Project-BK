@@ -52,12 +52,14 @@ const SingleDiscountCode = () => {
   return (
     <div className='SingleDiscountCode'>
       <h2>Mã giảm giá: {discountCode.code}</h2>
-      <p>Loại mã giảm giá: {discountCode.discountType}</p>
-      <p>Giá trị: {discountCode.discountValue}</p>
-      <p>Ngày bắt đầu: {discountCode.startDate}</p>
-      <p>Ngày hết hạn: {discountCode.expirationDate}</p>
-      <p>Số lượng mã giảm giá: {discountCode.amountDiscountCode}</p>
-      <p>Id quản lý: {discountCode.idAdmin}</p>
+      <div className="details">
+        <p>Loại mã giảm giá: <span>{discountCode.discountType}</span></p>
+        <p>Giá trị: <span>{discountCode.discountValue}</span></p>
+        <p>Ngày bắt đầu: <span>{discountCode.startDate}</span></p>
+        <p>Ngày hết hạn: <span>{discountCode.expirationDate}</span></p>
+        <p>Số lượng mã giảm giá: <span>{discountCode.amountDiscountCode}</span></p>
+        <p>Id quản lý: <span>{discountCode.idAdmin}</span></p>
+      </div>
       <Button variant="contained" color="primary" onClick={handleOpenEditModal}>
         Chỉnh sửa
       </Button>
@@ -73,6 +75,8 @@ const SingleDiscountCode = () => {
               onChange={handleEditChange}
               fullWidth
               margin="normal"
+              variant="outlined"
+              required
             />
             <TextField
               name="discountType"
@@ -81,6 +85,8 @@ const SingleDiscountCode = () => {
               onChange={handleEditChange}
               fullWidth
               margin="normal"
+              variant="outlined"
+              required
             />
             <TextField
               name="discountValue"
@@ -89,22 +95,32 @@ const SingleDiscountCode = () => {
               onChange={handleEditChange}
               fullWidth
               margin="normal"
+              variant="outlined"
+              required
             />
             <TextField
               name="startDate"
               label="Ngày bắt đầu"
+              type="date"
               value={editedDiscountCode.startDate}
               onChange={handleEditChange}
               fullWidth
               margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              required
             />
             <TextField
               name="expirationDate"
               label="Ngày hết hạn"
+              type="date"
               value={editedDiscountCode.expirationDate}
               onChange={handleEditChange}
               fullWidth
               margin="normal"
+              variant="outlined"
+              InputLabelProps={{ shrink: true }}
+              required
             />
             <Button variant="contained" color="primary" type="submit">
               Lưu

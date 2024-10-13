@@ -8,7 +8,10 @@ import { useNavigate } from 'react-router-dom';
 const ListBooking = () => {
   const [bookings, setBookings] = useState([]);
   const navigate = useNavigate();
-
+  const formatCurrency = (amount) => {
+    if (!amount) return "0 VNĐ";
+    return amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".") + " VNĐ";
+  };
   useEffect(() => {
     const fetchBookings = async () => {
       try {
@@ -95,16 +98,16 @@ const ListBooking = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button onClick={() => handleDelete(params.row._id)}>Xóa</button>
+        <button className="deleteBookingButton" onClick={() => handleDelete(params.row._id)}>Xóa</button>
       ),
     },
   ];
 
   return (
-    <div className='ListBooking'>
-      <div className='ListBookingContainerDashboard'>
-        <h2>Danh sách đặt phòng</h2>
-        <div className='ListBookingContainerBtnDashboard' onClick={handleClickAdd}>
+    <div className='listBookingWrapper'>
+      <div className='listBookingHeader'>
+        <h2 className='listBookingTitle'>Danh sách đặt phòng</h2>
+        <div className='addBookingButton' onClick={handleClickAdd}>
           <h3>Thêm đặt phòng</h3>
         </div>
       </div>

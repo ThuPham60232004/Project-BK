@@ -1,19 +1,60 @@
-.ListNotification h1{
-    margin: 15px;
-    color: gray;
-}
-.ListNotificationCointainer{
+.ListNotification {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  }
+  
+  .ListNotificationCointainer {
     display: flex;
-    gap: 660px;
+    justify-content: space-between;
     align-items: center;
-}
-.ListNotificationCointainerBtn{
-    border-radius: 7px;
-    border: 1px solid black;
-    padding: 10px;
-    color: gray;
-}
-.ListNotificationCointainerBtn:hover{
-    background-color: rgba(128, 128, 128, 0.503);
+    margin-bottom: 20px;
+  }
+  
+  .ListNotificationCointainer h1 {
+    font-size: 28px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .ListNotificationCointainerBtn {
+    background-color: #4CAF50;
     color: white;
-}
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .ListNotificationCointainerBtn:hover {
+    background-color: #45a049;
+  }
+  
+  .MuiDataGrid-root {
+    background-color: white;
+    border-radius: 10px;
+  }
+  
+  .MuiDataGrid-columnHeaders {
+    background-color: #e3f2fd;
+  }
+  
+  .MuiDataGrid-cell {
+    color: #333;
+  }
+  
+  button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #ff3333;
+  }
+  

@@ -1,60 +1,60 @@
 .new-rooms-container {
     padding: 20px;
     background-color: #f9f9f9;
-  }
-  
-  .hotel-selection {
+}
+
+.hotel-selection {
     margin-bottom: 20px;
-  }
-  
-  .hotel-selection-title {
+}
+
+.hotel-selection-title {
     font-size: 1.5rem;
     margin-bottom: 10px;
     color: #333;
-  }
-  
-  .hotel-selection-dropdown {
+}
+
+.hotel-selection-dropdown {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 1rem;
-  }
-  
-  .room-form {
+}
+
+.room-form {
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .room-form-title {
+}
+
+.room-form-title {
     font-size: 1.8rem;
     color: #2a9d8f;
     margin-bottom: 20px;
-  }
-  
-  .room-form-group {
+}
+
+.room-form-group {
     margin-bottom: 15px;
-  }
-  
-  .room-form-label {
+}
+
+.room-form-label {
     display: block;
     font-weight: bold;
     margin-bottom: 5px;
     color: #333;
-  }
-  
-  .room-form-input,
-  .room-form-dropdown {
+}
+
+.room-form-input,
+.room-form-dropdown {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
     font-size: 1rem;
-  }
-  
-  .room-form-submit-btn {
+}
+
+.room-form-submit-btn {
     width: 100%;
     padding: 15px;
     background-color: #2a9d8f;
@@ -64,9 +64,22 @@
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .room-form-submit-btn:hover {
+}
+
+.room-form-submit-btn:hover {
     background-color: #21867a;
-  }
-  
+}
+
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.room-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    margin-right: 10px;
+    border-radius: 5px;
+}

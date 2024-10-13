@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
-import './UserActivityStats.css'; // For custom styles
+import './UserActivityStats.css';
 
 const UserActivityStats = () => {
   const [activityStats, setActivityStats] = useState({ totalViews: 0, averageDuration: 0 });
@@ -21,19 +21,19 @@ const UserActivityStats = () => {
 
   const data = [
     { name: 'Tổng lượt view', value: activityStats.totalViews },
-    { name: 'Trung bình (s)', value: activityStats.averageDuration }//Thời gian trung bình = Tổng thời gian của tất cả phiên hoạt động / Tổng số phiên hoạt động
+    { name: 'Trung bình (s)', value: activityStats.averageDuration }
   ];
 
   return (
-    <div className="user-activity-stats">
-      <h2>User Activity Statistics</h2>
+    <div className="userActivityStats">
+      <h2>Thống Kê Hoạt Động Người Dùng</h2>
       <ResponsiveContainer width="100%" height={400}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="value" fill="#8884d8" />
+          <Bar dataKey="value" fill="#4a90e2" />
         </BarChart>
       </ResponsiveContainer>
     </div>

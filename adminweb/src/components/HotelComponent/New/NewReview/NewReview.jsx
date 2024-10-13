@@ -17,28 +17,24 @@ const NewReview = () => {
     idAdmin: '',
   });
 
-  // Xử lý khi thay đổi khách sạn
   const handleHotelChange = (event) => {
     const hotelId = event.target.value;
     setSelectedHotel(hotelId);
     setReviewData({ ...reviewData, hotelId });
-    setSelectedRoom(null);  // Xóa lựa chọn phòng khi thay đổi khách sạn
+    setSelectedRoom(null);
   };
 
-  // Xử lý khi thay đổi phòng
   const handleRoomChange = (event) => {
     const roomId = event.target.value;
     setSelectedRoom(roomId);
     setReviewData({ ...reviewData, roomId });
   };
 
-  // Xử lý khi nhập dữ liệu
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setReviewData({ ...reviewData, [name]: value });
   };
 
-  // Gửi dữ liệu lên API
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -50,7 +46,6 @@ const NewReview = () => {
     }
   };
 
-  // Lấy danh sách khách sạn
   useEffect(() => {
     const fetchHotels = async () => {
       try {
@@ -63,7 +58,6 @@ const NewReview = () => {
     fetchHotels();
   }, []);
 
-  // Lấy danh sách phòng của khách sạn đã chọn
   useEffect(() => {
     const fetchRooms = async () => {
       if (selectedHotel) {
@@ -131,6 +125,7 @@ const NewReview = () => {
             value={reviewData.rating}
             onChange={handleInputChange}
             required
+            className="review-form-input"
           />
         </div>
 
@@ -141,6 +136,7 @@ const NewReview = () => {
             name="comment"
             value={reviewData.comment}
             onChange={handleInputChange}
+            className="review-form-input"
           />
         </div>
 

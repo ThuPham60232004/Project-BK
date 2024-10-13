@@ -38,7 +38,7 @@ const NewBooking = () => {
           console.error(err);
         }
       } else {
-        setRooms([]); 
+        setRooms([]);
       }
     };
     fetchRooms();
@@ -75,18 +75,16 @@ const NewBooking = () => {
     let totalTax = 0;
 
     const room = rooms.find(r => r._id === selectedRoom);
-
-    const discountPrice = room.discountPrice || room.price; 
+    const discountPrice = room.discountPrice || room.price;
     const roomTotalBeforeTax = discountPrice * numberOfBookingDays;
     totalPriceBeforeTax += roomTotalBeforeTax;
 
-    const totalPriceAfterDiscount = totalPriceBeforeTax; 
-    const taxRate = room.taxPrice || 0; 
-    totalTax = taxRate; 
+    const totalPriceAfterDiscount = totalPriceBeforeTax;
+    const taxRate = room.taxPrice || 0;
+    totalTax = taxRate;
 
-    const finalTotalPrice = totalPriceAfterDiscount + totalTax; 
-
-    const depositAmount = finalTotalPrice * 0.10; 
+    const finalTotalPrice = totalPriceAfterDiscount + totalTax;
+    const depositAmount = finalTotalPrice * 0.10;
 
     return {
       totalPriceBeforeTax,
@@ -113,7 +111,7 @@ const NewBooking = () => {
       paymentMethod: formData.paymentMethod,
       totalPrice: totalPriceDetails.finalTotalPrice,
       hotel_deposit: totalPriceDetails.depositAmount,
-      checkintime: new Date(), 
+      checkintime: new Date(),
     };
 
     try {

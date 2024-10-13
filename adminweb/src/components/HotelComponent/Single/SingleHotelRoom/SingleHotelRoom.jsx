@@ -50,8 +50,8 @@ const SingleHotelRoom = () => {
     }
   };
 
-  if (loading) return <div>Loading...</div>;
-  if (!hotel) return <div>No hotel found.</div>;
+  if (loading) return <div className='loading'>Loading...</div>;
+  if (!hotel) return <div className='no-booking'>No hotel found.</div>;
 
   return (
     <div className='SingleHotelRoom'>
@@ -75,79 +75,78 @@ const SingleHotelRoom = () => {
       </div>
 
       <Modal open={openEditModal} onClose={handleCloseEditModal}>
-    <div className="modal-content1">
-        <h2>Chỉnh sửa thông tin khách sạn</h2>
-        <Button variant="outlined" color="secondary" onClick={handleCloseEditModal} style={{ marginBottom: '10px' }}>
+        <div className="modal-content1">
+          <h2>Chỉnh sửa thông tin khách sạn</h2>
+          <Button variant="outlined" color="secondary" onClick={handleCloseEditModal} style={{ marginBottom: '10px' }}>
             Đóng
-        </Button>
-        <div className='modal-content-container'>
+          </Button>
+          <div className='modal-content-container'>
             <form onSubmit={handleEditSubmit}>
-                <TextField
-                    name="name"
-                    label="Tên khách sạn"
-                    value={editedHotel.name}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <TextField
-                    name="type"
-                    label="Loại khách sạn"
-                    value={editedHotel.type}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <TextField
-                    name="city"
-                    label="Thành phố"
-                    value={editedHotel.city}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <TextField
-                    name="address"
-                    label="Địa chỉ"
-                    value={editedHotel.address}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <TextField
-                    name="desc"
-                    label="Mô tả"
-                    value={editedHotel.desc}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <TextField
-                    name="rating"
-                    label="Đánh giá"
-                    type="number"
-                    value={editedHotel.rating}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <TextField
-                    name="cheapestPrice"
-                    label="Giá nhỏ nhất"
-                    type="number"
-                    value={editedHotel.cheapestPrice}
-                    onChange={handleEditChange}
-                    fullWidth
-                    margin="normal"
-                />
-                <Button variant="contained" color="primary" type="submit">
-                    Lưu
-                </Button>
-                    </form>
-                </div>
-            </div>
-        </Modal>
-
+              <TextField
+                name="name"
+                label="Tên khách sạn"
+                value={editedHotel.name}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                name="type"
+                label="Loại khách sạn"
+                value={editedHotel.type}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                name="city"
+                label="Thành phố"
+                value={editedHotel.city}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                name="address"
+                label="Địa chỉ"
+                value={editedHotel.address}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                name="desc"
+                label="Mô tả"
+                value={editedHotel.desc}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                name="rating"
+                label="Đánh giá"
+                type="number"
+                value={editedHotel.rating}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <TextField
+                name="cheapestPrice"
+                label="Giá nhỏ nhất"
+                type="number"
+                value={editedHotel.cheapestPrice}
+                onChange={handleEditChange}
+                fullWidth
+                margin="normal"
+              />
+              <Button variant="contained" color="primary" type="submit">
+                Lưu
+              </Button>
+            </form>
+          </div>
+        </div>
+      </Modal>
     </div>
   );
 };

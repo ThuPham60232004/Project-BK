@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import './SingleBooking.css'; 
+import './SingleBooking.css';
 
 const SingleBooking = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [booking, setBooking] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
@@ -26,7 +26,7 @@ const SingleBooking = () => {
 
   const handleEdit = () => {
     setEditData(booking);
-    setIsEditing(true); 
+    setIsEditing(true);
   };
 
   const handleChange = (e) => {
@@ -39,14 +39,14 @@ const SingleBooking = () => {
     try {
       await axios.put(`http://localhost:9000/api/bookings/${id}`, editData);
       setBooking(editData);
-      setIsEditing(false); 
+      setIsEditing(false);
     } catch (err) {
       console.error(err);
     }
   };
 
-  if (loading) return <div className='loading'>Loading...</div>; 
-  if (!booking) return <div className='no-booking'>No booking found.</div>; 
+  if (loading) return <div className='loading'>Loading...</div>;
+  if (!booking) return <div className='no-booking'>No booking found.</div>;
 
   return (
     <div className='SingleBooking'>
@@ -63,7 +63,7 @@ const SingleBooking = () => {
         <p><strong>Thời gian checkin:</strong> {booking.checkintime}</p>
         <p><strong>Tiền cọc:</strong> {booking.hotel_deposit}</p>
         <p><strong>Id quản lý khách sạn:</strong> {booking.idAdmin}</p>
-        <button onClick={handleEdit}>Chỉnh sửa</button>
+        <button onClick={handleEdit} className="edit-button">Chỉnh sửa</button>
       </div>
 
       {isEditing && (
@@ -134,8 +134,8 @@ const SingleBooking = () => {
                   onChange={handleChange}
                 />
               </label>
-              <button type="submit">Lưu thay đổi</button>
-              <button type="button" onClick={() => setIsEditing(false)}>Đóng</button>
+              <button type="submit" className="submit-button">Lưu thay đổi</button>
+              <button type="button" onClick={() => setIsEditing(false)} className="close-button">Đóng</button>
             </form>
           </div>
         </div>

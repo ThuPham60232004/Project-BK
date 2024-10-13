@@ -1,73 +1,109 @@
-
 .roomlist-container {
-    display: flex;
-  }
-  
-  .roomlist-content {
-    flex: 6;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-left: 20px;
-    height: 100vh;
-    overflow: auto;
-  }
-  .ListRoomCointainerBtn{
-    border-radius: 7px;
-    border: 1px solid black;
-    padding: 10px;
-    color: gray; 
-    height: 30px;
-}
-.roomlist-content-header{
   display: flex;
-  gap: 700px;
+}
+
+.roomlist-content {
+  flex: 6;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-left: 20px;
+  height: 100vh;
+  overflow: auto;
+}
+
+.roomlist-content-header {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
- margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-.ListRoomCointainerBtn:hover{
-    background-color: rgba(128, 128, 128, 0.503);
-    color: white;
+
+.roomlist-content h2 {
+  font-size: 24px;
+  color: #333;
+  font-weight: bold;
 }
-  .roomlist-content h3 {
-    color: gray;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .cellAction {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .viewButton {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    background-color: #51AEAA;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-    margin-right: 10px;
-  }
-  
-  .viewButton:hover {
-    background-color: #16dcd2;
-  }
-  
-  .deleteButton {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    background-color: #51AEAA;
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-  }
-  
-  .deleteButton:hover {
-    background-color: #3bcfc7;
-  }
-  
+
+.roomlist-content h3 {
+  color: #666;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ListRoomCointainerBtn {
+  background-color: #007bffa6;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.ListRoomCointainerBtn:hover {
+  background-color: white;
+}
+
+.MuiDataGrid-root {
+  background-color: white;
+  border-radius: 10px;
+}
+
+.MuiDataGrid-columnHeaders {
+  background-color: #e3f2fd;
+}
+
+.MuiDataGrid-cell {
+  color: #333;
+}
+
+button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+button:hover {
+  background-color: #ff3333;
+}
+
+.cellAction {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.viewButton {
+  background-color: #51aeaa;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.viewButton:hover {
+  background-color: #16dcd2;
+}
+
+.deleteButton {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.deleteButton:hover {
+  background-color: #ff3333;
+}

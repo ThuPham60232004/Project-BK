@@ -27,6 +27,7 @@
     border-radius: 8px;
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
 }
+
 .ImageGallery {
     display: flex;
     flex-wrap: wrap;
@@ -51,4 +52,18 @@
 
 .HotelDetails strong {
     color: #555;
+}
+
+.loading {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #666;
+}
+
+.no-booking {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    color: #e74c3c;
 }

@@ -19,7 +19,6 @@ const NewNotification = () => {
     try {
       await axios.post('http://localhost:9000/api/notifications/', notificationData);
       alert('Thông báo đã được gửi thành công!');
-      // Reset form after submission
       setNotificationData({
         user: '',
         message: '',

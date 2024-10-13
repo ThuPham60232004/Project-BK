@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { Modal, Button } from '@mui/material';
-import './SingleRoom.css'; // Thêm file CSS cho giao diện
+import './SingleRoom.css';
 
 const SingleRoom = () => {
   const { roomId } = useParams();
@@ -47,7 +47,7 @@ const SingleRoom = () => {
   };
 
   const handleAddImage = () => {
-    setFormData({ ...formData, images: [...formData.images, ''] }); // Thêm một trường hình ảnh mới
+    setFormData({ ...formData, images: [...formData.images, ''] });
   };
 
   const handleImageChange = (index, value) => {
@@ -84,79 +84,26 @@ const SingleRoom = () => {
       </Button>
 
       <Modal open={open} onClose={handleClose}>
-        <div className="modal-content5">
+        <div className="modal-content">
           <h3>Chỉnh sửa thông tin phòng</h3>
           <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="title"
-              value={formData.title}
-              onChange={handleChange}
-              placeholder="Tên Phòng"
-              className="modal-input"
-            />
-            <textarea
-              name="desc"
-              value={formData.desc}
-              onChange={handleChange}
-              placeholder="Mô Tả"
-              className="modal-textarea"
-            />
-            <input
-              type="number"
-              name="price"
-              value={formData.price}
-              onChange={handleChange}
-              placeholder="Giá (VND)"
-              className="modal-input"
-            />
-            <input
-              type="number"
-              name="discountPrice"
-              value={formData.discountPrice}
-              onChange={handleChange}
-              placeholder="Giá Giảm (VND)"
-              className="modal-input"
-            />
-            <input
-              type="number"
-              name="taxPrice"
-              value={formData.taxPrice}
-              onChange={handleChange}
-              placeholder="Giá Thuế (VND)"
-              className="modal-input"
-            />
-            <input
-              type="number"
-              name="maxPeople"
-              value={formData.maxPeople}
-              onChange={handleChange}
-              placeholder="Số Người Tối Đa"
-              className="modal-input"
-            />
-            <input
-              type="number"
-              name="rating"
-              value={formData.rating}
-              onChange={handleChange}
-              placeholder="Đánh giá"
-              className="modal-input"
-            />
+            <input type="text" name="title" value={formData.title} onChange={handleChange} placeholder="Tên Phòng" className="modal-input" />
+            <textarea name="desc" value={formData.desc} onChange={handleChange} placeholder="Mô Tả" className="modal-textarea" />
+            <input type="number" name="price" value={formData.price} onChange={handleChange} placeholder="Giá (VND)" className="modal-input" />
+            <input type="number" name="discountPrice" value={formData.discountPrice} onChange={handleChange} placeholder="Giá Giảm (VND)" className="modal-input" />
+            <input type="number" name="taxPrice" value={formData.taxPrice} onChange={handleChange} placeholder="Giá Thuế (VND)" className="modal-input" />
+            <input type="number" name="maxPeople" value={formData.maxPeople} onChange={handleChange} placeholder="Số Người Tối Đa" className="modal-input" />
+            <input type="number" name="rating" value={formData.rating} onChange={handleChange} placeholder="Đánh giá" className="modal-input" />
             <div>
               <strong>Hình Ảnh:</strong>
               {formData.images && formData.images.map((image, index) => (
                 <div key={index}>
-                  <input
-                    type="text"
-                    value={image}
-                    onChange={(e) => handleImageChange(index, e.target.value)}
-                    placeholder={`URL hình ảnh ${index + 1}`}
-                    className="modal-input"
-                  />
+                  <input type="text" value={image} onChange={(e) => handleImageChange(index, e.target.value)} placeholder={`URL hình ảnh ${index + 1}`} className="modal-input" />
                 </div>
               ))}
               <Button variant="contained" onClick={handleAddImage}>Thêm Hình Ảnh</Button>
             </div>
+            <br/>
             <Button className="button-save" type="submit" variant="contained">Lưu</Button>
           </form>
         </div>

@@ -1,19 +1,44 @@
-.ListUserCointainer h1{
-    margin: 15px;
-    color: gray;
-}
-.ListUserCointainer{
+.ListUserContainer {
     display: flex;
-    gap: 600px;
+    justify-content: space-between;
     align-items: center;
-}
-.ListUserCointainerBtn{
-    border-radius: 7px;
-    border: 1px solid black;
-    padding: 10px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .ListUserContainer h1 {
     color: gray;
-}
-.ListUserCointainerBtn:hover{
+  }
+  
+  .ListUserContainerBtn {
+    display: inline-block;
+    border-radius: 7px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    color: gray;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .ListUserContainerBtn:hover {
     background-color: rgba(128, 128, 128, 0.503);
     color: white;
-}
+  }
+  
+  .deleteButton {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: #e74c3c;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .deleteButton:hover {
+    background-color: #c0392b;
+  }
+  

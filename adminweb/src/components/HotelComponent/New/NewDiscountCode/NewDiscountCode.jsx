@@ -5,7 +5,7 @@ import axios from 'axios';
 const NewDiscountCode = () => {
   const [discountData, setDiscountData] = useState({
     code: '',
-    discountType: 'percentage', // mặc định là 'percentage'
+    discountType: 'percentage',
     discountValue: '',
     startDate: '',
     expirationDate: '',
@@ -23,7 +23,6 @@ const NewDiscountCode = () => {
     try {
       await axios.post('http://localhost:9000/api/discounts', discountData);
       alert('Mã giảm giá đã được tạo thành công!');
-      // Reset form after submission
       setDiscountData({
         code: '',
         discountType: 'percentage',

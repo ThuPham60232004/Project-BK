@@ -1,22 +1,22 @@
-.ListBooking {
+.listBookingWrapper {
     padding: 20px;
     background-color: #f9f9f9;
 }
 
-.ListBookingContainerDashboard {
+.listBookingHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.ListBookingContainerDashboard h2 {
+.listBookingTitle {
     margin: 0;
     color: #333;
     font-size: 24px;
 }
 
-.ListBookingContainerBtnDashboard {
+.addBookingButton {
     border-radius: 5px;
     border: none;
     padding: 10px 20px;
@@ -26,16 +26,11 @@
     transition: background-color 0.3s ease;
 }
 
-.ListBookingContainerBtnDashboard:hover {
+.addBookingButton:hover {
     background-color: #0056b3;
 }
 
-.dataGrid {
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-}
-
-button {
+.deleteBookingButton {
     background-color: #dc3545;
     color: white;
     border: none;
@@ -44,6 +39,6 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.deleteBookingButton:hover {
     background-color: #c82333;
 }

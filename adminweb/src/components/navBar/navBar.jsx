@@ -26,7 +26,6 @@ const NavBar = () => {
           <h2>BOOKING</h2>
         </div>
         <div className='NavBarInputSearch'>
-        
         </div>
         <div className='NavBarRight'>
           <div className='NavBarNotification'>
@@ -36,7 +35,7 @@ const NavBar = () => {
               <>
                 {user.img && <img src={user.img} alt="User" className="NavBarUserImage" />}
                 <span>{user.username}</span>
-                <button className='navbarbutton'onClick={handleLogout}>Đăng xuất</button>
+                <button className='navbarbutton' onClick={handleLogout}>Đăng xuất</button>
               </>
             ) : (
               <>

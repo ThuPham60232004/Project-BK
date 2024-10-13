@@ -1,91 +1,93 @@
 .bookingStatistics {
-    background-color: white;
-    color: #1c1c1e;
-    padding: 2rem;
-    border-radius: 8px;
-    max-width: 1200px;
-    margin: 0 auto;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .bookingStatistics h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #ff6b6b;
-  }
-  
-  .datePickerContainer {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-    padding: 0 2rem;
-  }
-  
-  .datePickerContainer label {
-    font-size: 1.2rem;
-    margin-right: 1rem;
-  }
-  
-  .datePickerContainer .react-datepicker-wrapper {
-    width: auto;
-  }
-  
+  background-color: #f5f7fa;
+  color: #2d3436;
+  padding: 2.5rem;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.bookingStatistics h1 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #3498db;
+}
+
+.datePickerContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2.5rem;
+  padding: 0 3rem;
+}
+
+.datePickerContainer label {
+  font-size: 1.4rem;
+  color: #333;
+  margin-right: 1.2rem;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+.statItem {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  color: #2c3e50;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.statItem:hover {
+  transform: translateY(-5px);
+}
+
+.statItem h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.6rem;
+  color: #16a085;
+}
+
+.statItem p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #e74c3c;
+}
+
+.chartContainer {
+  height: 320px;
+}
+
+.statItem ul {
+  margin-top: 1.2rem;
+  list-style-type: none;
+  padding: 0;
+}
+
+.statItem ul li {
+  background-color: #ecf0f1;
+  margin-bottom: 0.7rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  color: #2d3436;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 768px) {
   .stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-  
-  .statItem {
-    background-color: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    color: #1c1c1e;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  }
-  
-  .statItem h2 {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-    color: #ffd93d;
-  }
-  
-  .statItem p {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #48dbfb;
-  }
-  
-  .chartContainer {
-    height: 300px;
-  }
-  
-  .statItem ul {
-    margin-top: 1rem;
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .statItem ul li {
-    background-color: white;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    color: black;
-    font-size: 1.1rem;
-  }
-  
-  @media (max-width: 768px) {
-    .stats {
       grid-template-columns: 1fr;
-    }
-  
-    .datePickerContainer {
-      flex-direction: column;
-      gap: 1rem;
-    }
   }
-  
+
+  .datePickerContainer {
+      flex-direction: column;
+      gap: 1.5rem;
+  }
+}

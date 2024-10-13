@@ -36,14 +36,14 @@
 
 .modalBox {
     width: 400px;
-    margin: auto; /* Tự động căn giữa */
+    margin: auto;
     padding: 16px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative; /* Để sử dụng với flexbox */
-    top: 50%; /* Di chuyển xuống giữa */
-    transform: translateY(-50%); /* Căn giữa theo chiều dọc */
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 .modalTitle {

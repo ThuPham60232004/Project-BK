@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import {
-  Box,
-  Button,
-  Modal,
-  TextField,
-  Typography
-} from '@mui/material';
+import { Box, Button, Modal, TextField, Typography } from '@mui/material';
 import './SingleReview.css';
 
 const SingleReview = () => {
@@ -33,13 +27,8 @@ const SingleReview = () => {
     fetchReview();
   }, [id]);
 
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
@@ -49,20 +38,15 @@ const SingleReview = () => {
   const handleEditSubmit = async () => {
     try {
       await axios.put(`http://localhost:9000/api/reviews/${id}`, editedReview);
-      setReview((prev) => ({ ...prev, ...editedReview })); 
+      setReview((prev) => ({ ...prev, ...editedReview }));
       handleClose();
     } catch (error) {
       console.error(error);
     }
   };
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (!review) {
-    return <div>Không tìm thấy bài đánh giá</div>;
-  }
+  if (loading) return <div>Loading...</div>;
+  if (!review) return <div>Không tìm thấy bài đánh giá</div>;
 
   return (
     <div className="SingleReview">

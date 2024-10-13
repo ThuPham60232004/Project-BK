@@ -1,46 +1,45 @@
 .new-hotels-container {
-    padding: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-  
-  .new-hotels-title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .new-hotels-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .new-hotels-group {
-    margin-bottom: 15px;
-  }
-  
-  .new-hotels-label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .new-hotels-input,
-  .new-hotels-checkbox,
-  .new-hotels-submit-btn {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .new-hotels-submit-btn {
-    margin-top: 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .new-hotels-submit-btn:hover {
-    background-color: #0056b3;
-  }
-  
+  padding: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.new-hotels-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.new-hotels-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.new-hotels-group {
+  margin-bottom: 15px;
+}
+
+.new-hotels-label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.new-hotels-input,
+.new-hotels-checkbox,
+.new-hotels-submit-btn {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.new-hotels-submit-btn {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.new-hotels-submit-btn:hover {
+  background-color: #0056b3;
+}

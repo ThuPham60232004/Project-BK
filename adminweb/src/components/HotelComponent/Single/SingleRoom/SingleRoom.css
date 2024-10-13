@@ -45,7 +45,7 @@
     transform: scale(1.05);
 }
 
-.modal-content5 {
+.modal-content {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
@@ -74,6 +74,7 @@
 .button-save {
     margin-top: 15px;
     padding: 10px 20px;
+    transition: background-color 0.3s;
 }
 
 .button-edit {
@@ -86,7 +87,10 @@
     color: white;
 }
 
-.button-edit:hover,
+.button-edit:hover {
+    background-color: #0056b3;
+}
+
 .button-save:hover {
-    opacity: 0.8;
+    background-color: #218838;
 }

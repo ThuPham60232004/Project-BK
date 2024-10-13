@@ -77,7 +77,6 @@ const SingleNotification = () => {
         Chỉnh sửa
       </Button>
 
-      {/* Modal chỉnh sửa thông báo */}
       <Modal open={openEditModal} onClose={handleCloseEditModal}>
         <Box className="modal-content4">
           <Typography variant="h5" gutterBottom>Chỉnh sửa thông báo</Typography>

@@ -13,7 +13,7 @@ const NewRooms = () => {
     taxPrice: '',
     maxPeople: '',
     category: '',
-    images: [], 
+    images: [],
   });
 
   const handleHotelChange = (event) => {
@@ -35,9 +35,10 @@ const NewRooms = () => {
       alert('Lỗi khi thêm phòng.');
     }
   };
+
   const handleImageUpload = (event) => {
     const files = event.target.files;
-    const imageArray = Array.from(files).map(file => URL.createObjectURL(file)); 
+    const imageArray = Array.from(files).map(file => URL.createObjectURL(file));
     setRoomData({ ...roomData, images: imageArray });
   };
 
@@ -149,6 +150,7 @@ const NewRooms = () => {
             required
           />
         </div>
+        
         <div className="room-form-group">
           <label className="room-form-label" htmlFor="images">Hình ảnh:</label>
           <input
@@ -159,13 +161,13 @@ const NewRooms = () => {
             multiple
             onChange={handleImageUpload}
           />
-          {/* Hiển thị hình ảnh được tải lên */}
           <div className="image-preview">
             {roomData.images.map((image, index) => (
               <img key={index} src={image} alt={`Room Image ${index + 1}`} className="room-image" />
             ))}
           </div>
         </div>
+
         <div className="room-form-group">
           <label className="room-form-label" htmlFor="category">Loại phòng:</label>
           <select
