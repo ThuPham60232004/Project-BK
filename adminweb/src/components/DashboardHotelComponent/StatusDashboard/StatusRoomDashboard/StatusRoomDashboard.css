@@ -79,7 +79,14 @@
     background-color: rgba(0, 0, 0, 0.5);
     align-items: center;
   }
-  
+.modal-content-text{
+  display: flex;
+  gap: 60px;
+
+}
+.modal-content-text-hahah{
+  margin-top: 9px;
+}
   .modal-content9 {
     background-color: white;
     margin: 15% auto;
@@ -116,12 +123,12 @@
   }
   
   .status.available {
-    background-color: #a6ce39;
+    background-color: #d9534f;
     color: white;
   }
   
   .status.unavailable {
-    background-color: #d9534f;
+    background-color: #a6ce39;
     color: white;
   }
   

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './StatusRoomDashboard.css';
-
+import { IoClose } from "react-icons/io5";
 const StatusRoomDashboard = () => {
   const [hotels, setHotels] = useState([]);
   const [selectedHotel, setSelectedHotel] = useState(null);
@@ -61,7 +61,7 @@ const StatusRoomDashboard = () => {
               onClick={() => handleHotelClick(hotel)}
             >
               <img 
-                src={hotel.photos && hotel.photos.length > 0 ? hotel.photos[0] : 'default-image.jpg'}  // Use first image or fallback
+                src={hotel.photos && hotel.photos.length > 0 ? hotel.photos[0] : 'default-image.jpg'}
                 alt={hotel.name} 
                 className="hotel-image" 
               />
@@ -76,8 +76,13 @@ const StatusRoomDashboard = () => {
       {isModalOpen && (
         <div className="modal" style={{ display: isModalOpen ? "flex" : "none" }}>
           <div className="modal-content">
-            <span className="close" onClick={closeModal}>&times;</span>
+            <div className="modal-content-text">
             <h2>Phòng của khách sạn: {selectedHotel.name}</h2>
+            <span className="modal-content-text-hahah" onClick={closeModal}>
+              <IoClose />
+            </span>
+            </div>
+           
             <div className="status-map">
               {roomStatus.length > 0 ? (
                 roomStatus.map(room => (
