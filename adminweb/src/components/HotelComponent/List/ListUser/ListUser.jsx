@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver'; 
 
 const ListUser = () => {
   const [user, setUser] = useState([]);
@@ -38,6 +40,26 @@ const ListUser = () => {
     }
   };
 
+
+  const exportToExcel = () => {
+    const dataForExcel = user.map((u) => ({
+      'Tên người dùng': u.username,
+      'Email': u.email,
+      'Đất nước': u.country,
+      'Thành phố': u.city,
+      'Số điện thoại': u.phone,
+      'Phân quyền': u.role,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Danh sách người dùng");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const file = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(file, 'Danh_sach_nguoi_dung.xlsx'); 
+  };
+
   const columns = [
     { field: 'username', headerName: 'Tên người dùng', width: 150 },
     { field: 'email', headerName: 'Email', width: 180 },
@@ -59,9 +81,13 @@ const ListUser = () => {
     <div className='ListUser'>
       <div className='ListUserContainer'> 
         <h1>Danh sách người dùng</h1>
-        <div className='ListUserContainerBtn' onClick={handleClickAdd}>
+       <div className='btnuser'>
+       <div className='ListUserContainerBtn' onClick={handleClickAdd}>
           <h3>Thêm người dùng</h3>
         </div>
+        <div className='ListUserContainerBtn' onClick={exportToExcel} disabled={!user.length}>
+          <h3>Xuất Excel</h3></div> 
+       </div>
       </div>
       <Box sx={{ height: '800px', width: '97%', marginLeft: '20px' }}>
         <DataGrid

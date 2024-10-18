@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './ListNotification.css';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver'; 
 
 const ListNotification = () => {
   const [notification, setNotification] = useState([]);
@@ -38,6 +40,24 @@ const ListNotification = () => {
     navigate(`/SingleNotification/${params.row._id}`);
   };
 
+
+  const exportToExcel = () => {
+    const dataForExcel = notification.map((notif) => ({
+      'Id người dùng': notif.user,
+      'Nội dung': notif.message,
+      'Đánh dấu đọc chưa': notif.isRead ? 'Có' : 'Không',
+      'Id quản lý khách sạn': notif.idAdmin,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Danh sách thông báo");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const file = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(file, 'Danh_sach_thong_bao.xlsx'); 
+  };
+
   const columns = [
     { field: 'user', headerName: 'Id người dùng', width: 290 },
     { field: 'message', headerName: 'Nội dung', width: 490 },
@@ -57,8 +77,11 @@ const ListNotification = () => {
     <div className='ListNotification'>
       <div className='ListNotificationCointainer'>
         <h2>Danh sách thông báo</h2>
+        <div className='btnnoti'>
         <div className='ListNotificationCointainerBtn' onClick={handleClickAdd}>
           <h3>Thêm thông báo</h3>
+        </div>
+        <div className='ListNotificationCointainerBtn' onClick={exportToExcel}><h3>Xuất Excel</h3></div>
         </div>
       </div>
       <Box sx={{ height: '800px', width: '97%', marginLeft: '20px' }}>

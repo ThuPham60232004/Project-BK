@@ -7,21 +7,24 @@
   }
   
   .ListUserContainer h1 {
-    color: gray;
+    color: #1ABC9C;
   }
   
   .ListUserContainerBtn {
     display: inline-block;
     border-radius: 7px;
-    border: 1px solid #ccc;
+    background-color: #1ABC9C;
     padding: 10px 15px;
-    color: gray;
+    color: white;
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s;
   }
-  
+  .btnuser{
+    display: flex;
+    gap: 10px;
+  }
   .ListUserContainerBtn:hover {
-    background-color: rgba(128, 128, 128, 0.503);
+    background-color: #08846b;
     color: white;
   }
   
@@ -29,7 +32,7 @@
     padding: 5px 10px;
     border-radius: 5px;
     color: white;
-    background-color: #e74c3c;
+    background-color: #1ABC9C;
     border: none;
     cursor: pointer;
     font-size: 14px;
@@ -37,6 +40,6 @@
   }
   
   .deleteButton:hover {
-    background-color: #c0392b;
+    background-color: #08846b;
   }
   

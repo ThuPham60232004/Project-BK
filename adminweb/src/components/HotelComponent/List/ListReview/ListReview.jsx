@@ -4,6 +4,8 @@ import { Box } from '@mui/material';
 import axios from 'axios';
 import { DataGrid } from '@mui/x-data-grid';
 import './ListReview.css';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver'; 
 
 const ListReview = () => {
   const [review, setReview] = useState([]);
@@ -39,6 +41,26 @@ const ListReview = () => {
     }
   };
 
+  
+  const exportToExcel = () => {
+    const dataForExcel = review.map((rev) => ({
+      'Id người dùng': rev.userId,
+      'Id khách sạn': rev.hotelId,
+      'Id phòng': rev.roomId,
+      'Đánh giá sao': rev.rating,
+      'Nội dung đánh giá': rev.comment,
+      'Id quản lý': rev.idAdmin,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Danh sách bình luận");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const file = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(file, 'Danh_sach_binh_luan.xlsx'); 
+  };
+
   const columns = [
     { field: 'userId', headerName: 'Id người dùng', width: 250 },
     { field: 'hotelId', headerName: 'Id khách sạn', width: 250 },
@@ -60,8 +82,12 @@ const ListReview = () => {
     <div className='ListReview'>
       <div className='ListReviewCointainer'>
         <h2>Danh sách bình luận</h2>
+        <div className='btnreview'>
         <div className='ListReviewCointainerBtn' onClick={handleClickAdd}>
           <h3>Thêm bình luận</h3>
+        </div>
+        <div className='ListReviewCointainerBtn' onClick={exportToExcel}><h3>
+        Xuất Excel </h3></div> 
         </div>
       </div>
       <Box sx={{ height: '800px', width: '97%', marginLeft: '20px' }}>

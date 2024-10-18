@@ -12,12 +12,15 @@
   
   .ListNotificationCointainer h2 {
     font-size: 28px;
-    color: #333;
+    color: #1ABC9C;
     font-weight: bold;
   }
-  
+  .btnnoti{
+    display: flex;
+    gap: 10px;
+  }
   .ListNotificationCointainerBtn {
-    background-color: #4CAF50;
+    background-color: #1ABC9C;
     color: white;
     padding: 12px 20px;
     border-radius: 8px;
@@ -28,7 +31,7 @@
   }
   
   .ListNotificationCointainerBtn:hover {
-    background-color: #45a049;
+    background-color: #08846b;
   }
   
   .MuiDataGrid-root {
@@ -45,7 +48,7 @@
   }
   
   .btnnoti {
-    background-color: #ff4d4d;
+    background-color: #1ABC9C;
     color: white;
     border: none;
     border-radius: 5px;
@@ -54,6 +57,6 @@
   }
   
   .btnnoti:hover {
-    background-color: #ff3333;
+    background-color: #08846b;
   }
   

@@ -12,12 +12,15 @@
    
    .ListHotelCointainer h2 {
      font-size: 28px;
-     color: #333;
+     color: #1ABC9C;
      font-weight: bold;
    }
-   
+   .btnhotels{
+    display: flex;
+    gap: 10px;
+  }
    .ListHotelCointainerBtn {
-     background-color: #2196F3;
+     background-color: #1ABC9C;
      color: white;
      padding: 12px 20px;
      border-radius: 8px;
@@ -28,7 +31,7 @@
    }
    
    .ListHotelCointainerBtn:hover {
-     background-color: #1976D2;
+     background-color: #08846b;
    }
    
    .MuiDataGrid-root {
@@ -45,7 +48,7 @@
    }
    
    .btnhotels{
-     background-color: #ff4d4d;
+     background-color: #1ABC9C ;
      color: white;
      border: none;
      border-radius: 5px;
@@ -54,7 +57,7 @@
    }
    
    .btnhotels:hover {
-     background-color: #ff3333;
+     background-color: #08846b;
    }
    
    img {

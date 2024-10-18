@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './ListRoom.css';
+import * as XLSX from 'xlsx'; 
+import { saveAs } from 'file-saver'; 
 
 const ListRoom = () => {
   const navigate = useNavigate();
@@ -52,6 +54,30 @@ const ListRoom = () => {
     }
   };
 
+  
+  const exportToExcel = () => {
+    const dataForExcel = rooms.map((room) => ({
+      'Tên Phòng': room.title,
+      'Mô Tả': room.desc,
+      'Giá (VND)': room.price,
+      'Giá Giảm': room.discountPrice,
+      'Giá Thuế': room.taxPrice,
+      'Số Người Tối Đa': room.maxPeople,
+      'Đánh giá sao': room.rating,
+      'Số Đánh Giá': room.numberOfReviews,
+      'Tình Trạng': room.availability ? 'Còn Trống' : 'Đã Đặt',
+      'Danh Mục': room.category,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Danh sách phòng");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const file = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(file, 'Danh_sach_phong.xlsx'); 
+  };
+
   const columnsHotels = [
     { field: 'name', headerName: 'Tên khách sạn', width: 150 },
     { field: 'type', headerName: 'Loại khách sạn', width: 200 },
@@ -94,7 +120,6 @@ const ListRoom = () => {
     },
   ];
   
-
   if (!hotels.length) return <div>Loading hotels...</div>;
 
   return (
@@ -102,8 +127,12 @@ const ListRoom = () => {
       <div className="roomlist-content">
         <div className='roomlist-content-header'>
           <h2>Danh Sách Phòng</h2>
+          <div className='btnroom'>
           <div className='ListRoomCointainerBtn' onClick={handleClickAdd}>
             <h3>Thêm Phòng</h3>
+          </div>
+          <div className='ListRoomCointainerBtn'  onClick={exportToExcel} disabled={!rooms.length}>
+           <h3>Xuất Excel</h3> </div> 
           </div>
         </div>
         <Box sx={{ height: '400px', width: '100%', marginBottom: '20px' }}>
@@ -124,16 +153,16 @@ const ListRoom = () => {
           <>
             <h3>Danh Sách Phòng</h3>
             <Box sx={{ height: '400px', width: '100%' }}>
-            <DataGrid
-              rows={rooms}
-              columns={columnsRooms}
-              pageSize={5}
-              checkboxSelection
-              getRowId={(row) => row._id}
-              onRowClick={(params) => {
-                navigate(`/SingleRoom/${params.row._id}`); 
-              }}
-            />
+              <DataGrid
+                rows={rooms}
+                columns={columnsRooms}
+                pageSize={5}
+                checkboxSelection
+                getRowId={(row) => row._id}
+                onRowClick={(params) => {
+                  navigate(`/SingleRoom/${params.row._id}`); 
+                }}
+              />
             </Box>
           </>
         )}

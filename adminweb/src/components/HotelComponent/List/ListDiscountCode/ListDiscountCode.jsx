@@ -4,6 +4,8 @@ import './ListDiscountCode.css';
 import { useNavigate } from 'react-router-dom';
 import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver';
 
 const ListDiscountCode = () => {
   const navigate = useNavigate();
@@ -12,12 +14,12 @@ const ListDiscountCode = () => {
   const handleAddDiscountCode = () => {
     navigate('/NewDiscountCode');
   };
+
   const handleRowClick = (params) => {
     console.log(params);  
     navigate(`/SingleDiscountCode/${params.row._id}`);
   };
-  
-  
+
   const handleDeleteDiscountCode = async (id) => {
     try {
       await axios.delete(`http://localhost:9000/api/discounts/${id}`);
@@ -57,12 +59,37 @@ const ListDiscountCode = () => {
     },
   ];
 
+  const exportToExcel = () => {
+    const dataForExcel = discountCode.map((code) => ({
+      'Mã code': code.code,
+      'Loại mã giảm giá': code.discountType,
+      'Giá trị mã giảm giá': code.discountValue,
+      'Ngày bắt đầu': code.startDate,
+      'Ngày hết hạn': code.expirationDate,
+      'Số lượng mã giảm giá': code.amountDiscountCode,
+      'Id quản lý': code.idAdmin,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Mã giảm giá");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const file = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(file, 'Danh_sach_ma_giam_gia.xlsx');
+  };
+
   return (
     <div className='ListDiscountCode'>
       <div className='ListDiscountCodeCointainer'>
         <h2>Danh sách mã giảm giá</h2>
+        <div className='btndiscount'>
         <div className='ListDiscountCodeCointainerBtn' onClick={handleAddDiscountCode}>
           <h3>Thêm mã giảm giá</h3>
+        </div>
+        <div className='ListDiscountCodeCointainerBtn' onClick={exportToExcel}>
+          <h3>Xuất Excel</h3>
+        </div> 
         </div>
       </div>
       <Box sx={{ height: '800px', width: '97%', marginLeft: '20px' }}>
@@ -83,7 +110,6 @@ const ListDiscountCode = () => {
           disableSelectionOnClick  
         />
       </Box>
-
     </div>
   );
 };

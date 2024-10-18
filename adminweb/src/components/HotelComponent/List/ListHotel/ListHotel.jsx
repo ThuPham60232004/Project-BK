@@ -4,6 +4,8 @@ import Box from '@mui/material/Box';
 import './ListHotel.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import * as XLSX from 'xlsx';
+import { saveAs } from 'file-saver'; 
 
 const ListHotel = () => {
   const [hotels, setHotels] = useState([]);
@@ -24,7 +26,6 @@ const ListHotel = () => {
   const handleRoom = (hotelId) => {
     navigate(`/SingleHotelRoom/${hotelId}`);
   };
-  
 
   const handleClickAdd = () => {
     navigate('/NewHotels');
@@ -37,6 +38,31 @@ const ListHotel = () => {
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const exportToExcel = () => {
+    const dataForExcel = hotels.map((hotel) => ({
+      'Tên khách sạn': hotel.name,
+      'Loại khách sạn': hotel.type,
+      'Thành phố': hotel.city,
+      'Địa chỉ': hotel.address,
+      'Khoảng cách': hotel.distance,
+      'Tựa đề': hotel.title,
+      'Mô tả': hotel.desc,
+      'Đánh giá': hotel.rating,
+      'Id Phòng': hotel.rooms,
+      'Giá nhỏ nhất': hotel.cheapestPrice,
+      'Loại đặc biệt': hotel.featured,
+      'Id quản lý khách sạn': hotel.idAdmin,
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Danh sách khách sạn");
+
+    const excelBuffer = XLSX.write(workbook, { bookType: 'xlsx', type: 'array' });
+    const file = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    saveAs(file, 'Danh_sach_khach_san.xlsx');
   };
 
   const columns = [
@@ -78,8 +104,12 @@ const ListHotel = () => {
     <div className='ListHotel'>
       <div className='ListHotelCointainer'> 
         <h2>Danh sách khách sạn</h2>
+        <div className='btnhotels'>
         <div className='ListHotelCointainerBtn' onClick={handleClickAdd}>
           <h3>Thêm khách sạn</h3>
+        </div>
+        <div className='ListHotelCointainerBtn'onClick={exportToExcel}>
+        <h3>Xuất Excel</h3></div>
         </div>
       </div>
       <Box sx={{ height: '800px', width: '97%', marginLeft: '20px' }}>

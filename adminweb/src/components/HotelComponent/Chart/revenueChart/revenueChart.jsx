@@ -117,18 +117,23 @@ const RevenueChart = () => {
       <h1 className='hehhe'>THỐNG KÊ ĐẶT PHÒNG</h1>
 
       <div className="datePickerContainer">
-        <label>Chọn ngày bắt đầu:</label>
-        <DatePicker 
-          selected={startDate} 
-          onChange={(date) => setStartDate(date)} 
-          dateFormat="yyyy-MM-dd" 
-        />
-        <label>Chọn ngày kết thúc:</label>
-        <DatePicker 
-          selected={endDate} 
-          onChange={(date) => setEndDate(date)} 
-          dateFormat="yyyy-MM-dd" 
-        />
+        <div className='datePickerContainerstart'>
+          <label>Chọn ngày bắt đầu:</label>
+          <DatePicker 
+            selected={startDate} 
+            onChange={(date) => setStartDate(date)} 
+            dateFormat="yyyy-MM-dd" 
+          />
+        </div>
+      
+        <div className='datePickerContainerend'>
+          <label>Chọn ngày kết thúc:</label>
+          <DatePicker 
+            selected={endDate} 
+            onChange={(date) => setEndDate(date)} 
+            dateFormat="yyyy-MM-dd" 
+          />
+        </div>
       </div>
 
       <div className="stats">

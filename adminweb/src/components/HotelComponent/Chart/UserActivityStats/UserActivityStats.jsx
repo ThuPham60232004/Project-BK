@@ -20,8 +20,8 @@ const UserActivityStats = () => {
   }, []);
 
   const data = [
+    { name: 'Trung bình (s)', value: activityStats.averageDuration },
     { name: 'Tổng lượt view', value: activityStats.totalViews },
-    { name: 'Trung bình (s)', value: activityStats.averageDuration }
   ];
 
   return (
@@ -33,7 +33,7 @@ const UserActivityStats = () => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Bar dataKey="value" fill="#4a90e2" />
+          <Bar dataKey="value" fill="#1ABC9C" />
         </BarChart>
       </ResponsiveContainer>
     </div>

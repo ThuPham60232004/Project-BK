@@ -9,15 +9,18 @@
     align-items: center;
     margin-bottom: 20px;
   }
-  
+  .btndiscount{
+    display: flex;
+    gap: 10px;
+  }
   .ListDiscountCodeCointainer h2 {
     font-size: 28px;
-    color: #333;
+    color: #1ABC9C;
     font-weight: bold;
   }
   
   .ListDiscountCodeCointainerBtn {
-    background-color: #4CAF50;
+    background-color: #1ABC9C;
     color: white;
     padding: 12px 20px;
     border-radius: 8px;
@@ -28,7 +31,7 @@
   }
   
   .ListDiscountCodeCointainerBtn:hover {
-    background-color: #45a049;
+    background-color: #08846b;
   }
   
   .MuiDataGrid-root {
@@ -41,7 +44,7 @@
   }
   
   .MuiDataGrid-cell {
-    color: #333;
+    color: #1ABC9C;
   }
   
   .btndiscountcode {

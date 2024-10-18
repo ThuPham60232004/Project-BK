@@ -2,7 +2,7 @@
   width: 100%;
 }
 .hehhe-home {
-  color: rgb(238, 51, 216);
+  color: #1ABC9C;
   text-align: center;
   margin-bottom: 20px;
   font-size: 2em;
@@ -28,20 +28,7 @@
 .statItem-home h2 {
   margin-bottom: 10px;
   font-size: 1.5em;
-  color: #333;
-}
-
-.statItem-home p {
-  font-size: 1.2em;
-  color: #ff0000;
-}
-
-.statItem-home ul {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  font-size: 1.2em;
-  color: #ff0000; 
+  color: #1ABC9C;
 }
 
 .statItem-home ul li {
