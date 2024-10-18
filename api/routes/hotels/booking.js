@@ -6,10 +6,11 @@ import { getBookingDays,getBookingByAdminId,
     getBookingCountByHotel,getAllBookings,getRevenueByHotel, 
     getHotelsWithNoBookings ,getHotelsWithNoBookingsAllTime,getRevenueByHotelAllTime,
     getBookingCountByHotelAllTime,getTotalRevenueAllTime,getBookingCountByUserAllTime,
-    getTotalBookings,getRevenueByAdmin,getBookingByHotelId} from "../../controllers/hotels/booking.js";
+    getTotalBookings,getRevenueByAdmin,getBookingByHotelId,countBookings,getTotalRevenuePending} from "../../controllers/hotels/booking.js";
 
 const router = express.Router();
 
+router.get("/countBookings", countBookings); 
 // Tạo một booking mới
 router.post("/", createBooking);
 // Lấy một booking theo ID
@@ -51,7 +52,7 @@ router.get("/statistics/getTotalBookings", getTotalBookings );
 router.get("/statistics/getBookingDays", getBookingDays );
 router.get("/statistics/getMostBookedDay",getMostBookedDay);
 router.get("/statistics/getHotelsWithNoBookingsAllTime", getHotelsWithNoBookingsAllTime);
-router.get("/statistics/getRevenueByHotelAllTime", getRevenueByHotelAllTime);
+
 router.get("/statistics/getBookingCountByHotelAllTime", getBookingCountByHotelAllTime);
 router.get("/statistics/getTotalRevenueAllTime", getTotalRevenueAllTime);
 router.get("/statistics/getBookingCountByUserAllTime", getBookingCountByUserAllTime );
@@ -62,4 +63,9 @@ router.get("/hotelAdmin/:idAdmin", getBookingByAdminId);
 router.get("/getRevenueByAdmin/:idAdmin", getRevenueByAdmin);
 
 router.get("/getbyhotel/:idHotel", getBookingByHotelId); 
+
+// Tổng doanh thu ở trạng thái confirmed
+router.get("/statistics/getRevenueByHotelAllTime", getRevenueByHotelAllTime);
+// Tổng doanh thu ở trạng thái pending
+router.get("/statistics/getTotalRevenuePending",getTotalRevenuePending);
 export default router;

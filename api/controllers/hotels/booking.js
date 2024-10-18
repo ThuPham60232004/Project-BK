@@ -253,7 +253,6 @@ export const getRevenueByHotel = async (req, res) => {
       }
     ]);
 
-    // Populate thông tin khách sạn
     const populatedRevenueByHotel = await Hotel.populate(revenueByHotel, { path: "_id", select: "name" });
 
     res.status(200).json(populatedRevenueByHotel);
@@ -267,12 +266,10 @@ export const getHotelsWithNoBookings = async (req, res) => {
     const selectedStartDate = moment(startDate).startOf('day').toDate();
     const selectedEndDate = moment(endDate).endOf('day').toDate();
 
-    // Lấy danh sách các khách sạn có ít nhất một booking
     const hotelsWithBookings = await Booking.distinct("hotel", {
       createdAt: { $gte: selectedStartDate, $lte: selectedEndDate }
     });
 
-    // Tìm các khách sạn chưa có booking nào
     const hotelsWithNoBookings = await Hotel.find({
       _id: { $nin: hotelsWithBookings }
     }).select("name address");
@@ -283,7 +280,6 @@ export const getHotelsWithNoBookings = async (req, res) => {
   }
 };
 
-// Lấy tất cả bookings
 export const getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find()
@@ -298,7 +294,6 @@ export const getAllBookings = async (req, res) => {
 };
 
 
-// Tổng số lượng booking
 export const getTotalBookings = async (req, res) => {
   try {
     const count = await Booking.countDocuments();
@@ -308,30 +303,8 @@ export const getTotalBookings = async (req, res) => {
   }
 };
 
-// Doanh thu tổng cộng từ tất cả các booking
-export const getTotalRevenueAllTime = async (req, res) => {
-  try {
-    const totalRevenue = await Booking.aggregate([
-      {
-        $match: {
-          status: "confirmed"
-        }
-      },
-      {
-        $group: {
-          _id: null,
-          totalRevenue: { $sum: "$totalPrice" }
-        }
-      }
-    ]);
 
-    res.status(200).json({ totalRevenue: totalRevenue[0]?.totalRevenue || 0 });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-};
 
-// Thống kê số lượng booking theo người dùng tất cả thời gian
 export const getBookingCountByUserAllTime = async (req, res) => {
   try {
     const countByUser = await Booking.aggregate([
@@ -339,6 +312,24 @@ export const getBookingCountByUserAllTime = async (req, res) => {
         $group: {
           _id: "$user",
           count: { $sum: 1 }
+        }
+      },
+      {
+        $lookup: {
+          from: "users", 
+          localField: "_id",
+          foreignField: "_id",
+          as: "userDetails"
+        }
+      },
+      {
+        $unwind: "$userDetails" 
+      },
+      {
+        $project: {
+          _id: 1,
+          count: 1,
+          username: "$userDetails.username" 
         }
       }
     ]);
@@ -349,7 +340,7 @@ export const getBookingCountByUserAllTime = async (req, res) => {
   }
 };
 
-// Thống kê số lượng booking theo khách sạn tất cả thời gian
+
 export const getBookingCountByHotelAllTime = async (req, res) => {
   try {
     const countByHotel = await Booking.aggregate([
@@ -357,6 +348,24 @@ export const getBookingCountByHotelAllTime = async (req, res) => {
         $group: {
           _id: "$hotel",
           count: { $sum: 1 }
+        }
+      },
+      {
+        $lookup: {
+          from: "hotels", 
+          localField: "_id", 
+          foreignField: "_id", 
+          as: "hotelInfo"
+        }
+      },
+      {
+        $unwind: "$hotelInfo"
+      },
+      {
+        $project: {
+          _id: 0, 
+          hotelName: "$hotelInfo.name",
+          count: 1 
         }
       }
     ]);
@@ -367,19 +376,21 @@ export const getBookingCountByHotelAllTime = async (req, res) => {
   }
 };
 
+
 // Doanh thu theo khách sạn tất cả thời gian
 export const getRevenueByHotelAllTime = async (req, res) => {
   try {
+    // Bước 1: Nhóm theo khách sạn và tính tổng doanh thu từ những đơn đặt phòng "confirmed"
     const revenueByHotel = await Booking.aggregate([
       {
         $match: {
-          status: "confirmed"
+          status: "confirmed" // Chỉ tính doanh thu từ các đơn đã được xác nhận
         }
       },
       {
         $group: {
-          _id: "$hotel",
-          totalRevenue: { $sum: "$totalPrice" }
+          _id: "$hotel", // Nhóm theo khách sạn
+          totalRevenue: { $sum: "$totalPrice" } // Tổng doanh thu
         }
       },
       {
@@ -389,7 +400,6 @@ export const getRevenueByHotelAllTime = async (req, res) => {
       }
     ]);
 
-    // Populate hotel details
     const populatedRevenueByHotel = await Hotel.populate(revenueByHotel, { path: "_id", select: "name" });
 
     res.status(200).json(populatedRevenueByHotel);
@@ -398,13 +408,12 @@ export const getRevenueByHotelAllTime = async (req, res) => {
   }
 };
 
+
 // Lấy các khách sạn chưa có booking tất cả thời gian
 export const getHotelsWithNoBookingsAllTime = async (req, res) => {
   try {
-    // Lấy danh sách các khách sạn có ít nhất một booking
     const hotelsWithBookings = await Booking.distinct("hotel");
 
-    // Tìm các khách sạn chưa có booking nào
     const hotelsWithNoBookings = await Hotel.find({
       _id: { $nin: hotelsWithBookings }
     }).select("name address");
@@ -421,12 +430,16 @@ export const getBookingDays = async (req, res) => {
     const bookingsPerDay = await Booking.aggregate([
       {
         $group: {
-          _id: { $dateToString: { format: "%Y-%m-%d", date: "$createdAt" } },
+          _id: {
+            year: { $year: "$createdAt" },
+            month: { $month: "$createdAt" },
+            day: { $dayOfMonth: "$createdAt" }
+          },
           count: { $sum: 1 }
         }
       },
       {
-        $sort: { _id: 1 }
+        $sort: { "_id.year": 1, "_id.month": 1, "_id.day": 1 } 
       }
     ]);
 
@@ -435,6 +448,7 @@ export const getBookingDays = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
 
 // Ngày có số lượng booking nhiều nhất
 export const getMostBookedDay = async (req, res) => {
@@ -525,5 +539,60 @@ export const getBookingByHotelId = async (req, res) => {
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Lỗi máy chủ", error: err.message });
+  }
+};
+
+export const countBookings = async (req, res, next) => {
+  try {
+    const bookingCount = await Booking.countDocuments();
+    res.status(200).json({totalBookings: bookingCount });
+  } catch (err) {
+    next(err);
+  }
+};
+
+// Tổng doanh thu ở trạng thái confirmed
+export const getTotalRevenueAllTime = async (req, res) => {
+  try {
+    const totalRevenue = await Booking.aggregate([
+      {
+        $match: {
+          status: "confirmed"
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: "$totalPrice" }
+        }
+      }
+    ]);
+
+    res.status(200).json({ totalRevenue: totalRevenue[0]?.totalRevenue || 0 });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+// Tổng doanh thu ở trạng thái pending
+export const getTotalRevenuePending = async (req, res) => {
+  try {
+    const totalRevenue = await Booking.aggregate([
+      {
+        $match: {
+          status: "pending"
+        }
+      },
+      {
+        $group: {
+          _id: null,
+          totalRevenue: { $sum: "$totalPrice" }
+        }
+      }
+    ]);
+
+    res.status(200).json({ totalRevenue: totalRevenue[0]?.totalRevenue || 0 });
+  } catch (err) {
+    res.status(500).json(err);
   }
 };

@@ -61,3 +61,11 @@ export const getUseridAdmin = async (req,res,next)=>{
     next(err);
   }
 }
+export const countUsers = async (req, res, next) => {
+  try {
+    const userCount = await User.countDocuments();
+    res.status(200).json({totalUsers: userCount });
+  } catch (err) {
+    next(err);
+  }
+};

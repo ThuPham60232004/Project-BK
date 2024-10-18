@@ -61,6 +61,7 @@ const Login = () => {
     <div className="login_page">
       <div className="login_container">
         <div className="left_container_login">
+          <br/><br/><br/>
           <div className="logo_login_con">
               <img src="./nft-image-1.png" alt="" className='logo_login'/>
              <h2 className='title_login'>ĐĂNG NHẬP</h2>
@@ -91,26 +92,15 @@ const Login = () => {
           </div>
 
             <button disabled={loading} onClick={handleClick} className='loginbtn'>Đăng nhập</button>
-          
-            <div className="social_login">
-              <p>Hoặc sử dụng tài khoản mạng xã hội</p>
-              <div className="social_icons_login">
-                <a href="#"><FaFacebookF className='icon_social_login'/></a>
-                <a href="#"><FaGoogle className='icon_social_login'/></a>
-              </div>
-            </div>
-            <div className="text_register">
-              <p>Chưa có tài khoản? <span><a href="#" onClick={registerLink}>Đăng ký tại đây</a></span></p>
-            </div>
           </div>
         </div>
          {error && <p className="error-message">{error}</p>}
         <div className="right_container_login">
         
-        <h1>Chào mừng đến với FINTECH</h1>
+        <h1>Chào mừng đến với BOOKING</h1>
         <p>Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và khám phá thế giới số mới.</p>
         <div className="btn_register">
-              <button onClick={registerLink}>Đăng ký<FaArrowRightLong className='icon_arrow_register'/></button>
+              <button>XIN CHÀO<FaArrowRightLong className='icon_arrow_register'/></button>
             </div>
         </div>
       </div>

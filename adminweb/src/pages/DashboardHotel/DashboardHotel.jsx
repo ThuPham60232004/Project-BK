@@ -14,7 +14,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const DashboardHotel = () => {
     const items = [
-        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Mục chính", path: "/DashboardHotel" },
+        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Mục chính", path: "/DashboardHotel/DashboardHome2" },
         { icon: <FaRegUserCircle style={{ width: '25px', height: '25px' }} />, text: "Danh sách phòng", path: "/DashboardHotel/ListRoomDashboard" },
         { icon: <LiaHotelSolid style={{ width: '25px', height: '25px' }} />, text: "Danh sách khách sạn", path: "/DashboardHotel/ListHotelDashboard" },
         { icon: <RiDiscountPercentLine style={{ width: '25px', height: '25px' }} />, text: "Danh sách mã giảm giá", path: "/DashboardHotel/ListDiscountCodeDashboard" },

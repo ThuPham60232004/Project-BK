@@ -78,7 +78,7 @@ const StatusRoomDashboard = () => {
           <div className="modal-content">
             <div className="modal-content-text">
             <h2>Phòng của khách sạn: {selectedHotel.name}</h2>
-            <span className="modal-content-text-hahah" onClick={closeModal}>
+            <span className="cd" onClick={closeModal}>
               <IoClose />
             </span>
             </div>

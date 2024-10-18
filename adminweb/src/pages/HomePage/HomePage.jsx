@@ -17,7 +17,7 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const HomePage = () => {
     const items = [
-        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Mục chính", path: "/" },
+        { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Mục chính", path: "/DashboardHome1" },
         { icon: <FaRegUserCircle style={{ width: '25px', height: '25px' }} />, text: "Danh sách người dùng", path: "/ListUser" },
         { icon: <LiaHotelSolid style={{ width: '25px', height: '25px' }} />, text: "Danh sách khách sạn", path: "/ListHotel" },
         { icon: <FaRegListAlt style={{ width: '25px', height: '25px' }} />, text: "Danh sách phòng", path: "/ListRoom" },

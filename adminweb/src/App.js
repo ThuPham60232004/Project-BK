@@ -10,7 +10,6 @@ import ListDiscountCode from "./components/HotelComponent/List/ListDiscountCode/
 import ListReview from "./components/HotelComponent/List/ListReview/ListReview";
 import ListHotel from "./components/HotelComponent/List/ListHotel/ListHotel";
 import NewHotels from "./components/HotelComponent/New/NewHotels/NewHotels";
-import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import SingleHotelRoom from "./components/HotelComponent/Single/SingleHotelRoom/SingleHotelRoom";
 import SingleNotification from "./components/HotelComponent/Single/SingleNotification/SingleNotification";
@@ -42,12 +41,17 @@ import SingleBooking from "./components/HotelComponent/Single/SingleBooking/Sing
 import SingleRoom from "./components/HotelComponent/Single/SingleRoom/SingleRoom";
 import StatusBookingDashboard from "./components/DashboardHotelComponent/StatusDashboard/StatusBookingDashboard/StatusBookingDashboard";
 import StatusRoomDashboard from "./components/DashboardHotelComponent/StatusDashboard/StatusRoomDashboard/StatusRoomDashboard";
+import DashboardHome2 from "./pages/DashboardHotel/ DashboardHome/DashboardHome";
+import DashboardHome1 from "./pages/HomePage/ DashboardHome/DashboardHome";
 function App() {
   const userId = localStorage.getItem("userId");
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />}>
+          <Route path="ListUser" element={<ListUser />} />
+
+          <Route path="DashboardHome1" element={<DashboardHome1 />} />
         {/* LIST----------------------------------------- */}
           <Route path="ListUser" element={<ListUser />} />
           <Route path="ListNotification" element={<ListNotification />} />
@@ -83,6 +87,7 @@ function App() {
         </Route>
 {/* Dashboard-------------------------------------------------------------------------------------------*/}
         <Route path="/DashboardHotel" element={<DashboardHotel />}>
+        <Route path="DashboardHome2" element={<DashboardHome2 />} />
         {/* LIST----------------------------------------- */}
         <Route path="ListRoomDashboard" element={<ListRoomDashboard />} />
           <Route path="ListNotificationDashboard" element={<ListNotificationDashboard />} />
@@ -112,7 +117,6 @@ function App() {
           <Route path="StatusRoomDashboard" element={<StatusRoomDashboard />} />
          <Route path="StatusBookingDashboard" element={<StatusBookingDashboard />} />
         </Route>
-        <Route path="/Register" element={<Register />}/>
         <Route path="/Login" element={<Login />}/>
       </Routes>
     </BrowserRouter>

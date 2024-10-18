@@ -158,12 +158,10 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         idAdmin: idAdmin, 
       };
   
-      // Gửi yêu cầu đặt phòng
       await axios.post("http://localhost:9000/api/bookings", bookingData, {
         headers: { Authorization: `Bearer ${token}` },
       });
   
-      // Cập nhật trạng thái phòng
       const response = await axios.put(
         `http://localhost:9000/api/rooms/${selectedRooms[0]}`,
         { availability: true },
