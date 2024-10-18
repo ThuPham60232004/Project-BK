@@ -15,7 +15,7 @@ const NavBarDashboardHotel = () => {
   };
 
   return (
-    <div className='NavBarDashboardHotel'>
+    <div className='NavBarDashboardHotel NavBar'>
       <div className='NavBarDashboardHotelContainer'>
         <div className='NavBarDashboardHotelContainerLeft'>
           <img 

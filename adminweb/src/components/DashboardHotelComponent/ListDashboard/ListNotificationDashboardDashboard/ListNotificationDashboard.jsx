@@ -56,7 +56,7 @@ const ListNotificationDashboard = () => {
   return (
     <div className='ListNotification'>
       <div className='ListNotificationCointainer'>
-        <h1>Danh sách thông báo</h1>
+        <h2>Danh sách thông báo</h2>
         <div className='ListNotificationCointainerBtn' onClick={handleClickAdd}>
           <h3>Thêm thông báo</h3>
         </div>

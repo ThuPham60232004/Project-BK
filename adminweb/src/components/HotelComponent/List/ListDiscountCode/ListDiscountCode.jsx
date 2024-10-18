@@ -60,7 +60,7 @@ const ListDiscountCode = () => {
   return (
     <div className='ListDiscountCode'>
       <div className='ListDiscountCodeCointainer'>
-        <h1>Danh sách mã giảm giá</h1>
+        <h2>Danh sách mã giảm giá</h2>
         <div className='ListDiscountCodeCointainerBtn' onClick={handleAddDiscountCode}>
           <h3>Thêm mã giảm giá</h3>
         </div>

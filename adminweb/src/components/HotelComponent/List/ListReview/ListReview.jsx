@@ -59,7 +59,7 @@ const ListReview = () => {
   return (
     <div className='ListReview'>
       <div className='ListReviewCointainer'>
-        <h1>Danh sách bình luận</h1>
+        <h2>Danh sách bình luận</h2>
         <div className='ListReviewCointainerBtn' onClick={handleClickAdd}>
           <h3>Thêm bình luận</h3>
         </div>

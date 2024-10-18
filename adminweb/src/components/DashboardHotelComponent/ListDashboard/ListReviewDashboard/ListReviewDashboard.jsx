@@ -55,7 +55,7 @@ const ListReviewDashboard = () => {
   return (
     <div className='ListReview'>
       <div className='ListReviewCointainer'>
-        <h1>Danh sách bình luận</h1>
+        <h2>Danh sách bình luận</h2>
       </div>
       <Box sx={{ height: '800px', width: '97%', marginLeft: '20px' }}>
         <DataGrid

@@ -1,4 +1,4 @@
-import React,{ useState,useEffect } from 'react';
+import React,{ useEffect } from 'react';
 import './HomePage.css';
 import NavBar from '../../components/navBar/navBar';
 import { RiDashboardLine } from "react-icons/ri";
@@ -14,17 +14,19 @@ import { FaChartLine } from "react-icons/fa";
 import { MdRoomService } from "react-icons/md"; 
 import { MdPersonPin } from "react-icons/md"; 
 import { NavLink, Outlet } from 'react-router-dom';
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 const HomePage = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
     useEffect(() => {
-        if (location.pathname === '/'||location.pathname === '') {
+        if (location.pathname === '/' || location.pathname === '') {
             navigate('/DashboardHome1'); 
         }   
     }, [location.pathname, navigate]);
-    const items = [
+
+    const items = [       
         { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Mục chính", path: "/DashboardHome1" },
         { icon: <FaRegUserCircle style={{ width: '25px', height: '25px' }} />, text: "Danh sách người dùng", path: "/ListUser" },
         { icon: <LiaHotelSolid style={{ width: '25px', height: '25px' }} />, text: "Danh sách khách sạn", path: "/ListHotel" },
