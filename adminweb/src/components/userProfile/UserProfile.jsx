@@ -115,24 +115,6 @@ const UserProfile = () => {
                 onChange={handleInputChange}
               />
             </label>
-            <label>
-              Mật khẩu:
-              <input
-                type="password"
-                name="password"
-                value={editedUser.password}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Xác nhận mật khẩu:
-              <input
-                type="password"
-                name="confirmPassword"
-                value={editedUser.confirmPassword}
-                onChange={handleInputChange}
-              />
-            </label>
             <button type="submit">Lưu</button>
           </form>
         ) : (

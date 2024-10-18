@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState,useEffect } from 'react';
 import './DashboardHotel.css';
 import NavBarDashboardHotel from '../../components/DashboardHotelComponent/navBarDashboardHotel/navBarDashboardHotel';
 import { RiDashboardLine } from "react-icons/ri";
@@ -11,8 +11,16 @@ import { GoCodeReview } from "react-icons/go";
 import { TbReportAnalytics } from "react-icons/tb";
 import { LuListTodo } from "react-icons/lu";
 import { NavLink, Outlet } from 'react-router-dom';
-
+import { useLocation,useNavigate } from "react-router-dom";
 const DashboardHotel = () => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.pathname === '/DashboardHotel'||location.pathname === 'DashboardHotel') {
+            navigate('/DashboardHotel/DashboardHome2'); 
+        }   
+    }, [location.pathname, navigate]);
     const items = [
         { icon: <RiDashboardLine style={{ width: '25px', height: '25px' }} />, text: "Mục chính", path: "/DashboardHotel/DashboardHome2" },
         { icon: <FaRegUserCircle style={{ width: '25px', height: '25px' }} />, text: "Danh sách phòng", path: "/DashboardHotel/ListRoomDashboard" },

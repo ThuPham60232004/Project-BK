@@ -13,7 +13,6 @@ import List from "./pages/HotelProject/list/List";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import ForgotPassword from "./pages/HotelProject/ForgotPassword/ForgotPassword";
-import VerifyCode from "./pages/HotelProject/VerifyCode/VerifyCode";
 import AboutUs from "./pages/HotelProject/AboutUs/aboutus";
 import DetailHotel from "./pages/HotelProject/DetailHotel/DetailHotel";
 import BookingHistory from "./pages/HotelProject/BookingHistory/BookingHistory";
@@ -29,6 +28,7 @@ import HomeAirplane from "./pages/AirplaneProject/homeAirplane/Home";
 import FlightTickets from './pages/AirplaneProject/FlightTickets/FlightTickets';
 import DiscountCodeAirplanes from './pages/AirplaneProject/DiscountCodeList/DiscountCodeList';
 import BookingModal from './components/AirplaneComponent/BookingModal/BookingModal';
+import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
 import { logActivity } from "../src/services/UserActivity.js";
 
 function App() {
@@ -44,6 +44,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/notifications" element={<Notifications />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
         {/*Routes hotel*/}
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<List />} />
@@ -52,7 +53,6 @@ function App() {
         <Route path="/booking-history" element={<BookingHistory userId={userId} />} />
         <Route path="/review" element={<ReviewManager />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/verifycode" element={<VerifyCode />} />
         <Route path="/discountcodelist" element={<DiscountCodeList />} />
         <Route path="/rooms/:id" element={<Room />} />
         <Route path="/typehotels/:type" element={<HotelTypeList />} />

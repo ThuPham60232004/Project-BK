@@ -43,6 +43,8 @@ import StatusBookingDashboard from "./components/DashboardHotelComponent/StatusD
 import StatusRoomDashboard from "./components/DashboardHotelComponent/StatusDashboard/StatusRoomDashboard/StatusRoomDashboard";
 import DashboardHome2 from "./pages/DashboardHotel/ DashboardHome/DashboardHome";
 import DashboardHome1 from "./pages/HomePage/ DashboardHome/DashboardHome";
+import ResetPassword from "./pages/ResetPassword/ResetPassword";
+import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 function App() {
   const userId = localStorage.getItem("userId");
   return (
@@ -118,6 +120,8 @@ function App() {
          <Route path="StatusBookingDashboard" element={<StatusBookingDashboard />} />
         </Route>
         <Route path="/Login" element={<Login />}/>
+        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,6 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState,useEffect } from "react";
+import { useLocation,useNavigate } from "react-router-dom";
 import "./ForgotPassword.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -13,7 +13,6 @@ const ForgotPassword = () => {
     try {
       const response = await axios.post('http://localhost:9000/api/auth/forgotPassword/', { email });
       toast.success(response.data.message);
-      // Điều hướng đến ResetPassword với email trong URL
       navigate(`/reset-password?email=${encodeURIComponent(email)}`); 
     } catch (error) {
       if (error.response) {
