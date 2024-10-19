@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import './StatusRoom.css';
-
+import { IoClose } from "react-icons/io5";
 const StatusRoom = () => {
   const [hotels, setHotels] = useState([]);
   const [selectedHotel, setSelectedHotel] = useState(null);
@@ -76,9 +76,12 @@ const StatusRoom = () => {
       {isModalOpen && (
         <div className="modal" style={{ display: isModalOpen ? "flex" : "none" }}>
           <div className="modal-content">
-            <span className="close" onClick={closeModal}>&times;</span>
+          <div className="modal-content-text">
             <h2>Phòng của khách sạn: {selectedHotel.name}</h2>
-            <div className="status-map">
+            <span className="cd" onClick={closeModal}>
+              <IoClose />
+            </span>
+            </div>          <div className="status-map">
               {roomStatus.length > 0 ? (
                 roomStatus.map(room => (
                   <div 
