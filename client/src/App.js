@@ -17,7 +17,6 @@ import DetailHotel from "./pages/HotelProject/DetailHotel/DetailHotel";
 import BookingHistory from "./pages/HotelProject/BookingHistory/BookingHistory";
 import UserProfile from "./pages/userProfile/UserProfile";
 import Notifications from './pages/HotelProject/Notifications/Notifications';
-import ReviewManager from './pages/HotelProject/ReviewManager/ReviewManager';
 import DiscountCodeList from "./pages/HotelProject/DiscountCodeList/DiscountCodeList";
 import Room from "./pages/HotelProject/room/room";
 import HotelTypeList from './components/HotelComponents/HotelTypeList/HotelTypeList';
@@ -29,7 +28,7 @@ import DiscountCodeAirplanes from './pages/AirplaneProject/DiscountCodeList/Disc
 import BookingModal from './components/AirplaneComponent/BookingModal/BookingModal';
 import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
 import { logActivity } from "../src/services/UserActivity.js";
-
+import Review from './pages/Reviews/Reviews.jsx';
 function App() {
   const userId = localStorage.getItem("userId");
 
@@ -40,6 +39,7 @@ function App() {
       <Routes>
         <Route path="/profile" element={<UserProfile userId={userId} />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/Review" element={<Review />} />
         <Route path="/register" element={<Register />} />
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/notifications" element={<Notifications />} />
@@ -50,7 +50,6 @@ function App() {
         <Route path="/hotels/:id" element={<Hotel />} />
         <Route path="/detailhotel" element={<DetailHotel />} />
         <Route path="/booking-history" element={<BookingHistory userId={userId} />} />
-        <Route path="/review" element={<ReviewManager />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/discountcodelist" element={<DiscountCodeList />} />
         <Route path="/rooms/:id" element={<Room />} />

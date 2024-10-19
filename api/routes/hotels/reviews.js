@@ -1,17 +1,17 @@
 import express from "express";
 import { createReview,getReviewByAdminId, getReview, getAllReviews, updateReview, 
-    deleteReview, getReviewById} from "../../controllers/hotels/reviews.js";
+    deleteReview, getReviewById,getReviewByIdclient,getAllReviewsclient} from "../../controllers/hotels/reviews.js";
 
 const router = express.Router();
 
 // Create a review
 router.post("/", createReview);
-
-// Get a single review
-router.get("/user/:id", getReview);
-
 // Get all reviews
 router.get("/", getAllReviews);
+router.get("/getReviewByIdclient", getReviewByIdclient);
+router.get("/getAllReviewsclient", getAllReviewsclient);
+// Get a single review
+router.get("/user/:id", getReview);
 
 // Update a review
 router.put("/:id", updateReview);

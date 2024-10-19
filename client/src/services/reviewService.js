@@ -2,12 +2,13 @@ import axios from 'axios';
 
 export const getReviews = async () => {
   try {
-    const response = await axios.get('http://localhost:9000/api/reviews');
+    const response = await axios.get('http://localhost:9000/api/reviews/getAllReviewsclient');
     return response.data;
   } catch (error) {
     throw error;
   }
 };
+
 
 export const createReview = async (reviewData) => {
   try {

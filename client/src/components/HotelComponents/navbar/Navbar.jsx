@@ -58,7 +58,7 @@ const Navbar = () => {
           <div className="dropdownMenu">
             <h4>Menu</h4>
             <ul>
-              <li><Link to="/review" className="navbar11">Đánh giá</Link></li>
+              <li><Link to="/Review" className="navbar11">Đánh giá</Link></li>
               <li><Link to="/discountcodelist" className="navbar11">Săn mã giảm giá</Link></li>
               <li><Link to="/detailhotel" className="navbar11">Danh sách khách sạn</Link></li>
               <li><Link to="/booking-history" className="navbar11">Lịch sử đặt phòng khách sạn</Link></li>

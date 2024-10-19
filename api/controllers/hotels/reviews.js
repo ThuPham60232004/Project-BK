@@ -19,7 +19,7 @@ const updateRatingAndReviews = async (model, id, newRating, operation) => {
 
 const createReview = async (req, res) => {
   try {
-    const { userId, hotelId, roomId, rating, comment, idAdmin } = req.body;
+    const { userId, hotelId, roomId, rating, comment, idAdmin,images } = req.body;
     const review = new Review({
       userId,
       hotelId,
@@ -27,6 +27,7 @@ const createReview = async (req, res) => {
       rating,
       comment,
       idAdmin,
+      images,
     });
     await review.save();
 
@@ -39,31 +40,18 @@ const createReview = async (req, res) => {
   }
 };
 
-const updateReview = async (req, res) => {
-  const { id } = req.params;
-  const { rating, comment } = req.body;
-
+const updateReview = async (req, res, next) => {
   try {
-    const existingReview = await Review.findById(id);
-    if (!existingReview) {
-      return res.status(404).json({ message: "Không tìm thấy bài đánh giá" });
-    }
-
-    const previousRating = existingReview.rating;
-    existingReview.rating = rating;
-    existingReview.comment = comment;
-
-    await existingReview.save();
-
-    if (existingReview.hotelId) await updateRatingAndReviews(Hotel, existingReview.hotelId, rating, 'update');
-    if (existingReview.roomId) await updateRatingAndReviews(Room, existingReview.roomId, rating, 'update');
-
-    res.status(200).json({ message: "Đã cập nhật đánh giá thành công", review: existingReview });
-  } catch (error) {
-    res.status(500).json({ message: "Không cập nhật được bài đánh giá", error: error.message });
+    const updateReview = await Review.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(updateReview);
+  } catch (err) {
+    next(err);
   }
 };
-
 
 const deleteReview = async (req, res) => {
   const { id } = req.params;
@@ -130,7 +118,7 @@ const getReviewById = async (req, res) => {
     res.status(500).json({ message: "Không thể nhận được bài đánh giá", error: error.message });
   }
 };
-export const getReviewByAdminId = async (req, res, next) => {
+const getReviewByAdminId = async (req, res, next) => {
   const idAdmin= req.params.idAdmin;
   try {
     const review = await Review.find({ idAdmin });
@@ -139,4 +127,51 @@ export const getReviewByAdminId = async (req, res, next) => {
     next(err);
   }
 };
-export { createReview, getReview, getAllReviews, updateReview, deleteReview, getReviewById  };
+const getAllReviewsclient = async (req, res) => {
+  try {
+    const reviews = await Review.find()
+      .populate('userId', 'name email') 
+      .populate('hotelId', 'name location') 
+      .populate('roomId', 'title') 
+      .exec();
+    
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi khi lấy reviews', error });
+  }
+};
+const getReviewByIdclient = async (req, res) => {
+  const { id } = req.params;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(400).json({ message: 'ID không hợp lệ' });
+  }
+
+  try {
+    const review = await Review.findById(id)
+      .populate('userId', 'name email')
+      .populate('hotelId', 'name location')
+      .populate('roomId', 'roomNumber')
+      .exec();
+
+    if (!review) {
+      return res.status(404).json({ message: 'Không tìm thấy review' });
+    }
+
+    res.status(200).json(review);
+  } catch (error) {
+    res.status(500).json({ message: 'Lỗi khi lấy review', error });
+  }
+};
+
+export {
+  createReview, 
+  getReview, 
+  getAllReviews, 
+  updateReview, 
+  getReviewByAdminId, 
+  deleteReview, 
+  getReviewById,
+  getReviewByIdclient,
+  getAllReviewsclient
+};

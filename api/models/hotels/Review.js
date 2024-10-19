@@ -19,13 +19,14 @@ const reviewSchema = new mongoose.Schema(
     },
     rating: {
       type: Number,
-      required: true,
+      required: false,
       min: 0,
       max: 5,
     },
     comment: {
       type: String,
     },
+    images: [String],
     idAdmin:{
       type:String,
       required:false
