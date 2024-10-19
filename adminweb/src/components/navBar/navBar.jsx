@@ -40,7 +40,6 @@ const NavBar = () => {
             ) : (
               <>
                 <button className='navbarbutton' onClick={() => navigate('/Login')}>Đăng nhập</button>
-                <button className='navbarbutton' onClick={() => navigate('/Register')}>Đăng ký</button>
               </>
             )}
           </div>

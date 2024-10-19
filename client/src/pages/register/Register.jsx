@@ -1,110 +1,138 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../context/AuthContext";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./register.css";
 
 const Register = () => {
-  const [formData, setFormData] = useState({
-    username: "",
-    email: "",
-    password: "",
-    phone: "",
-    city: "",
-    country: "",
-  });
-
-  // Lấy thông tin loading và error từ AuthContext
-  const { loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  // Hàm xử lý thay đổi input
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.id]: e.target.value });
-  };
-
-  // Hàm xử lý khi nhấn nút đăng ký
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({ type: "REGISTER_START" });
+
+    if (phone.length !== 10 || isNaN(phone)) {
+      toast.error('Số điện thoại phải đủ 10 ký tự và là số.');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error('Mật khẩu và xác nhận mật khẩu không trùng khớp.');
+      return;
+    }
 
     try {
-      const res = await axios.post("http://localhost:9000/api/auth/register", formData);
-      dispatch({ type: "REGISTER_SUCCESS", payload: res.data });
-      toast.success("Đăng ký thành công!");
-      navigate("/login");
-    } catch (err) {
-      dispatch({ type: "REGISTER_FAILURE", payload: err.response.data });
+      setError(null);
+      const response = await axios.post("http://localhost:9000/api/auth/register", {
+        username,
+        email,
+        phone,
+        password,
+      });
+      toast.success('Đăng ký thành công!');
+      navigate('/login');
+  } catch (error) {
+    console.error(error);
+    toast.error('Đăng ký thất bại. Vui lòng kiểm tra lại.');
+  }
+  };
 
-      toast.error(err.response.data.message || "Đăng ký thất bại!");
-    }
+  const loginLink = () => {
+    navigate('/login');
   };
 
   return (
-    <div className="register-hongpiknuahihi">
-      <div className="register-container">
-      <ToastContainer />
-      <div className="register-form">
-        <h2>Đăng ký</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="register_haa">
-          <input
-            type="text"
-            id="username"
-            placeholder="Username"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            id="phone"
-            placeholder="Phone"
-            value={formData.phone}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            id="city"
-            placeholder="City"
-            value={formData.city}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="text"
-            id="country"
-            placeholder="Country"
-            value={formData.country}
-            onChange={handleChange}
-            required
-          />
+    <div className="register_page">
+      <div className="register_container">
+        <div className="right_container_register">
+          <div className="content_right_container_register">
+            <h1>Chào mừng đến với BOOKING</h1>
+            <p>Nếu bạn đã có tài khoản, hãy đăng nhập để khám phá thêm nhiều tính năng.</p>
+            <button className="btn_login_page_register" onClick={loginLink}>Đăng nhập</button>
           </div>
-          <button type="submit" disabled={loading}>
-            Đăng ký
-          </button>
-        </form>
+        </div>
+
+        <div className="left_container_register">
+          <div className="content_left_container_register">
+            <div className="logo_register_con">
+              <img src="./img/collection.png" alt="" />
+              <h2 className="title_register">Đăng ký</h2>
+            </div>
+
+            <div className="body_register_container_left">
+              <form onSubmit={handleSubmit} className="form_field">
+                <div className="input_group_register">
+                  <input
+                    type="text"
+                    className="input_info_register"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                  />
+                  <label className="name_label">Tên đăng nhập</label>
+                </div>
+
+                <div className="input_group_register">
+                  <input
+                    type="email"
+                    className="input_info_register"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                  <label className="name_label">Email</label>
+                </div>
+
+                <div className="input_group_register">
+                  <input
+                    type="text"
+                    className="input_info_register"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    required
+                  />
+                  <label className="name_label">Số điện thoại</label>
+                </div>
+
+                <div className="input_group_register">
+                  <input
+                    type="password"
+                    className="input_info_register"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                  />
+                  <label className="name_label">Mật khẩu</label>
+                </div>
+
+                <div className="input_group_register">
+                  <input
+                    type="password"
+                    className="input_info_register"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                  />
+                  <label className="name_label">Xác nhận mật khẩu</label>
+                </div>
+
+                <button className="btn_register_re" type="submit">Đăng ký</button>
+              </form>
+
+              <p className="text_register">Đã có tài khoản? <span><a href="/login">Đăng nhập ngay</a></span></p>
+            </div>
+          </div>
+        </div>
+        {error && <p className="error-message">{error}</p>}
       </div>
-    </div>
+
+      <ToastContainer />
     </div>
   );
 };

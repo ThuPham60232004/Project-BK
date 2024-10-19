@@ -41,7 +41,6 @@ const NavBarDashboardHotel = () => {
             ) : (
               <>
                 <button className='NavBarDashboardHotelbutton' onClick={() => navigate('/Login')}>Đăng nhập</button>
-                <button className='NavBarDashboardHotelbutton' onClick={() => navigate('/Register')}>Đăng ký</button>
               </>
             )}
           </div>

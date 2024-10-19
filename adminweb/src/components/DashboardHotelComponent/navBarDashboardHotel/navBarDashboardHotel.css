@@ -52,7 +52,7 @@
 }
 
 .NavBarDashboardHotelbutton {
-    background-color: #007bff;
+    background-color: #1ABC9C;
     color: white;
     border: none;
     border-radius: 5px;
@@ -63,5 +63,5 @@
 }
 
 .NavBarDashboardHotelbutton:hover {
-    background-color: #0056b3;
+    background-color: #08846b;
 }

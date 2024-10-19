@@ -1,8 +1,7 @@
-/* Container cho modal đặt phòng */
 .reserve {
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.8); 
   position: fixed;
   top: 0;
   left: 0;
@@ -14,19 +13,17 @@
   transition: background 0.3s ease;
 }
 
-/* Container nội dung modal */
 .reserve-container {
-  background-color: #fff;
+  background: linear-gradient(145deg, #ffffff, #f1f1f1);
   padding: 30px;
   position: relative;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   max-width: 800px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
   animation: fadeIn 0.3s ease-out;
-  transition: box-shadow 0.3s ease;
 }
 
 .reserve-close {
@@ -40,34 +37,34 @@
 }
 
 .reserve-close:hover {
-  color: rgba(10, 148, 148, 0.788);
+  color: #0a9a9a;
   transform: rotate(90deg);
 }
 
-/* Styling tiêu đề */
 .reserve-title {
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 20px;
   color: #333;
   text-align: center;
+  border-bottom: 2px solid rgba(10, 148, 148, 0.788);
+  padding-bottom: 10px;
 }
 
-/* Styling cho chọn ngày */
 .reserve-dates {
   display: flex;
-  gap: 20px;
+  gap: 40px;
   margin-bottom: 30px;
 }
 
 .reserve-dates label {
   display: block;
-  font-weight: 600;
+  font-weight: 800;
   margin-bottom: 5px;
 }
 
 .react-datepicker__input-container input {
-  width: 100%;
+  width: 350px;
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -83,7 +80,6 @@
   outline: none;
 }
 
-/* Phần tóm tắt đơn hàng */
 .reserve-summary {
   margin-bottom: 30px;
 }
@@ -99,7 +95,6 @@
   margin: 10px 0;
 }
 
-/* Phần mã giảm giá */
 .reserve-discount {
   margin-top: 20px;
   padding: 20px;
@@ -135,11 +130,10 @@
 }
 
 .reserve-discount button:hover {
-  background-color: rgba(10, 148, 148, 0.788);
-  transform: scale(1.02);
+  background-color: rgba(10, 148, 148, 1);
+  transform: scale(1.05);
 }
 
-/* Phần thanh toán */
 .reserve-payment {
   margin-top: 20px;
   padding: 20px;
@@ -168,12 +162,11 @@
 }
 
 .reserve-payment label:hover {
-  color: rgba(10, 148, 148, 0.788);
+  color: rgba(10, 148, 148, 1);
 }
 
-/* Nút đặt phòng */
 .reserve-submit {
-  padding: 12px 350px;
+  padding: 12px 20px;
   margin-top: 12px;
   margin-left: 10px;
   border: none;
@@ -187,20 +180,89 @@
 }
 
 .reserve-submit:hover {
-  background-color: rgba(10, 148, 148, 0.788);
-  transform: scale(1.02);
+  background-color: rgba(10, 148, 148, 1);
+  transform: scale(1.05);
 }
 
-/* Styling cho thông tin người dùng */
 .user-info {
-  margin-bottom: 30px;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 0 auto;
 }
 
 .user-info h2 {
   font-size: 24px;
-  margin-bottom: 10px;
+  color: #333;
+  margin-bottom: 15px;
 }
 
 .user-info p {
-  margin: 5px 0;
+  margin: 10px 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.user-info input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+  transition: border-color 0.3s;
+}
+
+.user-info input:focus {
+  border-color: #1ABC9C;
+  outline: none;
+}
+
+.user-info button {
+  background-color: #1ABC9C;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 15px;
+}
+
+.user-info button:hover {
+  background-color: #08846b;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .reserve-container {
+    padding: 20px;
+  }
+
+  .reserve-submit {
+    width: 100%;
+  }
+}
+
+.reserve-button-booking {
+  width: 100%;
+  padding: 12px 25px;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #1ABC9C;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.reserve-button-booking:hover {
+  background-color: #08846b;
+  transform: translateY(-2px);
+}
+
+.reserve-button-booking:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

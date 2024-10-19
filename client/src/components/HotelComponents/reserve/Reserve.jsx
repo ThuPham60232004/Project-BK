@@ -32,6 +32,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
   const [paymentMethod, setPaymentMethod] = useState("");
   const [bookings, setBookings] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
+  const [updatedUserInfo, setUpdatedUserInfo] = useState({});
 
   const defaultStartDate = dates && dates[0] && dates[0].startDate ? new Date(dates[0].startDate) : new Date();
   const defaultEndDate = dates && dates[0] && dates[0].endDate ? new Date(dates[0].endDate) : new Date(new Date().setDate(new Date().getDate() + 1));
@@ -75,6 +76,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         try {
           const res = await axios.get(`http://localhost:9000/api/users/${userId}`);
           setUserInfo(res.data);
+          setUpdatedUserInfo(res.data); // Initialize updatedUserInfo with the fetched user data
         } catch (err) {
           console.error("Lấy thông tin người dùng thất bại", err);
         }
@@ -99,13 +101,12 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
   const alldates = getDatesInRange(startDate, endDate);
   const numberOfBookingDays = alldates.length;
 
-
   const calculateTotalPriceDetails = () => {
     if (!room) return { totalPriceBeforeTax: 0, totalTax: 0, discountAmount: 0, finalTotalPrice: 0, depositAmount: 0 };
-    
+
     let totalPriceBeforeTax = 0;
     let totalTax = 0;
-  
+
     selectedRooms.forEach((roomId) => {
       if (room._id === roomId) {
         const discountPrice = room.discountPrice || room.price;
@@ -113,14 +114,14 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         totalPriceBeforeTax += roomTotalBeforeTax;
       }
     });
-  
-    const totalPriceAfterDiscount = totalPriceBeforeTax ;
+
+    const totalPriceAfterDiscount = totalPriceBeforeTax;
     const taxRate = room.taxPrice || 100000;
     totalTax = totalPriceAfterDiscount + taxRate;
 
-    const finalTotalPrice = totalPriceAfterDiscount + totalTax- discountAmountState;
+    const finalTotalPrice = totalPriceAfterDiscount + totalTax - discountAmountState;
     const depositAmount = calculateDepositAmount(finalTotalPrice);
-  
+
     return {
       totalPriceBeforeTax,
       totalTax,
@@ -130,22 +131,35 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
     };
   };
 
+  const handleUserInfoChange = (e) => {
+    const { name, value } = e.target;
+    setUpdatedUserInfo((prev) => ({ ...prev, [name]: value })); // Update the specific field in updatedUserInfo
+  };
+
+  const handleUpdateUserInfo = async () => {
+    const userId = localStorage.getItem("userId");
+    try {
+      await axios.put(`http://localhost:9000/api/users/${userId}`, updatedUserInfo);
+      alert("Thông tin người dùng đã được cập nhật!");
+      setUserInfo(updatedUserInfo); // Update local userInfo with the new data
+    } catch (err) {
+      console.error("Cập nhật thông tin người dùng thất bại", err);
+    }
+  };
 
   const handleClick = async () => {
     try {
       const userId = localStorage.getItem("userId");
       const token = localStorage.getItem("authToken");
-  
+
       if (!userId || !token) {
         console.error("Thiếu thông tin ID người dùng hoặc token trong localStorage.");
         return;
       }
-  
-      // Lấy thông tin khách sạn để có idAdmin
+
       const hotelResponse = await axios.get(`http://localhost:9000/api/hotels/find/${hotelId}`);
       const idAdmin = hotelResponse.data.idAdmin;
-  
-      // Tạo dữ liệu đặt phòng
+
       const bookingData = {
         user: userId,
         hotel: hotelId,
@@ -157,11 +171,11 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         status: "pending",
         idAdmin: idAdmin, 
       };
-  
+
       await axios.post("http://localhost:9000/api/bookings", bookingData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-  
+
       const response = await axios.put(
         `http://localhost:9000/api/rooms/${selectedRooms[0]}`,
         { availability: true },
@@ -169,16 +183,15 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-  
+
       console.log("Phản hồi cập nhật trạng thái phòng:", response.data);
       alert("Đặt phòng thành công và trạng thái phòng đã được cập nhật!");
       navigate("/");
       setOpen(false);
     } catch (err) {
       console.error("Đặt phòng hoặc cập nhật trạng thái phòng thất bại", err.response.data);
-      
     }
-  };  
+  };
 
   return (
     <div className="reserve">
@@ -192,14 +205,70 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         {userInfo && (
           <div className="user-info">
             <h2>Thông tin người dùng</h2>
-            <p>Tên người dùng: {userInfo.username}</p>
-            <p>Email: {userInfo.email}</p>
-            <p>Quốc gia: {userInfo.country}</p>
-            <p>Thành phố: {userInfo.city}</p>
-            <p>Số điện thoại: {userInfo.phone}</p>
-            <p>CCCD: {userInfo.CCCD}</p>
+            <p>Tên người dùng: 
+              <input
+                type="text"
+                name="username"
+                value={updatedUserInfo.username}
+                onChange={handleUserInfoChange}
+              />
+            </p>
+            <p>Email: 
+              <input
+                type="email"
+                name="email"
+                value={updatedUserInfo.email}
+                onChange={handleUserInfoChange}
+              />
+            </p>
+            <p>Quốc gia: 
+              <input
+                type="text"
+                name="country"
+                value={updatedUserInfo.country}
+                onChange={handleUserInfoChange}
+              />
+            </p>
+            <p>Thành phố: 
+              <input
+                type="text"
+                name="city"
+                value={updatedUserInfo.city}
+                onChange={handleUserInfoChange}
+              />
+            </p>
+            <p>Số điện thoại: 
+              <input
+                type="text"
+                name="phone"
+                value={updatedUserInfo.phone}
+                onChange={handleUserInfoChange}
+              />
+            </p>
+            <p>CCCD: 
+              <input
+                type="text"
+                name="CCCD"
+                value={updatedUserInfo.CCCD}
+                onChange={handleUserInfoChange}
+              />
+            </p>
+            <button onClick={handleUpdateUserInfo}>Cập nhật thông tin</button>
           </div>
         )}
+         <div className="reserve-discount">
+          <h2>Nhập mã giảm giá</h2>
+          <div className="discount-input">
+            <input
+              type="text"
+              value={discountCode}
+              onChange={handleDiscountCodeChange}
+              placeholder="Mã giảm giá"
+            />
+            <button onClick={handleApplyDiscount}>Áp dụng</button>
+          </div>
+        </div>
+        <br/><br/>
         <h2>Xác nhận ngày ở</h2>
         <div className="reserve-dates">
           <div>
@@ -219,20 +288,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
             />
           </div>
         </div>
-        <div className="reserve-summary">
-          <h2>Tóm tắt đơn hàng</h2>
-          {room && (
-            <div className="reserve-room-info">
-              <h3>Phòng: {room.name}</h3>
-              <p>Số ngày đặt: {numberOfBookingDays}</p>
-              <p>Giá phòng: {room.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-              <p>Giá phòng giảm: {room.discountPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-              <p>Thuế: {calculateTotalPriceDetails().totalTax.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-              <p>Tổng giá: {calculateTotalPriceDetails().finalTotalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-              <p>Đặt cọc: {calculateTotalPriceDetails().depositAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
-            </div>
-          )}
-        </div>
+        <br/>
         <div className="reserve-payment">
           <h2>Phương thức thanh toán</h2>
           <div className="payment-options">
@@ -243,7 +299,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
                 checked={paymentMethod === "vnpay"}
                 onChange={() => setPaymentMethod("vnpay")}
               />
-              <FontAwesomeIcon icon={faCcVisa} />VN Pay
+              <FontAwesomeIcon icon={faCcVisa} /> VN Pay
             </label>
             <label>
               <input
@@ -265,19 +321,23 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
             </label>
           </div>
         </div>
-        <div className="reserve-discount">
-          <h2>Nhập mã giảm giá</h2>
-          <div className="discount-input">
-            <input
-              type="text"
-              value={discountCode}
-              onChange={handleDiscountCodeChange}
-              placeholder="Mã giảm giá"
-            />
-            <button onClick={handleApplyDiscount}>Áp dụng</button>
-          </div>
+        <div className="reserve-summary">
+          <h2>Tóm tắt đơn hàng</h2>
+          {room && (
+            <div className="reserve-room-info">
+              <h3>Phòng: {room.title}</h3>
+              <p>Số ngày đặt: {numberOfBookingDays}</p>
+              <p>Giá phòng: {room.price.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Giá phòng giảm: {room.discountPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Thuế: {calculateTotalPriceDetails().totalTax.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Tổng giá: {calculateTotalPriceDetails().finalTotalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+              <p>Đặt cọc: {calculateTotalPriceDetails().depositAmount.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' })}</p>
+            </div>
+          )}
         </div>
-        <button onClick={handleClick} className="reserve-button">
+        
+       
+        <button onClick={handleClick} className="reserve-button-booking">
           Đặt Ngay!
         </button>
       </div>

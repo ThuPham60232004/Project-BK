@@ -63,7 +63,7 @@ const Login = () => {
         <div className="left_container_login">
           <br/><br/><br/>
           <div className="logo_login_con">
-              <img src="./nft-image-1.png" alt="" className='logo_login'/>
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgT1iiYeCfstXM8A0kYUIzQuLEhWnqxy7mVQ&s" alt="" className='logo_login'/>
              <h2 className='title_login'>ĐĂNG NHẬP</h2>
           </div>
           <div className="body_login_container_left">
@@ -73,7 +73,7 @@ const Login = () => {
                 id='username'
                 placeholder="Tài khoản"
                 onChange={handleChange}/>
-                <label className="name_label" htmlFor="email">Email</label>
+                <label className="name_label" htmlFor="username">Tên tài khoản</label>
               </div>
               <div className="input_group_login">
                 <input type="password" className="input_info_login" 
@@ -98,7 +98,7 @@ const Login = () => {
         <div className="right_container_login">
         
         <h1>Chào mừng đến với BOOKING</h1>
-        <p>Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và khám phá thế giới số mới.</p>
+        <p>Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và khám phá thế giới khách sạn mới.</p>
         <div className="btn_register">
               <button>XIN CHÀO<FaArrowRightLong className='icon_arrow_register'/></button>
             </div>

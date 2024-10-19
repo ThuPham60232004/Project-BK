@@ -6,78 +6,140 @@
 
 .listWrapper {
   width: 100%;
-  max-width: 1024px;
+  max-width: 1200px;
   display: flex;
   gap: 20px;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 .listSearch {
   flex: 1;
-  background-color:rgba(10, 148, 148, 0.788);
-  padding: 10px;
+  background-color: rgba(10, 148, 148, 0.9);
+  padding: 20px;
   border-radius: 10px;
   position: sticky;
   top: 10px;
   height: max-content;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.lsTitle{
-  font-size: 20px;
-  color: #555;
-  margin-bottom: 10px;
+.lsTitle {
+  font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 15px;
 }
 
-.lsItem{
+.lsItem {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.lsItem>label{
-  font-size: 12px;
+.lsItem > label {
+  font-size: 14px;
+  color: #ffffff;
 }
 
-.lsItem>input{
-  height: 30px;
+.lsItem > input,
+.lsItem > select {
+  height: 40px;
   border: none;
-  padding: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s;
 }
-.lsItem>span{
-  height: 30px;
-  padding: 5px;
+
+.lsItem > input:focus,
+.lsItem > select:focus {
+  outline: none;
+  border: 2px solid rgba(10, 148, 148, 1);
+}
+
+.lsItem > span {
+  height: 40px;
+  padding: 10px;
   background-color: white;
   display: flex;
   align-items: center;
   cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.lsOptions{
+.lsOptions {
   padding: 10px;
 }
 
-.lsOptionItem{
+.lsOptionItem {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 10px;
-  color: #555;
-  font-size: 12px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-size: 14px;
 }
 
-.lsOptionInput{
-  width: 50px;
+.lsOptionInput {
+  width: 60px;
+  border-radius: 5px;
+  padding: 5px;
 }
 
-.listSearch>button{
-  padding: 10px;
-  background-color:rgba(10, 148, 148, 0.788);
+.listSearch > button {
+  padding: 12px;
+  background-color: rgba(10, 148, 148, 1);
   color: white;
   border: none;
+  border-radius: 5px;
   width: 100%;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.lsOptionInput4 {
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+  font-size: 14px;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><path fill="%23333" d="M6 8.5L2 4h8L6 8.5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+  transition: border-color 0.3s;
+}
+
+.lsOptionInput4:focus {
+  outline: none;
+  border-color: rgba(10, 148, 148, 1);
+}
+
+.lsOptionInput4 option {
+  padding: 10px;
+  background-color: #fff;
+  color: #333;
+}
+
+.lsOptionInput4 option:hover {
+  background-color: rgba(10, 148, 148, 0.1);
+}
+
+.listSearch > button:hover {
+  background-color: rgba(10, 148, 148, 1.2);
+  transform: translateY(-2px);
 }
 
 .listResult {
   flex: 3;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }

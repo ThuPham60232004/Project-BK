@@ -10,9 +10,7 @@ import useFetch from "../../../hooks/useFetch";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-// Định nghĩa component List
 const List = () => {
-  // Lấy thông tin từ location state
   const location = useLocation();
   const [destination, setDestination] = useState(location.state.destination);
   const [dates, setDates] = useState(location.state.dates);
@@ -20,6 +18,20 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  
+  const cities = [
+    { name: "Miami" },
+    { name: "New York" },
+    { name: "TPHCM" },
+    { name: "London" },
+    { name: "Berlin" },
+    { name: "Aspen" },
+    { name: "Paris" },
+    { name: "Los Angeles" },
+    { name: "Bangkok" },
+    { name: "Sydney" }, // Corrected typo from "Sydnay" to "Sydney"
+    { name: "Zurich" }
+  ];
 
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:9000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
@@ -49,7 +61,17 @@ const List = () => {
             <h1 className="lsTitle">Tìm Kiếm</h1>
             <div className="lsItem">
               <label>Mô tả</label>
-              <input placeholder={destination} type="text" />
+              <select 
+                value={destination} 
+                onChange={(e) => setDestination(e.target.value)}
+                className="lsOptionInput4"
+              >
+                {cities.map((city) => (
+                  <option key={city.name} value={city.name}>
+                    {city.name}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="lsItem">
               <label>Ngày Nhận Phòng</label>
@@ -74,7 +96,9 @@ const List = () => {
                   <input
                     type="number"
                     onChange={(e) => setMin(e.target.value)}
+                    value={min}
                     className="lsOptionInput"
+                    min={0} 
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -84,7 +108,9 @@ const List = () => {
                   <input
                     type="number"
                     onChange={(e) => setMax(e.target.value)}
+                    value={max}
                     className="lsOptionInput"
+                    min={0} 
                   />
                 </div>
                 <div className="lsOptionItem">
@@ -92,6 +118,8 @@ const List = () => {
                   <input
                     type="number"
                     min={1}
+                    value={options.adult}
+                    onChange={(e) => setOptions({ ...options, adult: Math.max(1, e.target.value) })}
                     className="lsOptionInput"
                     placeholder={options.adult}
                   />
@@ -101,6 +129,8 @@ const List = () => {
                   <input
                     type="number"
                     min={0}
+                    value={options.children}
+                    onChange={(e) => setOptions({ ...options, children: Math.max(0, e.target.value) })}
                     className="lsOptionInput"
                     placeholder={options.children}
                   />
@@ -110,13 +140,14 @@ const List = () => {
                   <input
                     type="number"
                     min={1}
+                    value={options.room}
+                    onChange={(e) => setOptions({ ...options, room: Math.max(1, e.target.value) })}
                     className="lsOptionInput"
                     placeholder={options.room}
                   />
                 </div>
               </div>
             </div>
-            <button onClick={handleClick}>Tìm kiếm</button>
           </div>
           <div className="listResult">
             {loading ? (

@@ -21,22 +21,28 @@ const NewDiscountCode = () => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post('http://localhost:9000/api/discounts', discountData);
-      alert('Mã giảm giá đã được tạo thành công!');
-      setDiscountData({
-        code: '',
-        discountType: 'percentage',
-        discountValue: '',
-        startDate: '',
-        expirationDate: '',
-        amountDiscountCode: '',
-        idAdmin: '',
-      });
+        await axios.post('http://localhost:9000/api/discounts', discountData);
+        alert('Mã giảm giá đã được tạo thành công!');
+        setDiscountData({
+            code: '',
+            discountType: 'percentage',
+            discountValue: '',
+            startDate: '',
+            expirationDate: '',
+            amountDiscountCode: '',
+            idAdmin: '',
+        });
     } catch (error) {
-      console.error(error);
-      alert('Lỗi khi thêm mã giảm giá.');
+        console.error(error);
+
+        if (error.response && error.response.status === 400 && error.response.data.message.includes('E11000')) {
+            alert('Mã giảm giá đã tồn tại. Vui lòng sử dụng mã khác.');
+        } else {
+            alert('Lỗi khi thêm mã giảm giá.');
+        }
     }
-  };
+};
+
 
   return (
     <div className="new-discount-code-container">

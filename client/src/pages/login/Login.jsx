@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./login.css";
-
+import { FaArrowRightLong } from "react-icons/fa6";
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: "",
@@ -50,46 +50,53 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
-      {/* Text Section */}
-      <div className="loginText">
-        <h1>Kết nối giá trị - Trải nghiệm tinh hoa </h1>
-        <span>
-          Đặc quyền ưu việt dành riêng cho thành viên khi trải nghiệm sản phẩm và<br />
-          dịch vụ trong hệ sinh thái toàn diện 
-        </span>
-      </div>
+    <div className="login_page">
+      <div className="login_container">
+        <div className="left_container_login">
+          <br/><br/><br/>
+          <div className="logo_login_con">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgT1iiYeCfstXM8A0kYUIzQuLEhWnqxy7mVQ&s" alt="" className='logo_login'/>
+             <h2 className='title_login'>ĐĂNG NHẬP</h2>
+          </div>
+          <div className="body_login_container_left">
+            <div className="form_field" >
+              <div className="input_group_login">
+                <input type="text" className="input_info_login"  
+                id='username'
+                placeholder="Tài khoản"
+                onChange={handleChange}/>
+                <label className="name_label" htmlFor="username">Tên tài khoản</label>
+              </div>
+              <div className="input_group_login">
+                <input type="password" className="input_info_login" 
+                  placeholder="Mật khẩu"
+                  id="password"
+                  onChange={handleChange}/>
+                <label className="name_label" htmlFor="password">Mật khẩu</label>
+              </div>
+            </div>
+           <div className="action_login">
+            <div className="checkbox_group_login">
+              <input type="checkbox"/>
+              <label className='rememberme' htmlFor="rememberMe">Ghi nhớ đăng nhập</label>
+            </div>
+            <a href="/forgotpassword">Quên mật khẩu?</a>
+          </div>
 
-      {/* Login Form Section */}
-      <div className="lContainer">
-        <h1>Đăng Nhập</h1>
-        <input
-          type="text"
-          placeholder="Người dùng"
-          id="username"
-          value={credentials.username}
-          onChange={handleChange}
-          className="lInput"
-        />
-        <input
-          type="password"
-          placeholder="Mật khẩu"
-          id="password"
-          value={credentials.password}
-          onChange={handleChange}
-          className="lInput"
-        />
-        <div className="forget">
-          <label>
-            <input type="checkbox" />Nhớ mật khẩu
-          </label>
+            <button disabled={loading} onClick={handleClick} className='loginbtn'>Đăng nhập</button>
+          </div>
         </div>
-        <button disabled={loading} onClick={handleClick} className="lButton">
-          Đăng Nhập
-        </button>
-        {error && <span>{error.message}</span>}
-        <div className="forgetPassword">
-          <Link to="/forgotpassword" className="forgotPasswordLink">Quên mật khẩu?</Link>
+         {error && <p className="error-message">{error}</p>}
+        <div className="right_container_login">
+        
+        <h1>Chào mừng đến với BOOKING</h1>
+        <p>Nếu bạn chưa có tài khoản, hãy tham gia cùng chúng tôi và khám phá thế giới khách sạn mới.</p>
+        <div className="btn_register">
+            <a href='/register'>
+            <button>ĐĂNG KÍ<FaArrowRightLong className='icon_arrow_register'/></button>
+            </a>
+             
+        </div>
         </div>
       </div>
     </div>

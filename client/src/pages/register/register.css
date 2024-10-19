@@ -1,122 +1,176 @@
-.register-hongpiknuahihi {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  height: 100vh;
+.register_page {
+  width: 100%;
+  height: 100%;
+  background: white;
   display: flex;
-  justify-content: right;
-  background: url('https://www.vietfuntravel.com.vn/image/data/dia-diem-vung-tau/5-sao-vung-tau/Imperial-vung-tau-1.jpg') no-repeat center center/cover;
-  align-items: center;
-  
-}
-
-.register-container {
-  background: #fff;
-  padding: 40px 50px;
-  border-radius: 12px;
-  margin-right: 100px;
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.1);
-  width: 400px;
-  max-width: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 1;
-  transition: transform 0.3s ease;
-}
-.register_haa{
   justify-content: center;
   align-items: center;
+  padding: 50px 0; 
   
 }
-/* Heading styling */
-.register-form h2 {
-  font-size: 30px;
-  color: #333;
-  font-weight: 700;
-  margin-bottom: 25px;
-  letter-spacing: 1px;
+
+.register_container {
+  width: 80vw;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  border-radius: 20px;
+  box-shadow: 10px 10px 20px #babecc, -10px -10px 20px #ffffff;
 }
 
-/* Input fields styling */
-.register-form input {
+
+.left_container_register{
+  grid-column: span 6;
+  padding: 40px 50px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  text-align: center;
+
+}
+
+.logo_register_con{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  
+}
+.logo_register_con img{
+  width: 60px;
+  height: 60px;
+  border-radius: 100%;
+}
+.title_register{
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.form_field{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.input_group_register{
+  position: relative;
   width: 100%;
-  text-align: center; 
-  padding-left: 0px ;
-  padding-top: 20px;
-  padding-right: -20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  display: flex;
+
+}
+.input_info_register{
+  width: 100%;
+  text-align: start;
+  border: 1.2px solid black;
   font-size: 16px;
-  background-color: #f8f8f8;
-  transition: all 0.3s ease-in-out;
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.register-form input:focus {
-  border-color: #00aaff;
-  background-color: #fff;
+  color: black;
+  padding: 10px 15px;
   outline: none;
-  box-shadow: 0 0 10px rgba(0, 170, 255, 0.15);
+  border-radius: 10px;
+}
+.input_group_register label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #4a4a4a;
+  padding: 0 10px;
+  pointer-events: none;
+  transition: .5s;
 }
 
-/* Button styling */
-.register-form button {
-  width: 100%;
-  padding: 16px;
-  font-size: 18px;
-  color: #fff;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  transition:  0.3s ease, transform 0.3s ease;
-}
-
-/* Button hover effect */
-.register-form button:hover {
-  background: linear-gradient(135deg, #feb47b, #ff7e5f);
-  transform: translateY(-2px);
-}
-
-/* Small text link */
-.register-form a {
+.input_group_register input:focus~label,
+.input_group_register input:valid~label {
+  top: 0;
   font-size: 14px;
-  color: #007bff;
-  text-decoration: none;
+  font-weight: 600;
+  background: white;
 }
 
-.register-form a:hover {
-  text-decoration: underline;
+.btn_register_re{
+  margin: 0;
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px rgb(107, 103, 103);
+  background: black;
+  color: white;
+  padding: 15px;
+}
+.btn_register_re:hover{
+  background: rgb(57, 57, 57);
+  color: white;
 }
 
+.social_register{
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+.social_icons_register{
+  display: flex;
+  gap: 20px;
+}
+.icon_social_register{
+  background: rgb(255, 255, 255);
+  font-size: 40px;
+  padding: 8px;
+  border-radius: 100%;
+  color: black;
+  background-size: cover;
+  box-shadow: 1px 1px 2px gray;
+  transition: .5s;
 
-.Toastify__toast--success {
-  background-color: #28a745;
+}
+.icon_social_register:hover{
+  background: black;
+  color: white;
+}
+.text_register{
+  margin-top: 40px;
+}
+.right_container_register{
+  grid-column: span 6;
+  background-image: url('https://ngoisaogiadinh.vn/wp-content/uploads/Background-dep-vector.jpeg');
+  background-size: cover;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
 }
 
-.Toastify__toast--error {
-  background-color: #dc3545;
+.content_right_container_register{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
 }
-
-.register-container:hover {
-  transform: scale(1.02);
+.right_container_register h1 {
+  font-size: 30px;
+  font-weight: 800;
+  text-align: center;
+  color: white;
+  text-shadow: 0px 1px 1px #ffffff,
+             1px 1px 40px #ffffff;
 }
-
-@media (max-width: 768px) {
-  .register-container {
-    padding: 30px;
-    width: 90%;
-  }
-
-  .register-form h2 {
-    font-size: 26px;
-  }
-
-  .register-form button {
-    font-size: 16px;
-  }
+.right_container_register p{
+  font-size: 16px;
+  text-align: center;
+  color: white;
+}
+.btn_login_page_register{
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid white;
+  color: white;
+  border-radius: 20px;
+  box-shadow: 1px 1px 2px rgb(255, 255, 255);
+  padding: 15px;
+}
+.btn_login_page_register:hover{
+  background: white;
+  color: black;
 }

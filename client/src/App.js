@@ -5,7 +5,6 @@ import {
   Route,
   useLocation
 } from "react-router-dom";
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from "./pages/HotelProject/home/Home";
 import Hotel from "./pages/HotelProject/hotel/Hotel";
@@ -64,7 +63,6 @@ function App() {
         <Route path='/DiscountCodeAirplanes' element={<DiscountCodeAirplanes />} />
         <Route path="/booking/:id" element={<BookingModal />} />
       </Routes>
-      <ToastContainer />
     </BrowserRouter>
   );
 }
@@ -81,12 +79,10 @@ function ActivityLogger({ userId }) {
     }
 
     logActivity(userId, location.pathname, 0);
-    toast.info(`Log activity: ${location.pathname} with duration 0`);
 
     const handleActivityLog = () => {
       const duration = Date.now() - startTime;
-      logActivity(userId, location.pathname, duration);
-      toast.info(`Log activity: ${location.pathname} with duration ${duration}`);
+      logActivity(userId, location.pathname, duration)
     };
 
     window.addEventListener('beforeunload', handleActivityLog);
