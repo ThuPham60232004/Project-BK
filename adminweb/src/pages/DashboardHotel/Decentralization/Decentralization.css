@@ -1,0 +1,21 @@
+.DecentralizationContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-radius: 8px;
+  }
+  
+  .DecentralizationContainer h1 {
+    color: #1ABC9C;
+  }
+  
+  .DecentralizationContainerBtn {
+    display: inline-block;
+    border-radius: 7px;
+    background-color: #1ABC9C;
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+  }

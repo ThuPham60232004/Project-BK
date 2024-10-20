@@ -29,7 +29,7 @@ const SingleUser = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
     setOpen(false);
-    setImage(null); // Reset image when closing the modal
+    setImage(null); 
   };
 
   const handleChange = (e) => {
@@ -46,13 +46,9 @@ const SingleUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const updatedData = new FormData();
-
-    // Append form data to FormData object
     for (const key in formData) {
       updatedData.append(key, formData[key]);
     }
-    
-    // Append the new image file if it exists
     if (image) {
       updatedData.append('img', image);
     }
@@ -76,10 +72,9 @@ const SingleUser = () => {
     <div className="single-user-container">
       <Typography variant="h4" gutterBottom>Chi tiết người dùng:</Typography>
       <div className="single-user-card">
-        {/* Hiển thị hình ảnh người dùng */}
         <Avatar 
           alt={user.username} 
-          src={user.img || '/path/to/default/avatar.jpg'} // Đường dẫn đến hình ảnh mặc định
+          src={user.img || '/path/to/default/avatar.jpg'} 
           sx={{ width: 100, height: 100 }} 
         />
         <Typography variant="h5">{user.username}</Typography>

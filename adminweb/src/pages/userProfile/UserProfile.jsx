@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { getUserInfo, updateUserInfo } from "../../services/userService";
 import "./UserProfile.css";
-const UserProfile = () => {
+
+const UserProfile = ({ userId: propUserId }) => {
   const [user, setUser] = useState(null);
   const [editedUser, setEditedUser] = useState(null);
   const [editMode, setEditMode] = useState(false);
 
-
-  const userId = localStorage.getItem("userId");
-
   useEffect(() => {
     const fetchUserInfo = async () => {
       try {
-        const data = await getUserInfo(userId);
+        const data = await getUserInfo(propUserId || localStorage.getItem('userId'));
         setUser(data);
         setEditedUser({ ...data });
       } catch (error) {
@@ -20,10 +18,10 @@ const UserProfile = () => {
       }
     };
 
-    if (userId) {
+    if (propUserId || localStorage.getItem('userId')) {
       fetchUserInfo();
     }
-  }, [userId]);
+  }, [propUserId]);
 
   const handleInputChange = (e) => {
     setEditedUser({
@@ -35,6 +33,8 @@ const UserProfile = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      const userId = propUserId || localStorage.getItem('userId');
+      if (!userId) throw new Error("Không tìm thấy userId");
       const updatedUser = await updateUserInfo(userId, editedUser);
       setUser(updatedUser);
       setEditMode(false);
@@ -47,7 +47,7 @@ const UserProfile = () => {
     setEditMode(true);
   };
 
-  if (!userId) {
+  if (!propUserId && !localStorage.getItem('userId')) {
     return <p>Vui lòng đăng nhập để xem thông tin cá nhân.</p>;
   }
 
@@ -57,7 +57,10 @@ const UserProfile = () => {
 
   return (
     <div>
-      <br /><br /><br /><br /><br />
+      <br />
+      <br />
+      <br />
+      <br />
       <div className="userProfile">
         {editMode ? (
           <form onSubmit={handleSubmit}>
@@ -115,6 +118,7 @@ const UserProfile = () => {
                 onChange={handleInputChange}
               />
             </label>
+            
             <button type="submit">Lưu</button>
           </form>
         ) : (

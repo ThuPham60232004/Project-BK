@@ -15,7 +15,8 @@ import { MdRoomService } from "react-icons/md";
 import { MdPersonPin } from "react-icons/md"; 
 import { NavLink, Outlet } from 'react-router-dom';
 import { useLocation, useNavigate } from "react-router-dom";
-
+import { SiAuthelia } from "react-icons/si";
+import { RiAdminFill } from "react-icons/ri";
 const HomePage = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -39,7 +40,9 @@ const HomePage = () => {
         { icon: <FaChartLine style={{ width: '25px', height: '25px' }} />, text: "Báo cáo thống kê hoạt động", path: "/UserActivityStats" },
         { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Quản lý trạng thái đơn đặt phòng", path: "/StatusBooking" },
         { icon: <LuListTodo style={{ width: '25px', height: '25px' }} />, text: "Quản lý trạng thái phòng", path: "/StatusRoom" },
-        { icon: <MdPersonPin style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/UserProfile" }
+        { icon: <MdPersonPin style={{ width: '25px', height: '25px' }} />, text: "Phân quyền", path: "/Decentralization" },
+        { icon: <SiAuthelia style={{ width: '25px', height: '25px' }} />, text: "Cấp tài khoản", path: "/AccountLevel" },
+        { icon: <RiAdminFill style={{ width: '25px', height: '25px' }} />, text: "Thông tin cá nhân", path: "/UserProfile" }
     ];
 
     return (

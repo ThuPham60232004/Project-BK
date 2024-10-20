@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUserInfo, updateUserInfo } from "../../services/userService";
-import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import "./UserProfile.css";
-import Navbar from "../../components/HotelComponents/navbar/Navbar";
 
 const UserProfile = ({ userId: propUserId }) => {
   const [user, setUser] = useState(null);
@@ -18,7 +15,6 @@ const UserProfile = ({ userId: propUserId }) => {
         setEditedUser({ ...data });
       } catch (error) {
         console.error("Không Tìm Thấy Thông Tin Người Dùng", error);
-        toast.error("Không Tìm Thấy Thông Tin Người Dùng");
       }
     };
 
@@ -42,10 +38,8 @@ const UserProfile = ({ userId: propUserId }) => {
       const updatedUser = await updateUserInfo(userId, editedUser);
       setUser(updatedUser);
       setEditMode(false);
-      toast.success("Cập nhật thông tin người dùng thành công");
     } catch (error) {
       console.error("Không cập nhật được thông tin người dùng", error);
-      toast.error("Không cập nhật được thông tin người dùng");
     }
   };
 
@@ -63,14 +57,11 @@ const UserProfile = ({ userId: propUserId }) => {
 
   return (
     <div>
-      <Navbar />
-      <br />
       <br />
       <br />
       <br />
       <br />
       <div className="userProfile">
-        <ToastContainer />
         {editMode ? (
           <form onSubmit={handleSubmit}>
             <label>
@@ -127,6 +118,7 @@ const UserProfile = ({ userId: propUserId }) => {
                 onChange={handleInputChange}
               />
             </label>
+            
             <button type="submit">Lưu</button>
           </form>
         ) : (

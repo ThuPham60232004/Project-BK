@@ -22,7 +22,7 @@ import NewUser from "./components/HotelComponent/New/NewUser/NewUser";
 import SingleUser from "./components/HotelComponent/Single/SingleUser/SingleUser";
 import NewRooms from "./components/HotelComponent/New/NewRooms/NewRooms";
 import RevenueChart from "./components/HotelComponent/Chart/revenueChart/revenueChart";
-import UserProfile from "./components/userProfile/UserProfile";
+import UserProfile from "./pages/userProfile/UserProfile";
 import DashboardHotel from "./pages/DashboardHotel/DashboardHotel";
 import ListRoomDashboard from "./components/DashboardHotelComponent/ListDashboard/ListRoomDashboard/ListRoomDashboard";
 import ListNotificationDashboard from "./components/DashboardHotelComponent/ListDashboard/ListNotificationDashboardDashboard/ListNotificationDashboard";
@@ -45,6 +45,8 @@ import DashboardHome2 from "./pages/DashboardHotel/ DashboardHome/DashboardHome"
 import DashboardHome1 from "./pages/HomePage/ DashboardHome/DashboardHome";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
+import Decentralization from "./pages/DashboardHotel/Decentralization/Decentralization";
+import AccountLevel from "./pages/DashboardHotel/AccountLevel/AccountLevel";
 function App() {
   const userId = localStorage.getItem("userId");
   return (
@@ -52,7 +54,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />}>
           <Route path="ListUser" element={<ListUser />} />
-
+          <Route path="Decentralization" element={<Decentralization />} />
+          <Route path="AccountLevel" element={<AccountLevel />} />
           <Route path="DashboardHome1" element={<DashboardHome1 />} />
         {/* LIST----------------------------------------- */}
           <Route path="ListUser" element={<ListUser />} />

@@ -25,7 +25,6 @@ const NewUser = () => {
     try {
       await axios.post('http://localhost:9000/api/auth/register', userData);
       alert('Người dùng đã được tạo thành công!');
-      // Reset form after submission
       setUserData({
         username: '',
         email: '',
