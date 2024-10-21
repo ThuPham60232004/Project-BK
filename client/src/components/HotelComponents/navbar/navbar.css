@@ -62,7 +62,6 @@
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* User Info Section */
 .userInfo {
   display: flex;
   align-items: center;
@@ -82,7 +81,6 @@
   transform: scale(1.1);
 }
 
-/* Username */
 .username {
   margin-right: 10px;
   font-weight: 500;
@@ -90,7 +88,6 @@
   font-size: 16px;
 }
 
-/* Navbar Bottom */
 .navbarBottom {
   padding: 10px 0;
   background-color: #fff;

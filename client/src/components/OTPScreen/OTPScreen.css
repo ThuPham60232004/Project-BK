@@ -1,0 +1,85 @@
+.otp-screen-container {
+    color: #1a1523;
+    text-align: center;
+    max-width: 500px;
+    margin: 100px auto;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+   height: 400px;
+  }
+  
+  .lock-icon {
+    font-size: 36px;
+  }
+  
+  .lock-icon h2 {
+    font-size: 18px;
+ 
+  }
+  
+  .pin-input-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pin-circle {
+    width: 40px;
+    height: 40px;
+    border: 2px solid black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    margin: 0 10px;
+    background-color: white;
+    margin-bottom: 30px;
+  }
+  
+  .keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
+  
+  .keypad-btn {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: white;
+    color: black;
+    border: 2px solid black;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .keypad-btn:hover {
+    background-color: #0a9494;
+  }
+  
+  .delete-btn {
+    background-color: #0a9494;
+  }
+  .confirm-btn3{
+    padding: 20px;
+    width: 150px;
+    margin-left: 20px;
+    background-color: white;
+    border-radius: 40px;
+  }
+  .confirm-btn3:hover{
+    background-color: #0a9494;
+  }
+  .cancel21-btn21 {
+    background-color: transparent;
+    color: #a0a0a0;
+    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 10%;
+    width: 100px;
+    height: 60px;
+  }
+  

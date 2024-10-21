@@ -141,7 +141,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
     try {
       await axios.put(`http://localhost:9000/api/users/${userId}`, updatedUserInfo);
       alert("Thông tin người dùng đã được cập nhật!");
-      setUserInfo(updatedUserInfo); // Update local userInfo with the new data
+      setUserInfo(updatedUserInfo); 
     } catch (err) {
       console.error("Cập nhật thông tin người dùng thất bại", err);
     }
@@ -186,7 +186,17 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
 
       console.log("Phản hồi cập nhật trạng thái phòng:", response.data);
       alert("Đặt phòng thành công và trạng thái phòng đã được cập nhật!");
-      navigate("/");
+      navigate("/TransferConfirmation", {
+        state: {
+          recipientName: "Admin",
+          accountNumber: "123456789",
+          bankName: "TPBank",
+          content: `Thanh Toán ${room.title}`,
+          method: paymentMethod,
+          amount: calculateTotalPriceDetails().finalTotalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }),
+          userName: userInfo.username, 
+        }
+      });
       setOpen(false);
     } catch (err) {
       console.error("Đặt phòng hoặc cập nhật trạng thái phòng thất bại", err.response.data);

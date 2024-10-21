@@ -29,6 +29,9 @@ import BookingModal from './components/AirplaneComponent/BookingModal/BookingMod
 import ResetPassword from './pages/ResetPassword/ResetPassword.jsx';
 import { logActivity } from "../src/services/UserActivity.js";
 import Review from './pages/Reviews/Reviews.jsx';
+import PaymentScreen from './components/PaymentScreen/PaymentScreen.jsx';
+import OTPScreen from './components/OTPScreen/OTPScreen.jsx';
+import TransferConfirmation from './components/TransferConfirmation/TransferConfirmation.jsx';
 function App() {
   const userId = localStorage.getItem("userId");
 
@@ -39,6 +42,9 @@ function App() {
       <Routes>
         <Route path="/profile" element={<UserProfile userId={userId} />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/PaymentScreen" element={<PaymentScreen />} />
+        <Route path="/TransferConfirmation" element={<TransferConfirmation />} />
+        <Route path="/OTPScreen" element={<OTPScreen />} />
         <Route path="/Review" element={<Review />} />
         <Route path="/register" element={<Register />} />
         <Route path="/aboutus" element={<AboutUs />} />
