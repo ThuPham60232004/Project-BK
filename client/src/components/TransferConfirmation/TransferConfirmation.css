@@ -1,0 +1,84 @@
+.transfer-confirmation {
+    background-color: #1a1523;
+    color: #fff;
+    padding: 50px;
+    max-width: 400px;
+    margin: 50px auto;
+    border-radius: 10px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .transfer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .close-icon2 {
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .close-icon2 h2 {
+    font-size: 18px;
+  }
+  
+  .transfer-details {
+    background-color: #27203a;
+    padding: 30px;
+    border-radius: 10px;
+  }
+  
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .bank-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .bank-logo {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+  
+  .amount-section {
+    margin: 20px 0;
+    font-size: 18px;
+    background-color: #2e2843;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .action-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .cancel-button,
+  .confirm-button {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 48%;
+    font-weight: bold;
+  }
+  
+  .cancel-button {
+    background-color: #6c667b;
+    color: #fff;
+  }
+  
+  .confirm-button {
+    background-color: #6d42c7;
+    color: #fff;
+  }
+  
