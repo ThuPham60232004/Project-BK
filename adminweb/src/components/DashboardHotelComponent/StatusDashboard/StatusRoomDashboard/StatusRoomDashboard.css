@@ -125,11 +125,13 @@
   .status.available {
     background-color: #d9534f;
     color: white;
+    border-radius: 10px;
   }
   
   .status.unavailable {
     background-color: #a6ce39;
     color: white;
+    border-radius: 10px;
   }
   
   .legend {

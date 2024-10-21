@@ -1,4 +1,4 @@
-.userProfile {
+/* .userProfile {
   width: 90%;
   max-width: 600px;
   margin: 0 auto;
@@ -31,7 +31,7 @@
   box-sizing: border-box;
 }
 
-.userProfile .userInfo {
+.userProfile {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -49,7 +49,7 @@
 .userProfile button {
   padding: 10px 20px;
   margin-top: 20px;
-  background-color: #f01ccdab;
+  background-color: #09931cab;
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -57,7 +57,7 @@
 }
 
 .userProfile button:hover {
-  background-color: #8e1379ab;
+  background-color: #0d561eab;
 }
 
 .userProfile .errorMessage {
@@ -71,3 +71,24 @@
   font-size: 14px;
   margin-top: 5px;
 }
+
+
+.userInfo{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.detail_info{
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid gray;
+}
+.phone_email,
+.tp_qg{
+  display: flex;
+  gap: 10px;
+}
+ */

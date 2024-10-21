@@ -1,4 +1,4 @@
-/* StatusBookingDashboard.css */
+/* StatusBookingDashboard.css
 .seat-map {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -128,4 +128,4 @@ h2 {
 .error-message {
     color: red;
     font-weight: bold;
-}
+} */

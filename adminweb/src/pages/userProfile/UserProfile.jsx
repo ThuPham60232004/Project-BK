@@ -56,83 +56,92 @@ const UserProfile = ({ userId: propUserId }) => {
   }
 
   return (
-    <div>
-      <br />
-      <br />
-      <br />
-      <br />
+    <div style={{width:'100%', display:'flex',flexDirection:'column', gap:'20px'}}>
       <div className="userProfile">
+        <h2 style={{padding:'20px', fontWeight:'800'}}>Cập nhật thông tin cá nhân</h2>
         {editMode ? (
-          <form onSubmit={handleSubmit}>
-            <label>
-              Hình ảnh:
-              <input
+          <form style={{width:'70%' ,padding:'20px', margin:'0 auto', display:'flex', flexDirection:'column',gap:'10px', border:'1px solid black', borderRadius:'10px'}} onSubmit={handleSubmit}>
+            <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', marginLeft:'0' ,  padding:'10px'}}>
+              <label style={{width:'30%'}}>Hình ảnh:</label>
+              <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}
                 type="text"
                 name="img"
                 value={editedUser.img}
                 onChange={handleInputChange}
               />
-            </label>
-            <label>
-              Tên người dùng:
-              <input
+            </div>
+
+          <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', margin:'0' ,  padding:'10px'}}>
+            <label style={{width:'30%'}}>Tên người dùng:  </label>
+              <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}
                 type="text"
                 name="username"
                 value={editedUser.username}
                 onChange={handleInputChange}
               />
-            </label>
-            <label>
-              Email:
-              <input
+            </div>
+             <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', margin:'0' ,padding:'10px'}}>
+            <label style={{width:'30%'}}>Email:  </label>
+              <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}
                 type="email"
                 name="email"
                 value={editedUser.email}
                 onChange={handleInputChange}
               />
-            </label>
-            <label>
-              Quốc gia:
-              <input
+          
+            </div>
+
+             <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', margin:'0' , padding:'10px'}}>
+                 <label style={{width:'30%'}}>
+              Quốc gia:  </label>
+              <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}
                 type="text"
                 name="country"
                 value={editedUser.country}
                 onChange={handleInputChange}
               />
-            </label>
-            <label>
-              Thành phố:
-              <input
-                type="text"
-                name="city"
-                value={editedUser.city}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              Số điện thoại:
-              <input
+          
+             </div>
+           
+            <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', margin:'0', padding:'10px'}}>
+               <label style={{width:'30%'}}>
+                  Thành phố: </label>
+                  <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}
+                    type="text"
+                    name="city"
+                    value={editedUser.city}
+                    onChange={handleInputChange}
+                  />
+               
+            </div>
+           
+             <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', margin:'0' , padding:'10px'}}>
+               <label style={{width:'30%'}}>
+              Số điện thoại:  </label>
+              <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}
                 type="text"
                 name="phone"
                 value={editedUser.phone}
                 onChange={handleInputChange}
               />
-            </label>
+          
+             </div>
+           
             
-            <button type="submit">Lưu</button>
+            <button style={{width:'100%', padding:'10px', borderRadius:'20px', background:'green', color:'white', fontWeight:'800', border:'none', fontSize:'18px', marginTop:'20px'}} type="submit">Lưu</button>
           </form>
         ) : (
-          <div className="userInfo">
-            <div
-              className="userImg"
-              style={{ backgroundImage: `url(${user.img})` }}
-            ></div>
-            <p><strong>Tên người dùng:</strong> {user.username}</p>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Quốc gia:</strong> {user.country}</p>
-            <p><strong>Thành phố:</strong> {user.city}</p>
-            <p><strong>Số điện thoại:</strong> {user.phone}</p>
-            <button onClick={handleEditClick}>Chỉnh sửa</button>
+          <div style={{width:'100%',padding:'20px',margin:'0', display:'flex', gap:'20px'}} className="userInfo">
+            <div className="userImg" style={{width:'50%', height:'350px',objectFit:'cover',padding:'0', margin:'0',borderRadius:'10px', backgroundImage: `url(${user.img})` }}>
+            </div>
+            <div style={{width:'50%', padding:'10px 30px', border: '1px solid gray', borderRadius:'10px'}} className="detail_info">
+            <p style={{  padding: '5px 10px', borderBottom:'1px solid gray' }}><strong>Tên người dùng:</strong> {user.username}</p>
+            <p style={{padding: '5px 10px', borderBottom: '1px solid gray'}}><strong>Số điện thoại:</strong> {user.phone}</p>
+            <p style={{ padding: '5px 10px', borderBottom: '1px solid gray'}}><strong>Email:</strong> {user.email}</p>
+            <p style={{ padding: '5px 10px', borderBottom: '1px solid gray'}}><strong>Quốc gia:</strong> {user.country}</p>
+            <p style={{padding: '5px 10px', borderBottom: '1px solid gray' }}><strong>Thành phố:</strong> {user.city}</p>
+            <button style={{ width:'100%', marginTop:'20px', marginBottom:'20px',padding:'10px',background:'green',color:'white', fontWeight:'800', border:'none', borderRadius:'16px', fontSize:'20px',fontWeight:'700'}} onClick={handleEditClick}>Chỉnh sửa</button>
+             </div>
           </div>
         )}
       </div>

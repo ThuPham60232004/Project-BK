@@ -48,7 +48,7 @@ const ListNotificationDashboard = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button className='btnnoti' onClick={() => handleDeleteNotification(params.row._id)}>Xóa</button>
+        <button style={{background:'red',marginTop:'10px'}} className='btnnoti' onClick={() => handleDeleteNotification(params.row._id)}>Xóa</button>
       ),
     },
   ];

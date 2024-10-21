@@ -53,7 +53,7 @@ const ListHotelDashboard = () => {
         <img
           src={params.value[0] || 'https://via.placeholder.com/100'}
           alt="Hotel"
-          style={{ width: '100px', height: 'auto', objectFit: 'cover' }}
+          style={{ width: '50px', height: '50px', objectFit: 'cover' }}
         />
       ),
     },
@@ -69,7 +69,7 @@ const ListHotelDashboard = () => {
       headerName: 'Hành động',
       width: 150,
       renderCell: (params) => (
-        <button className='btnhotels' onClick={() => handleDeleteHotel(params.row._id)}>Xóa</button>
+        <button style={{background:'red',marginTop:'10px'}} className='btnhotels' onClick={() => handleDeleteHotel(params.row._id)}>Xóa</button>
       ),
     },
   ];

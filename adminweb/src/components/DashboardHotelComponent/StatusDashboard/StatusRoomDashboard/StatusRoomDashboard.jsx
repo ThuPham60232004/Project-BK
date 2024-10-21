@@ -65,7 +65,7 @@ const StatusRoomDashboard = () => {
                 alt={hotel.name} 
                 className="hotel-image" 
               />
-              <h3>{hotel.name}</h3>
+              <h3 style={{fontSize:'18px',fontWeight:'700'}}>{hotel.name}</h3>
             </div>
           ))
         ) : (
@@ -76,8 +76,8 @@ const StatusRoomDashboard = () => {
       {isModalOpen && (
         <div className="modal" style={{ display: isModalOpen ? "flex" : "none" }}>
           <div className="modal-content">
-            <div className="modal-content-text">
-            <h2>Phòng của khách sạn: {selectedHotel.name}</h2>
+            <div style={{display:'flex',justifyContent:'space-between'}} className="modal-content-text">
+            <h2 style={{fontSize:'20px'}}>Phòng của: {selectedHotel.name}</h2>
             <span className="cd" onClick={closeModal}>
               <IoClose />
             </span>

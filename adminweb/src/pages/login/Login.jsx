@@ -71,13 +71,13 @@ const Login = () => {
               <div className="input_group_login">
                 <input type="text" className="input_info_login"  
                 id='username'
-                placeholder="Tài khoản"
+           
                 onChange={handleChange}/>
                 <label className="name_label" htmlFor="username">Tên tài khoản</label>
               </div>
               <div className="input_group_login">
                 <input type="password" className="input_info_login" 
-                  placeholder="Mật khẩu"
+               
                   id="password"
                   onChange={handleChange}/>
                 <label className="name_label" htmlFor="password">Mật khẩu</label>

@@ -41,14 +41,18 @@ const RevenueChartDashboard = () => {
     return (
       <div className="bookingStatisticsDashboard">
         <h1 className="hehheDashboard">THỐNG KÊ ĐẶT PHÒNG</h1>
-
-        <div className="datePickerContainerDashboard">
+      <div style={{width:'100%',display:'flex',gap:'10px'}}>
+        <div style={{width:'50%', display:'flex',gap:'10px'}} className="datePickerContainerDashboard">
           <label>Chọn ngày bắt đầu:</label>
-          <DatePicker 
+             <DatePicker
             selected={startDate} 
             onChange={(date) => setStartDate(date)} 
             dateFormat="yyyy-MM-dd" 
-          />
+       />
+   
+         
+        </div>
+        <div style={{width:'50%',display:'flex', gap:'10px'}} className="datePickerContainerDashboard">
           <label>Chọn ngày kết thúc:</label>
           <DatePicker 
             selected={endDate} 
@@ -56,8 +60,10 @@ const RevenueChartDashboard = () => {
             dateFormat="yyyy-MM-dd" 
           />
         </div>
+      </div>
+        
         <div className="statItemDashboard">
-          <h2>Tổng doanh thu</h2>
+          <h2 style={{fontWeight:'800'}}>Tổng doanh thu</h2>
           <p>{formatCurrency(totalRevenue)}</p>
         </div>
       </div>

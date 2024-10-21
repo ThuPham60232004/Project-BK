@@ -52,18 +52,32 @@ const SingleBooking = () => {
     <div className='SingleBooking'>
       <h2>Chi tiết đơn đặt phòng</h2>
       <div className='BookingDetail'>
-        <p><strong>Id người dùng:</strong> {booking.user?._id}</p>
-        <p><strong>Id khách sạn:</strong> {booking.hotel?._id}</p>
-        <p><strong>Id phòng:</strong> {booking.room?._id}</p>
-        <p><strong>Ngày bắt đầu:</strong> {booking.startDate}</p>
-        <p><strong>Ngày kết thúc:</strong> {booking.endDate}</p>
-        <p><strong>Phương thức thanh toán:</strong> {booking.paymentMethod}</p>
-        <p><strong>Trạng thái:</strong> {booking.status}</p>
-        <p><strong>Tổng giá:</strong> {booking.totalPrice}</p>
+         <div style={{display:'flex', width:'100%'}}>
+            <p style={{width:'50%'}}><strong>Id quản lý khách sạn:</strong> {booking.idAdmin}</p>
+          <p style={{width:'50%'}}><strong>Id người dùng:</strong> {booking.user?._id}</p>
+        </div>
+       
+        <div style={{display:'flex', width:'100%'}}>
+           <p style={{width:'50%'}}><strong>Id khách sạn:</strong> {booking.hotel?._id}</p>
+          <p style={{width:'50%'}}><strong>Id phòng:</strong> {booking.room?._id}</p>
+        </div>
+       
+         <div style={{display:'flex',width:'100%'}}>
+           <p style={{width:'50%'}}><strong>Ngày bắt đầu:</strong> {booking.startDate}</p>
+        <p style={{width:'50%'}}><strong>Ngày kết thúc:</strong> {booking.endDate}</p>
+        </div>
         <p><strong>Thời gian checkin:</strong> {booking.checkintime}</p>
-        <p><strong>Tiền cọc:</strong> {booking.hotel_deposit}</p>
-        <p><strong>Id quản lý khách sạn:</strong> {booking.idAdmin}</p>
-        <button onClick={handleEdit} className="edit-button">Chỉnh sửa</button>
+        <div style={{display:'flex',width:'100%'}}>
+           <p style={{width:'50%'}}><strong>Tiền cọc:</strong> {booking.hotel_deposit}</p>
+         <p style={{width:'50%'}}><strong>Tổng giá:</strong> {booking.totalPrice}</p>
+        </div>
+         <div style={{display:'flex', width:'100%'}}>
+          <p style={{width:'50%'}}><strong>Phương thức thanh toán:</strong> {booking.paymentMethod}</p>
+         <p style={{width:'50%'}}><strong>Trạng thái:</strong> {booking.status}</p>
+        </div>
+        
+       
+        <button style={{padding:'10px 20px', fontSize:'18px', background:'green', color:'white', border:'none', width:'100%', borderRadius:'20px', fontWeight:'800', marginTop:'30px'}} onClick={handleEdit} className="edit-button">Chỉnh sửa</button>
       </div>
 
       {isEditing && (

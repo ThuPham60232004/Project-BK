@@ -54,25 +54,40 @@ const SingleHotelRoom = () => {
   if (!hotel) return <div className='no-booking'>No hotel found.</div>;
 
   return (
-    <div className='SingleHotelRoom'>
+    <div style={{margin:'0',padding:'0',width:'100%',display:'flex', flexDirection:'column'}} className='SingleHotelRoom'>
       <h2>{hotel.name}</h2>
-      <div className='ImageGallery'>
+      <div style={{width:'100%',margin:'0',padding:'0',display:'flex',gap:'10px'}}>
+         <div style={{width:'50%', display:'flex',flexDirection:'column',gap:'20px', padding:'10px'}} className='ImageGallery'>
         {hotel.photos && hotel.photos.map((photo, index) => (
-          <img key={index} src={photo} alt={`Hotel ${index + 1}`} />
+          <img style={{width:'100%', height:'270px', objectFit:'cover'}} key={index} src={photo} alt={`Hotel ${index + 1}`} />
         ))}
       </div>
-      <div className='HotelDetails'>
-        <p><strong>Loại khách sạn:</strong> {hotel.type}</p>
-        <p><strong>Thành phố:</strong> {hotel.city}</p>
-        <p><strong>Địa chỉ:</strong> {hotel.address}</p>
-        <p><strong>Mô tả:</strong> {hotel.desc}</p>
-        <p><strong>Đánh giá:</strong> {hotel.rating}</p>
-        <p><strong>Giá nhỏ nhất:</strong> {hotel.cheapestPrice}</p>
-        <p><strong>Id quản lý:</strong> {hotel.idAdmin}</p>
-        <Button variant="contained" color="primary" onClick={handleOpenEditModal}>
+      <div style={{width:'50%', display:'flex',flexDirection:'column',gap:'20px', padding:'10px'}} className='HotelDetails'>
+        <div style={{border: '1px solid black', padding:'10px', display:'flex',flexDirection:'column',gap:'10px', borderRadius:'10px'}}> 
+            <p style={{fontSize:'16px',color:'black', fontWeight:'800',padding:'0',margin:'0'}}><strong>Id quản lý:</strong> {hotel.idAdmin}</p>
+            <div style={{display:'flex',width:'100%'}}>
+              <p style={{width:'50%', fontSize:'16px',color:'black', fontWeight:'700',padding:'0',margin:'0'}}><strong>Loại khách sạn:</strong> {hotel.type}</p>
+              <p style={{width:'50%', fontSize:'16px',color:'black', fontWeight:'700',padding:'0',margin:'0'}}><strong>Thành phố:</strong> {hotel.city}</p>
+            </div>
+            <p style={{fontSize:'16px',color:'black', fontWeight:'700',padding:'0',margin:'0'}} ><strong>Địa chỉ:</strong> {hotel.address}</p>
+        </div>
+       
+        <div style={{border: '1px solid black', padding:'10px', borderRadius:'10px'}}>
+           <p style={{fontSize:'16px',color:'black', fontWeight:'500'}}><strong>Mô tả:</strong> {hotel.desc}</p>
+        </div>
+       
+        <div style={{display:'flex',border: '1px solid black',margin:'0',padding:'10px', borderRadius:'10px'}}>
+            <p style={{width:'50%', fontSize:'16px',color:'red', fontWeight:'800'}}><strong>Đánh giá:</strong> {hotel.rating}</p>
+        <p style={{width:'50%', fontSize:'16px',color:'red', fontWeight:'800',}}><strong>Giá nhỏ nhất:</strong> {hotel.cheapestPrice}</p>
+        </div>
+      
+       
+        <Button style={{background:'green', fontWeight:'700', borderRadius:'20px', padding:'10px'}} variant="contained" color="primary" onClick={handleOpenEditModal}>
           Chỉnh sửa
         </Button>
       </div>
+      </div>
+     
 
       <Modal open={openEditModal} onClose={handleCloseEditModal}>
         <div className="modal-content1">
