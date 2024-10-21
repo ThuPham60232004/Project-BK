@@ -87,7 +87,7 @@ const StatusBookingDashboard = () => {
     else if (booking.status === 'cancelled') className += ' cancelled';
 
     return (       
-      <div style={{width:'100%',display:'flex',gap:'20px',justifyContent:'center'}}>
+      <div style={{width:'100%',display:'flex',gap:'10px',justifyContent:'center'}}>
         <div style={{width:'85%',display:'flex', height:'auto',flexDirection:'column', border:'none',margin:'0',padding:'10px',marginTop:'10px'}} className={className} key={booking._id} onClick={() => openModal(booking)}>
           <p style={{display:'flex',justifyContent:'space-between',margin:'0',padding:'5px 20px',color:'gray',fontSize:'18px',fontWeight:'500',background:'white',borderTopLeftRadius:'10px',borderTopRightRadius:'10px'}}>Tên KS <strong style={{margin:'0',padding:'0',color:'black'}}>{booking.hotel}</strong></p>
           <p style={{display:'flex',justifyContent:'space-between',margin:'0',padding:'5px 20px',color:'gray',fontSize:'18px',fontWeight:'500',background:'white'}}>Tên người dùng <strong style={{margin:'0',padding:'0',color:'black'}}>{booking.user}</strong></p>
@@ -122,9 +122,9 @@ const StatusBookingDashboard = () => {
           className="booking-modal"
           overlayClassName="booking-modal-overlay"
         >
-          <h2 style={{fontSize:'20px',fontWeight:'800'}}>Cập nhật trạng thái đơn đặt phòng</h2>
-          <div style={{display:'flex',flexDirection:'column',gap:'15px'}}>
-            <div style={{padding:'20px',display:'flex',flexDirection:'column',gap:'10px', border:'1px solid gray', borderRadius:'10px'}}>
+          <h2>Cập nhật trạng thái đơn đặt phòng</h2>
+          <div style={{display:'flex',flexDirection:'column',gap:'25px'}}>
+            <div style={{padding:'20px',display:'flex',flexDirection:'column',gap:'20px', border:'1px solid gray', borderRadius:'10px'}}>
               <div style={{fontWeight:'800',fontSize:'16px'}}><strong style={{fontWeight:'600'}}>Tên khách sạn :</strong> {selectedBooking.hotel}</div>
               <div style={{fontWeight:'800',fontSize:'16px'}}><strong style={{fontWeight:'600'}}>Tên người dùng :</strong> {selectedBooking.user}</div>
               <div style={{fontWeight:'800',fontSize:'16px'}}><strong style={{fontWeight:'600'}}>Tên phòng :</strong> {selectedBooking.room}</div>
@@ -142,10 +142,10 @@ const StatusBookingDashboard = () => {
               </div>
             </div>
             
-          <div style={{width:'100%',display:'flex',gap:'10px'}}>
-          <button style={{width:'50%',padding:'10px',borderRadius:'10px',border:'none',background:'green',color:'white',fontWeight:'700',fontSize:'16px'}} className='btnhh' onClick={handleStatusChange}>Cập nhật trạng thái</button>
-          <button style={{width:'50%',padding:'10px',borderRadius:'10px',border:'none',background:'red',color:'white',fontWeight:'700',fontSize:'16px'}} className='bthhh' onClick={closeModal}>Đóng</button>
-          </div>
+            <div style={{width:'100%',display:'flex',gap:'10px'}}>
+            <button style={{width:'50%',padding:'10px',borderRadius:'10px',border:'none',background:'green',color:'white',fontWeight:'700',fontSize:'16px'}} className='btnhh' onClick={handleStatusChange}>Cập nhật trạng thái</button>
+            <button style={{width:'50%',padding:'10px',borderRadius:'10px',border:'none',background:'red',color:'white',fontWeight:'700',fontSize:'16px'}} className='bthhh' onClick={closeModal}>Đóng</button>
+            </div>
          
           </div>
           

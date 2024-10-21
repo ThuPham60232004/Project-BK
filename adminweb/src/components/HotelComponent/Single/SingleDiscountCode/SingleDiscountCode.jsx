@@ -65,10 +65,11 @@ const SingleDiscountCode = () => {
       </Button>
 
       <Modal open={openEditModal} onClose={handleCloseEditModal}>
-        <div className="modal-content2">
+        <div style={{marginTop:'20px'}} className="modal-content2">
           <h2>Chỉnh sửa mã giảm giá</h2>
           <form onSubmit={handleEditSubmit}>
-            <TextField
+            <div style={{width:'100%', display:'flex',gap:'10px'}}>
+              <TextField style={{width:'70%'}}
               name="code"
               label="Mã code"
               value={editedDiscountCode.code}
@@ -78,7 +79,7 @@ const SingleDiscountCode = () => {
               variant="outlined"
               required
             />
-            <TextField
+            <TextField style={{width:'30%'}}
               name="discountType"
               label="Loại mã giảm giá"
               value={editedDiscountCode.discountType}
@@ -88,6 +89,8 @@ const SingleDiscountCode = () => {
               variant="outlined"
               required
             />
+            </div>
+            
             <TextField
               name="discountValue"
               label="Giá trị mã giảm giá"
@@ -98,7 +101,8 @@ const SingleDiscountCode = () => {
               variant="outlined"
               required
             />
-            <TextField
+            <div style={{width:'100%', display:'flex',gap:'10px'}}>
+              <TextField style={{width:'50%'}}
               name="startDate"
               label="Ngày bắt đầu"
               type="date"
@@ -110,7 +114,7 @@ const SingleDiscountCode = () => {
               InputLabelProps={{ shrink: true }}
               required
             />
-            <TextField
+            <TextField style={{width:'50%'}}
               name="expirationDate"
               label="Ngày hết hạn"
               type="date"
@@ -122,6 +126,8 @@ const SingleDiscountCode = () => {
               InputLabelProps={{ shrink: true }}
               required
             />
+            </div>
+            
             <Button variant="contained" color="primary" type="submit">
               Lưu
             </Button>

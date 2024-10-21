@@ -60,7 +60,7 @@ const UserProfile = ({ userId: propUserId }) => {
       <div className="userProfile">
         <h2 style={{padding:'20px', fontWeight:'800'}}>Cập nhật thông tin cá nhân</h2>
         {editMode ? (
-          <form style={{width:'70%' ,padding:'20px', margin:'0 auto', display:'flex', flexDirection:'column',gap:'10px', border:'1px solid black', borderRadius:'10px'}} onSubmit={handleSubmit}>
+          <form style={{width:'70%' ,padding:'20px', margin:'0 auto', display:'flex', flexDirection:'column',gap:'10px'}} onSubmit={handleSubmit}>
             <div style={{ width:'100%',display:'flex', alignItems:'center', gap:'10px', marginLeft:'0' ,  padding:'10px'}}>
               <label style={{width:'30%'}}>Hình ảnh:</label>
               <input style={{width:'70%', padding:'10px', borderRadius:'10px'}}

@@ -59,7 +59,7 @@ const SingleHotelRoom = () => {
       <div style={{width:'100%',margin:'0',padding:'0',display:'flex',gap:'10px'}}>
          <div style={{width:'50%', display:'flex',flexDirection:'column',gap:'20px', padding:'10px'}} className='ImageGallery'>
         {hotel.photos && hotel.photos.map((photo, index) => (
-          <img style={{width:'100%', height:'270px', objectFit:'cover'}} key={index} src={photo} alt={`Hotel ${index + 1}`} />
+          <img style={{width:'100%', height:'260px', objectFit:'cover'}} key={index} src={photo} alt={`Hotel ${index + 1}`} />
         ))}
       </div>
       <div style={{width:'50%', display:'flex',flexDirection:'column',gap:'20px', padding:'10px'}} className='HotelDetails'>
@@ -79,7 +79,7 @@ const SingleHotelRoom = () => {
         <div style={{display:'flex',border: '1px solid black',margin:'0',padding:'10px', borderRadius:'10px'}}>
             <p style={{width:'50%', fontSize:'16px',color:'red', fontWeight:'800'}}><strong>Đánh giá:</strong> {hotel.rating}</p>
         <p style={{width:'50%', fontSize:'16px',color:'red', fontWeight:'800',}}><strong>Giá nhỏ nhất:</strong> {hotel.cheapestPrice}</p>
-        </div>
+      </div>
       
        
         <Button style={{background:'green', fontWeight:'700', borderRadius:'20px', padding:'10px'}} variant="contained" color="primary" onClick={handleOpenEditModal}>
@@ -92,9 +92,7 @@ const SingleHotelRoom = () => {
       <Modal open={openEditModal} onClose={handleCloseEditModal}>
         <div className="modal-content1">
           <h2>Chỉnh sửa thông tin khách sạn</h2>
-          <Button variant="outlined" color="secondary" onClick={handleCloseEditModal} style={{ marginBottom: '10px' }}>
-            Đóng
-          </Button>
+       
           <div className='modal-content-container'>
             <form onSubmit={handleEditSubmit}>
               <TextField
@@ -155,9 +153,15 @@ const SingleHotelRoom = () => {
                 fullWidth
                 margin="normal"
               />
-              <Button variant="contained" color="primary" type="submit">
+              <div style={{width:'100%', display:'flex', gap:'10px', marginBottom:'20px'}}>
+                  <Button style={{width:'50%'}} variant="contained" color="primary" type="submit">
                 Lưu
               </Button>
+                 <Button style={{width:'50%'}} variant="outlined" color="secondary" onClick={handleCloseEditModal} >
+                Đóng
+              </Button>
+              </div>
+            
             </form>
           </div>
         </div>

@@ -69,10 +69,10 @@ const StatusBooking = () => {
 
     return (
       <div className={className} key={booking._id} onClick={() => openModal(booking)}>
-        <div><strong>Tên khách sạn:</strong> {booking.hotel?.name || "Unknown Hotel"}</div>
-        <div><strong>Tên người dùng:</strong> {booking.user?.username || "Unknown User"}</div>
-        <div><strong>Tên phòng:</strong> {booking.room?.title || "Unknown Room"}</div>
-        <div><strong>Trạng thái đơn đặt phòng:</strong> {booking.status}</div>
+        <div><strong style={{color:'white'}}>Tên khách sạn:</strong> {booking.hotel?.name || "Unknown Hotel"}</div>
+        <div><strong style={{color:'white'}}>Tên người dùng:</strong> {booking.user?.username || "Unknown User"}</div>
+        <div><strong style={{color:'white'}}>Tên phòng:</strong> {booking.room?.title || "Unknown Room"}</div>
+        <div><strong style={{color:'white'}}>Trạng thái đơn đặt phòng:</strong> {booking.status}</div>
       </div>
     );
   };
@@ -89,8 +89,9 @@ const StatusBooking = () => {
           className="booking-modal"
           overlayClassName="booking-modal-overlay"
         >
-          <h2>Cập nhâp trạng thái đơn đặt phòng</h2>
-          <div><strong>Tên khách sạn:</strong> {selectedBooking.hotel?.name || "Unknown Hotel"}</div>
+          <h2 style={{color:'black'}}>Cập nhâp trạng thái đơn đặt phòng</h2>
+          <div style={{display:'flex', flexDirection:'column', gap:'15px'}}>
+            <div><strong>Tên khách sạn:</strong> {selectedBooking.hotel?.name || "Unknown Hotel"}</div>
           <div><strong>Tên người dùng:</strong> {selectedBooking.user?.username || "Unknown User"}</div>
           <div><strong>Tên phòng:</strong> {selectedBooking.room?.title || "Unknown Room"}</div>
           <div>
@@ -105,12 +106,16 @@ const StatusBooking = () => {
               <option value="cancelled">Cancelled</option>
             </select>
           </div>
-          <button className='btnhh' onClick={handleStatusChange}>Update Status</button>
-          <button className='bthhh' onClick={closeModal}>Close</button>
+          <div style={{width:'100%', display:'flex', gap:'10px'}}>
+          <button style={{width:'50%'}} className='btnhh' onClick={handleStatusChange}>Update Status</button>
+          <button style={{width:'50%'}} className='bthhh' onClick={closeModal}>Close</button>  
+          </div>
+          
+          </div>
+          
         </Modal>
       )}
     </div>
   );
 };
-
 export default StatusBooking;
