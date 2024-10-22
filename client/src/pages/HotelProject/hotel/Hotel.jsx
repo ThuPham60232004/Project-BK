@@ -137,12 +137,12 @@ const Hotel = () => {
                 <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
-                <h1>Hoàn hảo cho một {days}-nghỉ đêm!</h1>
+                <h1>Hoàn hảo cho một {days||1}-nghỉ đêm!</h1>
                 <span>
                   Nằm ngay trung tâm, chỗ nghỉ này có vị trí tuyệt vời - 9.8!
                 </span>
                 <p>
-                  <b>${days * data.cheapestPrice * numberOfRooms}</b> ({days}{" "}
+                  <b>${days * data.cheapestPrice * numberOfRooms||data.cheapestPrice}</b> ({days}{" "}
                   đêm)
                 </p>
                 <button onClick={() => handleClick(data._id)}>Đặt Ngay Bây Giờ</button>

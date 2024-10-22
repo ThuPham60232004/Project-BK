@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const FullHotel = () => {
   const { data, loading, error } = useFetch("http://localhost:9000/api/hotels/all");
   const navigate = useNavigate();
-
+  const [selectedRating, setSelectedRating] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedName, setSelectedName] = useState("");
 
@@ -17,20 +17,23 @@ const FullHotel = () => {
   const handleCityChange = (e) => {
     setSelectedCity(e.target.value);
   };
-
+  const handleRatingChange = (e) => {
+    setSelectedRating(e.target.value);
+  };
+  
+ 
   const handleNameChange = (e) => {
     setSelectedName(e.target.value);
   };
   const cities = [...new Set(data.map((item) => item.city))];
   const names = [...new Set(data.map((item) => item.type))];
-
   const filteredHotels = data.filter((item) => {
     return (
       (selectedCity === "" || item.city === selectedCity) &&
-      (selectedName === "" || item.type === selectedName)
+      (selectedName === "" || item.type === selectedName) &&
+      (selectedRating === "" || item.rating >= selectedRating)
     );
   });
-
   if (error) return <div>Lỗi tải dữ liệu</div>;
 
   return (
@@ -53,6 +56,14 @@ const FullHotel = () => {
             </option>
           ))}
         </select>
+        <select value={selectedRating} onChange={handleRatingChange} className="filterSelect">
+        <option value="5">5 sao trở lên</option>
+        <option value="4">4 sao trở lên</option>
+        <option value="3">3 sao trở lên</option>
+        <option value="2">2 sao trở lên</option>
+        <option value="1">1 sao trở lên</option>
+      </select>
+
       </div>
         <div className="featured1">
       {loading ? (

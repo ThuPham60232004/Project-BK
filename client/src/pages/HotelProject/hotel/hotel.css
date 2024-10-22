@@ -1,4 +1,3 @@
-/* Container cho trang khách sạn */
 .hotelContainer {
   display: flex;
   flex-direction: column;
@@ -6,22 +5,24 @@
   margin-top: 20px;
 }
 
-/* Wrapper cho thông tin khách sạn */
 .hotelWrapper {
   width: 100%;
-  max-width: 1200px; /* Tăng kích thước tối đa để bố cục tốt hơn trên màn hình lớn */
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   gap: 15px;
   position: relative;
-  padding: 0 20px; /* Thêm padding để tạo khoảng cách tốt hơn */
+  padding: 0 20px; 
 }
-.hotelTitle{
-  color:#000000
+
+.hotelTitle {
+  color: #000000;
 }
-.hotelDetailsPrice p{
+
+.hotelDetailsPrice p {
   font-size: 30px;
 }
+
 .bookNow {
   position: absolute;
   top: 10px;
@@ -31,145 +32,133 @@
   background-color: #0071c2;
   color: rgb(0, 0, 0);
   font-weight: bold;
-  border-radius: 8px; 
+  border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 }
 
 .bookNow:hover {
-  background-color: #005bb5; 
+  background-color: #005bb5;
 }
 
-/* Tiêu đề khách sạn */
 .hotelTitle {
-  font-size: 26px; 
+  font-size: 26px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Địa chỉ khách sạn */
 .hotelAddress {
-  font-size: 14px; /* Kích thước chữ lớn hơn một chút */
+  font-size: 14px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-/* Khoảng cách và điểm nổi bật của giá */
 .hotelDistance {
-  color: rgba(10, 148, 148, 0.788); /* Màu nổi bật cho khoảng cách */
-  font-weight: 600; /* Đậm hơn một chút */
+  color: rgba(10, 148, 148, 0.788);
+  font-weight: 600;
   margin: 10px 0;
 }
 
 .hotelPriceHighlight {
-  color: #006400; /* Màu nổi bật cho giá */
-  font-weight: 600; /* Đậm hơn một chút */
+  color: #006400;
+  font-weight: 600;
   margin-bottom: 20px;
 }
 
-/* Styling cho hình ảnh khách sạn */
 .hotelImages {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 15px; /* Khoảng cách giữa các hình ảnh */
+  gap: 15px;
 }
 
-/* Wrapper cho từng hình ảnh khách sạn */
 .hotelImgWrapper {
-  flex: 1 1 calc(33.333% - 15px); /* Tạo ba cột với khoảng cách giữa các cột */
-  box-sizing: border-box; /* Đảm bảo padding và border không ảnh hưởng đến kích thước */
-  margin-bottom: 15px; /* Khoảng cách dưới mỗi hình ảnh */
+  flex: 1 1 calc(33.333% - 15px);
+  box-sizing: border-box;
+  margin-bottom: 15px;
 }
 
-/* Styling cho hình ảnh khách sạn */
 .hotelImg {
   width: 100%;
-  height: 400px; /* Chiều cao cố định cho đồng nhất */
-  object-fit: cover; /* Cắt hình ảnh để giữ tỷ lệ khung hình */
-  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+  height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-/* Hiệu ứng hover cho hình ảnh */
 .hotelImg:hover {
-  transform: scale(1.05); /* Tăng kích thước khi di chuột qua */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Thêm bóng để tạo hiệu ứng nổi bật */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
-/* Phần chi tiết của khách sạn */
 .hotelDetails {
   display: flex;
   justify-content: space-between;
-  gap: 30px; /* Khoảng cách lớn hơn giữa các phần */
+  gap: 30px;
   margin-top: 20px;
 }
 
-/* Texts trong phần chi tiết khách sạn */
 .hotelDetailsTexts {
   flex: 3;
 }
 
 .hotelDesc {
-  font-size: 16px; /* Kích thước chữ lớn hơn cho dễ đọc */
-  line-height: 1.6; /* Tăng khoảng cách giữa các dòng cho dễ đọc */
+  font-size: 16px;
+  line-height: 1.6;
   margin-top: 20px;
 }
 
-/* Phần giá cả */
 .hotelDetailsPrice {
   flex: 1;
-  background-color: #f0faff; /* Màu nền nhẹ hơn để nổi bật */
-  padding: 25px; /* Thêm padding cho cảm giác rộng rãi */
-  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  background-color: #f0faff;
+  padding: 25px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bóng nhẹ để tạo chiều sâu */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .hotelDetailsPrice > h1 {
-  font-size: 20px; /* Kích thước chữ lớn hơn để nhấn mạnh */
-  color: #333; /* Màu tối hơn để nổi bật */
+  font-size: 20px;
+  color: #333;
 }
 
 .hotelDetailsPrice > span {
-  font-size: 16px; /* Kích thước chữ lớn hơn cho dễ đọc */
-  color: #666; /* Màu nhẹ hơn cho văn bản phụ */
+  font-size: 16px;
+  color: #666;
 }
 
 .hotelDetailsPrice > h2 {
-  font-weight: 400; /* Đặt độ đậm cho phù hợp */
+  font-weight: 400;
 }
 
 .hotelDetailsPrice > button {
   border: none;
-  padding: 12px 24px; /* Tăng padding để nút nổi bật hơn */
-  background-color: rgba(10, 148, 148, 0.788)1; /* Màu nền nhất quán */
+  padding: 12px 24px;
+  background-color: rgba(10, 148, 148, 0.788);
   color: rgb(0, 0, 0);
   font-weight: bold;
   cursor: pointer;
-  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
-  transition: background-color 0.3s ease; /* Chuyển màu nền mượt mà khi hover */
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
 }
 
 .hotelDetailsPrice > button:hover {
-  background-color: rgba(10, 148, 148, 0.788); /* Màu nền tối hơn khi hover */
+  background-color: rgba(10, 148, 148, 0.788);
 }
 
-/* Styling cho slider */
 .slider {
-  position: fixed; /* Vị trí cố định để giữ cho slider luôn hiển thị */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8); /* Màu nền tối hơn để tạo sự tập trung */
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 999;
   display: flex;
   align-items: center;
-  justify-content: center; /* Căn giữa nội dung */
+  justify-content: center;
 }
 
 .sliderWrapper {
@@ -183,45 +172,44 @@
 .sliderImg {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain; /* Giữ tỷ lệ khung hình */
-  border-radius: 8px; /* Bo góc để tạo kiểu hiện đại */
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .close {
   position: absolute;
   top: 20px;
   right: 20px;
-  font-size: 32px; /* Kích thước lớn hơn để dễ thấy */
-  color: #000000; /* Màu trắng để nổi bật trên nền tối */
+  font-size: 32px;
+  color: #000000;
   cursor: pointer;
-  transition: color 0.3s ease; /* Chuyển màu mượt mà khi hover */
+  transition: color 0.3s ease;
 }
 
 .close:hover {
-  color: #f0f0f0; /* Màu sáng hơn khi hover */
+  color: #f0f0f0;
 }
 
 .arrow {
   position: absolute;
-  font-size: 60px; /* Kích thước lớn hơn để dễ thấy */
-  color: #000000; /* Màu trắng để nổi bật trên nền tối */
+  font-size: 60px;
+  color: #000000;
   cursor: pointer;
-  transition: color 0.3s ease; /* Chuyển màu mượt mà khi hover */
+  transition: color 0.3s ease;
 }
 
 .arrow:hover {
-  color: #f0f0f0; /* Màu sáng hơn khi hover */
+  color: #f0f0f0;
 }
 
 .arrow.left {
-  left: 20px; /* Vị trí bên trái */
+  left: 20px;
 }
 
 .arrow.right {
-  right: 20px; /* Vị trí bên phải */
+  right: 20px;
 }
 
-/* Khoảng cách cho footer và MailList */
 footer, .mailList {
   margin-top: 20px;
 }
