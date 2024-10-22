@@ -38,6 +38,8 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
   const defaultEndDate = dates && dates[0] && dates[0].endDate ? new Date(dates[0].endDate) : new Date(new Date().setDate(new Date().getDate() + 1));
   const [startDate, setStartDate] = useState(defaultStartDate);
   const [endDate, setEndDate] = useState(defaultEndDate);
+  const [inQueue, setInQueue] = useState(false); 
+
 
   const navigate = useNavigate();
   const calculateDepositAmount = (totalPrice) => {
@@ -76,7 +78,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         try {
           const res = await axios.get(`http://localhost:9000/api/users/${userId}`);
           setUserInfo(res.data);
-          setUpdatedUserInfo(res.data); // Initialize updatedUserInfo with the fetched user data
+          setUpdatedUserInfo(res.data); 
         } catch (err) {
           console.error("Lấy thông tin người dùng thất bại", err);
         }
@@ -133,7 +135,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
 
   const handleUserInfoChange = (e) => {
     const { name, value } = e.target;
-    setUpdatedUserInfo((prev) => ({ ...prev, [name]: value })); // Update the specific field in updatedUserInfo
+    setUpdatedUserInfo((prev) => ({ ...prev, [name]: value })); 
   };
 
   const handleUpdateUserInfo = async () => {
@@ -148,6 +150,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
   };
 
   const handleClick = async () => {
+    setInQueue(true); // Đưa người dùng vào hàng đợi
     try {
       const userId = localStorage.getItem("userId");
       const token = localStorage.getItem("authToken");
@@ -169,7 +172,7 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         paymentMethod: paymentMethod,
         totalPrice: calculateTotalPriceDetails().finalTotalPrice,
         status: "pending",
-        idAdmin: idAdmin, 
+        idAdmin: idAdmin,
       };
 
       await axios.post("http://localhost:9000/api/bookings", bookingData, {
@@ -194,15 +197,16 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
           content: `Thanh Toán ${room.title}`,
           method: paymentMethod,
           amount: calculateTotalPriceDetails().finalTotalPrice.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' }),
-          userName: userInfo.username, 
+          userName: userInfo.username,
         }
       });
       setOpen(false);
     } catch (err) {
       console.error("Đặt phòng hoặc cập nhật trạng thái phòng thất bại", err.response.data);
+    } finally {
+      setInQueue(false); 
     }
   };
-
   return (
     <div className="reserve">
       <div className="reserve-container">
@@ -211,6 +215,16 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
           className="reserve-close"
           onClick={() => setOpen(false)}
         />
+         {inQueue ? (
+          // Giao diện khi đang ở trong hàng đợi
+          <div className="queue-screen">
+            <h2>Bạn đang trong hàng đợi...</h2>
+            <p>Vui lòng chờ trong khi chúng tôi xử lý đặt phòng của bạn.</p>
+            <div className="spinner"></div> {/* Bạn có thể thêm hiệu ứng xoay */}
+          </div>
+        ) : (
+          // Giao diện đặt phòng bình thường
+          <>
         <h1 className="reserve-title">Đặt Phòng</h1>
         {userInfo && (
           <div className="user-info">
@@ -350,6 +364,8 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
         <button onClick={handleClick} className="reserve-button-booking">
           Đặt Ngay!
         </button>
+        </>
+        )}
       </div>
     </div>
   );
