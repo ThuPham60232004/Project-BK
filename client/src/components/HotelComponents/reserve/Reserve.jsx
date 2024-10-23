@@ -216,14 +216,12 @@ const Reserve = ({ setOpen, hotelId, roomId }) => {
           onClick={() => setOpen(false)}
         />
          {inQueue ? (
-          // Giao diện khi đang ở trong hàng đợi
           <div className="queue-screen">
             <h2>Bạn đang trong hàng đợi...</h2>
             <p>Vui lòng chờ trong khi chúng tôi xử lý đặt phòng của bạn.</p>
-            <div className="spinner"></div> {/* Bạn có thể thêm hiệu ứng xoay */}
+            <div className="spinner"></div> 
           </div>
         ) : (
-          // Giao diện đặt phòng bình thường
           <>
         <h1 className="reserve-title">Đặt Phòng</h1>
         {userInfo && (

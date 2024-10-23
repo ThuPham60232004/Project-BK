@@ -3,7 +3,7 @@ import Notification from "../../models/Notification.js";
 import moment from 'moment';
 import Hotel from "../../models/hotels/Hotel.js"; 
 
-// Tạo một booking mới
+//------------------TẠO ĐƠN ĐẶT PHÒNG
 export const createBooking = async (req, res) => {
   const { user, hotel, room, startDate, endDate, totalPrice, checkintime,paymentMethod,hotel_deposit,idAdmin} = req.body;
 
@@ -32,6 +32,8 @@ export const createBooking = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+//------------------LẤY ĐƠN ĐẶT PHÒNG THEO ID ADMIN
 export const getBookingByAdminId = async (req, res, next) => {
   const idAdmin= req.params.idAdmin;
   try {
@@ -41,7 +43,8 @@ export const getBookingByAdminId = async (req, res, next) => {
     next(err);
   }
 };
-// Lấy một booking theo ID
+
+//------------------LẤY ĐƠN ĐẶT PHÒNG
 export const getBooking = async (req, res) => {
   try {
     const booking = await Booking.findById(req.params.id)
@@ -54,7 +57,7 @@ export const getBooking = async (req, res) => {
   }
 };
 
-// Cập nhật một booking
+//------------------CẬP NHẬP ĐƠN ĐẶT PHÒNG
 export const updateBooking = async (req, res) => {
   try {
     const updatedBooking = await Booking.findByIdAndUpdate(
@@ -63,7 +66,6 @@ export const updateBooking = async (req, res) => {
       { new: true }
     );
 
-    // Gửi thông báo
     const message = `Booking của bạn đã được cập nhật.`;
     const newNotification = new Notification({ user: updatedBooking.user, message });
     await newNotification.save();
@@ -74,12 +76,10 @@ export const updateBooking = async (req, res) => {
   }
 };
 
-// Xóa một booking
+//------------------XOÁ ĐƠN ĐẶT PHÒNG
 export const deleteBooking = async (req, res) => {
   try {
     const booking = await Booking.findByIdAndDelete(req.params.id);
-
-    // Gửi thông báo
     const message = `Booking của bạn đã bị xóa.`;
     const newNotification = new Notification({ user: booking.user, message });
     await newNotification.save();
@@ -90,7 +90,7 @@ export const deleteBooking = async (req, res) => {
   }
 };
 
-// Lấy tất cả các bookings của một người dùng
+//------------------LẤY ĐƠN ĐẶT PHÒNG THEO USER
 export const getUserBookings = async (req, res) => {
   try {
     const bookings = await Booking.find({ user: req.params.userId })
@@ -102,7 +102,7 @@ export const getUserBookings = async (req, res) => {
   }
 };
 
-// Lịch sử booking của người dùng
+//------------------LẤY LỊCH SỬ ĐƠN HÀNG THEO USER
 export const getBookingHistory = async (req, res) => {
   try {
     const bookings = await Booking.find({ user: req.params.userId })
@@ -114,7 +114,7 @@ export const getBookingHistory = async (req, res) => {
   }
 };
 
-// Hủy phòng của người dùng
+//------------------HUỶ ĐƠN ĐẶT PHÒNG
 export const cancelBooking = async (req, res) => {
   try {
     const booking = await Booking.findById(req.params.id);
@@ -124,8 +124,6 @@ export const cancelBooking = async (req, res) => {
 
     booking.status = "cancelled";
     await booking.save();
-
-    // Gửi thông báo
     const message = `Booking của bạn đã bị hủy.`;
     const newNotification = new Notification({ user: booking.user, message });
     await newNotification.save();
@@ -136,6 +134,7 @@ export const cancelBooking = async (req, res) => {
   }
 };
 
+//------------------LẤY TỔNG ĐƠN ĐẶT PHÒNG THEO NGÀY
 export const getBookingCount = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -151,6 +150,8 @@ export const getBookingCount = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+//------------------LẤY TỔNG DOANH THU THEO NGÀY
 export const getTotalRevenue = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -177,6 +178,8 @@ export const getTotalRevenue = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+//------------------LẤY ĐƠN ĐẶT HÀNG THEO NGƯỜI DÙNG THEO NGÀY
 export const getBookingCountByUser = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -202,6 +205,8 @@ export const getBookingCountByUser = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+//------------------LẤY TỔNG ĐƠN ĐẶT HÀNG THEO KHÁCH SẠN THEO NGÀY
 export const getBookingCountByHotel = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -227,6 +232,8 @@ export const getBookingCountByHotel = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+//------------------LẤY DOANH THU THEO KHÁCH SẠN THEO NGÀY
 export const getRevenueByHotel = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -260,6 +267,8 @@ export const getRevenueByHotel = async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+//------------------LẤY TẤT CẢ KHÁCH SẠN CHƯA CÓ ĐƠN ĐẶT PHÒNG THEO NGÀY
 export const getHotelsWithNoBookings = async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
@@ -280,6 +289,7 @@ export const getHotelsWithNoBookings = async (req, res) => {
   }
 };
 
+//------------------LẤY TẤT CẢ ĐƠN ĐẶT PHÒNG
 export const getAllBookings = async (req, res) => {
   try {
     const bookings = await Booking.find()
@@ -293,7 +303,7 @@ export const getAllBookings = async (req, res) => {
   }
 };
 
-
+//------------------TỔNG ĐƠN ĐẶT PHÒNG
 export const getTotalBookings = async (req, res) => {
   try {
     const count = await Booking.countDocuments();
@@ -303,8 +313,7 @@ export const getTotalBookings = async (req, res) => {
   }
 };
 
-
-
+//------------------LẤY ĐƠN ĐẶT PHÒNG THEO NGƯỜI DÙNG
 export const getBookingCountByUserAllTime = async (req, res) => {
   try {
     const countByUser = await Booking.aggregate([
@@ -340,7 +349,7 @@ export const getBookingCountByUserAllTime = async (req, res) => {
   }
 };
 
-
+//------------------LẤY ĐƠN ĐẶT PHÒNG THEO KHÁCH SẠN
 export const getBookingCountByHotelAllTime = async (req, res) => {
   try {
     const countByHotel = await Booking.aggregate([
@@ -376,21 +385,19 @@ export const getBookingCountByHotelAllTime = async (req, res) => {
   }
 };
 
-
-// Doanh thu theo khách sạn tất cả thời gian
+//------------------LẤY DOANH THU KHÁCH SẠN
 export const getRevenueByHotelAllTime = async (req, res) => {
   try {
-    // Bước 1: Nhóm theo khách sạn và tính tổng doanh thu từ những đơn đặt phòng "confirmed"
     const revenueByHotel = await Booking.aggregate([
       {
         $match: {
-          status: "confirmed" // Chỉ tính doanh thu từ các đơn đã được xác nhận
+          status: "confirmed" 
         }
       },
       {
         $group: {
-          _id: "$hotel", // Nhóm theo khách sạn
-          totalRevenue: { $sum: "$totalPrice" } // Tổng doanh thu
+          _id: "$hotel", 
+          totalRevenue: { $sum: "$totalPrice" } 
         }
       },
       {
@@ -409,7 +416,7 @@ export const getRevenueByHotelAllTime = async (req, res) => {
 };
 
 
-// Lấy các khách sạn chưa có booking tất cả thời gian
+//------------------ Lấy các khách sạn chưa có booking tất cả thời gian
 export const getHotelsWithNoBookingsAllTime = async (req, res) => {
   try {
     const hotelsWithBookings = await Booking.distinct("hotel");
@@ -424,7 +431,7 @@ export const getHotelsWithNoBookingsAllTime = async (req, res) => {
   }
 };
 
-// Thống kê số lượng booking theo ngày
+//------------------Thống kê số lượng booking theo ngày
 export const getBookingDays = async (req, res) => {
   try {
     const bookingsPerDay = await Booking.aggregate([
@@ -450,7 +457,7 @@ export const getBookingDays = async (req, res) => {
 };
 
 
-// Ngày có số lượng booking nhiều nhất
+//------------------Ngày có số lượng booking nhiều nhất
 export const getMostBookedDay = async (req, res) => {
   try {
     const mostBookedDay = await Booking.aggregate([
@@ -474,7 +481,7 @@ export const getMostBookedDay = async (req, res) => {
   }
 };
 
-// Lấy tất cả bookings trong khoảng thời gian cụ thể
+//------------------ Lấy tất cả bookings trong khoảng thời gian cụ thể
 export const getBookingsWithinDateRange = async (req, res) => {
   const { startDate, endDate } = req.query;
 
@@ -491,7 +498,7 @@ export const getBookingsWithinDateRange = async (req, res) => {
 };
 
 
-// Thống kê doanh thu của khách sạn (theo idAdmin)
+//------------------ Thống kê doanh thu của khách sạn (theo idAdmin)
 export const getRevenueByAdmin = async (req, res) => {
   const idAdmin = req.params.idAdmin;
   const { startDate, endDate } = req.query;
@@ -522,7 +529,7 @@ export const getRevenueByAdmin = async (req, res) => {
   }
 };
 
-// Lấy tất cả đơn đặt phòng theo idAdmin
+//------------------ Lấy tất cả đơn đặt phòng theo idAdmin
 export const getBookingByHotelId = async (req, res) => {
   const idAdmin = req.params.idAdmin;
 
@@ -551,7 +558,7 @@ export const countBookings = async (req, res, next) => {
   }
 };
 
-// Tổng doanh thu ở trạng thái confirmed
+//------------------Tổng doanh thu ở trạng thái confirmed
 export const getTotalRevenueAllTime = async (req, res) => {
   try {
     const totalRevenue = await Booking.aggregate([
@@ -574,7 +581,7 @@ export const getTotalRevenueAllTime = async (req, res) => {
   }
 };
 
-// Tổng doanh thu ở trạng thái pending
+//------------------Tổng doanh thu ở trạng thái pending
 export const getTotalRevenuePending = async (req, res) => {
   try {
     const totalRevenue = await Booking.aggregate([

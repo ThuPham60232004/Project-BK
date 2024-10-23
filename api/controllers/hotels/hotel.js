@@ -11,7 +11,6 @@ export const createHotel = async (req, res, next) => {
     next(err);
   }
 };
-
 export const updateHotel = async (req, res, next) => {
   try {
     const updatedHotel = await Hotel.findByIdAndUpdate(
@@ -24,7 +23,6 @@ export const updateHotel = async (req, res, next) => {
     next(err);
   }
 };
-
 export const deleteHotel = async (req, res, next) => {
   try {
     await Hotel.findByIdAndDelete(req.params.id);
@@ -33,7 +31,6 @@ export const deleteHotel = async (req, res, next) => {
     next(err);
   }
 };
-
 export const getHotel = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
@@ -42,7 +39,6 @@ export const getHotel = async (req, res, next) => {
     next(err);
   }
 };
-
 export const getHotelsByAdminId = async (req, res, next) => {
   const { idAdmin } = req.params;
 
@@ -53,7 +49,6 @@ export const getHotelsByAdminId = async (req, res, next) => {
     next(err);
   }
 };
-
 export const getHotels = async (req, res, next) => {
   const { min, max, ...others } = req.query;
   try {
@@ -98,7 +93,6 @@ export const countByCity = async (req, res, next) => {
     next(err);
   }
 };
-
 export const countByType = async (req, res, next) => {
   try {
     const hotelCount = await Hotel.countDocuments({ type: "Hotel" });
@@ -118,7 +112,6 @@ export const countByType = async (req, res, next) => {
     next(err);
   }
 };
-
 export const getHotelRooms = async (req, res, next) => {
   try {
     const hotel = await Hotel.findById(req.params.id);
@@ -132,8 +125,6 @@ export const getHotelRooms = async (req, res, next) => {
     next(err);
   }
 };
-
-
 export const getAllHotels = async (req, res, next) => {
   try {
     const hotels = await Hotel.find(); 
@@ -146,7 +137,7 @@ export const updateCityForAllHotels = async (req, res, next) => {
   const { newCity } = req.body;
 
   if (!newCity) {
-    return res.status(400).json({ error: "New city name is required" });
+    return res.status(400).json({ error: "Khách sạn " });
   }
 
   try {
