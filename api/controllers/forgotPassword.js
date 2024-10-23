@@ -15,10 +15,8 @@ export const forgotPassword = async (req, res, next) => {
         message: "Không tìm thấy người dùng.",
       });
     }
-
-    // Tạo mã xác thực sử dụng một lần
     const resetCode = crypto.randomBytes(3).toString('hex'); 
-    const expirationTime = Date.now() + 5 * 60 * 1000; // Mã có hiệu lực trong 5 phút
+    const expirationTime = Date.now() + 5 * 60 * 1000; 
 
     resetCodes.set(email, { resetCode, expirationTime });
 
@@ -37,8 +35,6 @@ export const forgotPassword = async (req, res, next) => {
 export const verifyResetCode = async (req, res, next) => {
   try {
     const { email, resetCode, newPassword } = req.body;
-
-    // Kiểm tra xem email có tồn tại trong danh sách mã xác thực không
     if (!resetCodes.has(email)) {
       return res.status(400).json({
         message: "Mã xác thực không hợp lệ hoặc đã hết hạn."
@@ -46,8 +42,6 @@ export const verifyResetCode = async (req, res, next) => {
     }
 
     const { resetCode: storedCode, expirationTime } = resetCodes.get(email);
-
-    // Kiểm tra mã xác thực và thời gian hết hạn
     if (resetCode !== storedCode) {
       return res.status(400).json({
         message: "Mã xác thực không đúng."
@@ -55,13 +49,12 @@ export const verifyResetCode = async (req, res, next) => {
     }
 
     if (Date.now() > expirationTime) {
-      resetCodes.delete(email); // Xóa mã hết hạn
+      resetCodes.delete(email); 
       return res.status(400).json({
         message: "Mã xác thực đã hết hạn."
       });
     }
 
-    // Cập nhật mật khẩu mới cho người dùng
     const user = await User.findOne({ email });
     if (!user) {
       return res.status(404).json({
@@ -74,8 +67,6 @@ export const verifyResetCode = async (req, res, next) => {
 
     user.password = hashPass;
     await user.save();
-
-    // Xóa mã xác thực sau khi sử dụng
     resetCodes.delete(email);
 
     res.status(200).json({

@@ -137,12 +137,12 @@ export const updateCityForAllHotels = async (req, res, next) => {
   const { newCity } = req.body;
 
   if (!newCity) {
-    return res.status(400).json({ error: "Khách sạn " });
+    return res.status(400).json({ error: "Thành phố mới được yêu cầu" });
   }
 
   try {
     const result = await Hotel.updateMany({}, { $set: { city: newCity } });
-    res.status(200).json({ message: `${result.nModified} hotels updated` });
+    res.status(200).json({ message: `${result.nModified} cập nhập khách sạn` });
   } catch (err) {
     next(err);
   }

@@ -12,7 +12,6 @@ export const sendNotification = async (req, res) => {
   }
 };
 
-// Lấy thông báo của người dùng
 export const getNotifications = async (req, res) => {
   try {
     const notifications = await Notification.find({ user: req.params.userId });
@@ -22,7 +21,6 @@ export const getNotifications = async (req, res) => {
   }
 };
 
-// Đánh dấu một thông báo là đã đọc
 export const markAsRead = async (req, res) => {
   try {
     const updatedNotification = await Notification.findByIdAndUpdate(
@@ -36,7 +34,6 @@ export const markAsRead = async (req, res) => {
   }
 };
 
-// Xóa một thông báo
 export const deleteNotification = async (req, res) => {
   try {
     await Notification.findByIdAndDelete(req.params.id);
@@ -45,7 +42,7 @@ export const deleteNotification = async (req, res) => {
     res.status(500).json(err);
   }
 };
-// Lấy tất cả các thông báo
+
 export const getAllNotifications = async (req, res) => {
   try {
     const notifications = await Notification.find();
@@ -54,7 +51,7 @@ export const getAllNotifications = async (req, res) => {
     res.status(500).json(err);
   }
 };
-// Lấy một thông báo theo ID
+
 export const getNotificationById = async (req, res) => {
   try {
     const notification = await Notification.findById(req.params.id);

@@ -16,7 +16,6 @@ router.put("/:id",  updateUser);
 router.delete("/:id", verifyUser, deleteUser);
 router.get("/:id", getUser);
 router.get("/", getUsers);
-
 router.get("/:id/bookedHotels", verifyUser, getUserBookedHotels);
 router.get("/:id/bookingHistory", verifyUser, getUserBookingHistory);
 

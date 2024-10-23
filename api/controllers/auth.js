@@ -2,11 +2,9 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import User from '../models/User.js';
-import { sendMail } from '../helpers/sendMail.js';
 
 dotenv.config();
 
-// User registration
 export const register = async (req, res, next) => {
   try {
     const salt = bcrypt.genSaltSync(10);
@@ -41,7 +39,6 @@ export const registerAdmin = async (req, res, next) => {
     next(err);
   }
 };
-// User login
 export const login = async (req, res, next) => {
   try {
     const user = await User.findOne({ username: req.body.username });
