@@ -1,22 +1,22 @@
 import axios from 'axios';
 
 export const logActivity = async (userId, pathname, duration) => {
-    console.log('Logging activity:', { userId, pathname, duration }); // Kiểm tra giá trị
+    console.log('Hoạt động ghi nhật ký:', { userId, pathname, duration }); // Kiểm tra giá trị
     try {
       const response = await axios.post('http://localhost:9000/api/userActivity/log', {
         userId,
         pathname,
         duration
       });
-      console.log('Activity logged:', response.data);
+      console.log('Hoạt động ghi nhật ký:', response.data);
     } catch (error) {
-      console.error('Error logging activity:', error);
+      console.error('Lỗi ghi nhật ký hoạt động:', error);
       if (error.response) {
-        console.error('Server responded with:', error.response.data);
+        console.error('Máy chủ đã phản hồi với:', error.response.data);
       } else if (error.request) {
-        console.error('Request was made but no response received:', error.request);
+        console.error('Yêu cầu đã được thực hiện nhưng không nhận được phản hồi:', error.request);
       } else {
-        console.error('Error setting up request:', error.message);
+        console.error('Lỗi thiết lập yêu cầu:', error.message);
       }
     }
   };

@@ -16,7 +16,7 @@ const Reviews = () => {
         const data = await getReviews();
         setReviews(data);
       } catch (error) {
-        console.error('Error fetching reviews:', error);
+        console.error('Lỗi khi tìm bài đánh giá:', error);
       }
     };
     fetchReviews();
@@ -27,7 +27,7 @@ const Reviews = () => {
       await deleteReview(reviewId);
       setReviews(reviews.filter((review) => review._id !== reviewId));
     } catch (error) {
-      console.error('Error deleting review:', error);
+      console.error('Lỗi xóa bài đánh giá:', error);
     }
   };
 
@@ -44,7 +44,7 @@ const Reviews = () => {
       ));
       setEditMode(null);
     } catch (error) {
-      console.error('Error updating review:', error);
+      console.error('Lỗi cập nhật đánh giá:', error);
     }
   };
 

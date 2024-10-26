@@ -11,8 +11,7 @@ const ResetPassword = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
-  
-  // Lấy email từ query params
+
   const params = new URLSearchParams(location.search);
   const email = params.get('email');
 
@@ -24,7 +23,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post('http://localhost:9000/api/auth/verifyResetCode/', {
-        email, // Gửi email cùng với mã xác thực và mật khẩu mới
+        email, 
         resetCode,
         newPassword
       });

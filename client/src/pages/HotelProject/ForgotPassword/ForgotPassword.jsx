@@ -13,7 +13,6 @@ const ForgotPassword = () => {
     try {
       const response = await axios.post('http://localhost:9000/api/auth/forgotPassword/', { email });
       toast.success(response.data.message);
-      // Điều hướng đến ResetPassword với email trong URL
       navigate(`/reset-password?email=${encodeURIComponent(email)}`); 
     } catch (error) {
       if (error.response) {

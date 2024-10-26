@@ -6,7 +6,7 @@ export const getHotels = async () => {
     return response.data;
   } catch (error) {
     console.error('Không thể lấy danh sách khách sạn:', error);
-    throw error; // Ném lỗi lên trên để xử lý
+    throw error;
   }
 };
 
@@ -16,6 +16,6 @@ export const getRooms = async (hotelId) => {
     return response.data;
   } catch (error) {
     console.error('Không thể lấy danh sách phòng:', error);
-    throw error; // Ném lỗi lên trên để xử lý
+    throw error;
   }
 };

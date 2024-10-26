@@ -10,13 +10,11 @@ const FeaturedProperties = () => {
     navigate(`/hotels/${id}`);
   };
 
-  // State to handle active city
   const [activeCity, setActiveCity] = useState('Đà Nẵng');
   const cities = ["Hồ Chí Minh", "Đà Nẵng", "Vũng Tàu", "Nha Trang", "Hà Nội"];
 
   const handleCityClick = (city) => {
     setActiveCity(city);
-    // Add logic here to filter or load properties for the selected city
   };
 
   return (

@@ -11,7 +11,7 @@ const Featured1 = () => {
       <h2>Các đất nước có chất lượng khách sạn tốt nhất:</h2>
       <div className="featured2">
       {loading ? ( 
-        "Loading please wait"
+        "Đang tải vui lòng chờ đơi"
       ) : (
         <>
           <div className="featuredItem2">

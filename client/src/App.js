@@ -79,7 +79,7 @@ function ActivityLogger({ userId }) {
     const startTime = Date.now();
 
     if (!userId) {
-      console.error("User ID is null or undefined, skipping activity log");
+      console.error("ID người dùng không có giá trị hoặc không được xác định, bỏ qua nhật ký hoạt động");
       return; 
     }
 
@@ -90,11 +90,11 @@ function ActivityLogger({ userId }) {
       logActivity(userId, location.pathname, duration)
     };
 
-    window.addEventListener('beforeunload', handleActivityLog);
+    window.addEventListener('trước khi dỡ tải', handleActivityLog);
 
     return () => {
       handleActivityLog();
-      window.removeEventListener('beforeunload', handleActivityLog);
+      window.removeEventListener('trước khi dỡ tải', handleActivityLog);
     };
   }, [location, userId]);
 

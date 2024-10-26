@@ -1,7 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './TransferConfirmation.css';
-import { Navigate } from 'react-router-dom';
 const TransferConfirmation = () => {
   const location = useLocation();
   const { recipientName, accountNumber, bankName, content, method, amount, userName } = location.state;

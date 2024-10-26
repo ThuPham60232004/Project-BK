@@ -1,6 +1,6 @@
 import React from 'react';
 import './PaymentScreen.css';
-import { Navigate, useNavigate } from 'react-router-dom';
+import {  useNavigate } from 'react-router-dom';
 const PaymentScreen = ({ amount, recipient, date, time, transactionId }) => {
   const navigate=useNavigate();
   const handleClick=()=>{

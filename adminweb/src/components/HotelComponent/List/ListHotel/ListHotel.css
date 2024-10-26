@@ -30,10 +30,6 @@
      transition: background-color 0.3s ease;
    }
    
-   .ListHotelCointainerBtn:hover {
-     background-color: #08846b;
-   }
-   
    .MuiDataGrid-root {
      background-color: white;
      border-radius: 10px;
@@ -54,11 +50,9 @@
      padding: 8px 16px;
      cursor: pointer;
    }
-   
-   .btnhotels:hover {
-     background-color: #08846b;
+   .ListHotelCointainerBtn:hover{
+    background-color: #10836c;
    }
-   
    img {
      border-radius: 5px;
      object-fit: cover;

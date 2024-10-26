@@ -16,7 +16,7 @@ const NewHotels = () => {
     featured: false,
     photos: [],
   });
-
+  const [imageLink, setImageLink] = useState('');
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setHotelData({ ...hotelData, [name]: value });
@@ -31,7 +31,12 @@ const NewHotels = () => {
     const fileUrls = files.map((file) => URL.createObjectURL(file));
     setHotelData({ ...hotelData, photos: fileUrls });
   };
-
+  const handleImageLinkAdd = () => {
+    if (imageLink) {
+      setHotelData({ ...hotelData, photos: [...hotelData.photos, imageLink] });
+      setImageLink(''); 
+    }
+  };
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -189,7 +194,21 @@ const NewHotels = () => {
             />
           </label>
         </div>
-
+        <div className="new-hotels-group">
+          <label className="new-hotels-label" htmlFor="imageLink">Hình ảnh (bằng link):</label>
+          <input
+            id="imageLink"
+            name="imageLink"
+            type="text"
+            className="new-hotels-input"
+            value={imageLink}
+            onChange={(e) => setImageLink(e.target.value)}
+            placeholder="Nhập link hình ảnh"
+          />
+          <button type="button" className="new-hotels-add-link-btn" onClick={handleImageLinkAdd}>
+            Thêm link hình ảnh
+          </button>
+        </div>
         <button type="submit" className="new-hotels-submit-btn">Thêm khách sạn</button>
       </form>
     </div>

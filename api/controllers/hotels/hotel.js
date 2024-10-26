@@ -51,16 +51,20 @@ export const getHotelsByAdminId = async (req, res, next) => {
 };
 export const getHotels = async (req, res, next) => {
   const { min, max, ...others } = req.query;
+  const minPrice = Number(min) || 1;
+  const maxPrice = Number(max) || 99999999999999999999; 
+
   try {
     const hotels = await Hotel.find({
       ...others,
-      cheapestPrice: { $gt: min || 1, $lt: max || 99999999999999999999 },
+      cheapestPrice: { $gt: minPrice, $lt: maxPrice },
     }).limit(Number(req.query.limit) || 10);
     res.status(200).json(hotels);
   } catch (err) {
     next(err);
   }
 };
+
 export const getHotelsByType = async (req, res, next) => {
   const { type } = req.query;
 

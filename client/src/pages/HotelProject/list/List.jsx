@@ -29,22 +29,15 @@ const List = () => {
     { name: "Paris" },
     { name: "Los Angeles" },
     { name: "Bangkok" },
-    { name: "Sydney" }, // Corrected typo from "Sydnay" to "Sydney"
-    { name: "Zurich" }
+    { name: "Sydney" }, 
+    { name: "Zurich" },
+    { name: "San Francisco" },
+    { name: "Las Vegas" },
   ];
 
   const { data, loading, error, reFetch } = useFetch(
     `http://localhost:9000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
-
-  const handleClick = () => {
-    try {
-      reFetch();
-      toast.success("Tìm kiếm thành công!");
-    } catch (err) {
-      toast.error("Lỗi khi tìm kiếm!");
-    }
-  };
 
   if (error) {
     toast.error("Lỗi khi lấy dữ liệu: " + error.message);

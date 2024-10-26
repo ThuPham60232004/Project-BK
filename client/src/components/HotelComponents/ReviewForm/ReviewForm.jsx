@@ -4,7 +4,7 @@ import './ReviewForm.css';
 const ReviewForm = ({ initialData = { rating: 0, comment: '', hotelName: '', roomTitle: '' }, onSubmit, onCancel }) => {
   const [rating, setRating] = useState(initialData?.rating || 0);
   const [comment, setComment] = useState(initialData?.comment || '');
-  const [images, setImages] = useState([]); // State for images
+  const [images, setImages] = useState([]);
 
   const handleRatingChange = (e) => {
     const value = e.target.value;
@@ -16,7 +16,7 @@ const ReviewForm = ({ initialData = { rating: 0, comment: '', hotelName: '', roo
 
   const handleImageChange = (e) => {
     const files = Array.from(e.target.files);
-    setImages(files); // Store the selected files
+    setImages(files);
   };
 
   const handleSubmit = (e) => {

@@ -2,7 +2,6 @@ import Booking from "../../models/hotels/Booking.js";
 import Notification from "../../models/Notification.js";
 import moment from 'moment';
 import Hotel from "../../models/hotels/Hotel.js"; 
-
 //------------------TẠO ĐƠN ĐẶT PHÒNG
 export const createBooking = async (req, res) => {
   const { user, hotel, room, startDate, endDate, totalPrice, checkintime,paymentMethod,hotel_deposit,idAdmin} = req.body;
